@@ -66,7 +66,8 @@ public class TitleScreen extends Screen
     private static final ResourceLocation ACCESSIBILITY_TEXTURE = new ResourceLocation("textures/gui/accessibility.png");
     private final boolean minceraftEasterEgg;
     private int i;
-    
+    private int copyrightWidth;
+    private int copyrightX;
     @Nullable
     private String splash;
     private Button resetDemoButton;
