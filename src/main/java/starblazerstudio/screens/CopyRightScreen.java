@@ -18,7 +18,7 @@ public class CopyRightScreen extends Screen{
     
 
     public CopyRightScreen(Component p_96550_) {
-        super(p_96550_s);
+        super(p_96550_);
     }
 
     public void render(PoseStack p_96295_, int p_96296_, int p_96297_, float p_96298){
