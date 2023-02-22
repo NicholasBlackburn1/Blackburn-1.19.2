@@ -182,7 +182,7 @@ public class TitleScreen extends Screen
 
         if (this.minecraft.options.realmsNotifications().get() && this.realmsNotificationsScreen == null)
         {
-            this.realmsNotificationsScreen = new ReaTitlelmsNotificationsScreen();
+            this.realmsNotificationsScreen = new RealmsNotificationsScreen();
         }
 
         if (this.realmsNotificationsEnabled())
