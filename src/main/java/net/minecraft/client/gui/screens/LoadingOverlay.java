@@ -40,7 +40,7 @@ public class LoadingOverlay extends Overlay
     private static final int LOGO_BACKGROUND_COLOR_DARK = FastColor.ARGB32.color(255, 0, 0, 0);
     private static final IntSupplier BRAND_BACKGROUND = () ->
     {
-        return Minecraft.getInstance().options.darkMojangStudiosBackground().get() ? LOGO_BACKGROUND_COLOR_DARK : LOGO_BACKGROUND_COLOR;
+        return Minecraft.getInstance().options.darkMojangStudiosBackground().get() ? LOGO_BACKGROUND_COLOR_DARK : LOGO_BACKGROUND_COLOR_DARK;
     };
     private static final int LOGO_SCALE = 240;
     private static final float LOGO_QUARTER_FLOAT = 60.0F;
@@ -93,116 +93,119 @@ public class LoadingOverlay extends Overlay
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick)
     {
-           // inports the loadding overlay 
-           LoadingScreen overlay =  new LoadingScreen();
- 
-           int i = this.minecraft.getWindow().getGuiScaledWidth();
-           int j = this.minecraft.getWindow().getGuiScaledHeight();
-           long k = Util.getMillis();
-   
-           if (this.fadeIn && this.fadeInStart == -1L)
-           {
-               this.fadeInStart = k;
-           }
-   
-           float f = this.fadeOutStart > -1L ? (float)(k - this.fadeOutStart) / 1000.0F : -1.0F;
-           float f1 = this.fadeInStart > -1L ? (float)(k - this.fadeInStart) / 500.0F : -1.0F;
-           float f2;
-   
-           if (f >= 1.0F)
-           {
-               this.fadeOut = true;
-   
-               if (this.minecraft.screen != null)
-               {
-                   this.minecraft.screen.render(pPoseStack, 0, 0, pPartialTick);
-               }
-   
-               int l = Mth.ceil((1.0F - Mth.clamp(f - 1.0F, 0.0F, 1.0F)) * 255.0F);
-               fill(pPoseStack, 0, 0, i, j, replaceAlpha(this.colorBackground, l));
-               f2 = 1.0F - Mth.clamp(f - 1.0F, 0.0F, 1.0F);
-           }
-           else if (this.fadeIn)
-           {
-               if (this.minecraft.screen != null && f1 < 1.0F)
-               {
-                   this.minecraft.screen.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-               }
-   
-               int l1 = Mth.ceil(Mth.clamp((double)f1, 0.15D, 1.0D) * 255.0D);
-               fill(pPoseStack, 0, 0, i, j, replaceAlpha(this.colorBackground, l1));
-               f2 = Mth.clamp(f1, 0.0F, 1.0F);
-           }
-           else
-           {
-               int i2 = this.colorBackground;
-               float f3 = (float)(i2 >> 16 & 255) / 255.0F;
-               float f4 = (float)(i2 >> 8 & 255) / 255.0F;
-               float f5 = (float)(i2 & 255) / 255.0F;
-               GlStateManager._clearColor(f3, f4, f5, 1.0F);
-               GlStateManager._clear(16384, Minecraft.ON_OSX);
-               f2 = 1.0F;
-           }
-   
-           int j2 = (int)((double)this.minecraft.getWindow().getGuiScaledWidth() * 0.5D);
-           int k2 = (int)((double)this.minecraft.getWindow().getGuiScaledHeight() * 0.5D);
-           double d1 = Math.min((double)this.minecraft.getWindow().getGuiScaledWidth() * 0.75D, (double)this.minecraft.getWindow().getGuiScaledHeight()) * 0.25D;
-           int i1 = (int)(d1 * 0.5D);
-           double d0 = d1 * 4.0D;
-           int j1 = (int)(d0 * 0.5D);
-           RenderSystem.setShaderTexture(0, MOJANG_STUDIOS_LOGO_LOCATION);
-           RenderSystem.enableBlend();
-           RenderSystem.blendEquation(32774);
-           RenderSystem.blendFunc(770, 1);
-           RenderSystem.setShader(GameRenderer::getPositionTexShader);
-           RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, f2);
+
+        // should enable me to log and display custom loadind screen
+
+        starblazer.dbg("registering loading screen with the resorce of "+MOJANG_STUDIOS_LOGO_LOCATION.getPath());
+        LoadingScreen overlay = new LoadingScreen();
+      
+        int i = this.minecraft.getWindow().getGuiScaledWidth();
+        int j = this.minecraft.getWindow().getGuiScaledHeight();
+        long k = Util.getMillis();
+
+        if (this.fadeIn && this.fadeInStart == -1L)
+        {
+            this.fadeInStart = k;
+        }
+
+        float f = this.fadeOutStart > -1L ? (float)(k - this.fadeOutStart) / 1000.0F : -1.0F;
+        float f1 = this.fadeInStart > -1L ? (float)(k - this.fadeInStart) / 500.0F : -1.0F;
+        float f2;
+
+        if (f >= 1.0F)
+        {
+            this.fadeOut = true;
+
+            if (this.minecraft.screen != null)
+            {
+                this.minecraft.screen.render(pPoseStack, 0, 0, pPartialTick);
+            }
+
+            int l = Mth.ceil((1.0F - Mth.clamp(f - 1.0F, 0.0F, 1.0F)) * 255.0F);
+            fill(pPoseStack, 0, 0, i, j, replaceAlpha(this.colorBackground, l));
+            f2 = 1.0F - Mth.clamp(f - 1.0F, 0.0F, 1.0F);
+        }
+        else if (this.fadeIn)
+        {
+            if (this.minecraft.screen != null && f1 < 1.0F)
+            {
+                this.minecraft.screen.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+            }
+
+            int l1 = Mth.ceil(Mth.clamp((double)f1, 0.15D, 1.0D) * 255.0D);
+            fill(pPoseStack, 0, 0, i, j, replaceAlpha(this.colorBackground, l1));
+            f2 = Mth.clamp(f1, 0.0F, 1.0F);
+        }
+        else
+        {
+            int i2 = this.colorBackground;
+            float f3 = (float)(i2 >> 16 & 255) / 255.0F;
+            float f4 = (float)(i2 >> 8 & 255) / 255.0F;
+            float f5 = (float)(i2 & 255) / 255.0F;
+            GlStateManager._clearColor(f3, f4, f5, 1.0F);
+            GlStateManager._clear(16384, Minecraft.ON_OSX);
+            f2 = 1.0F;
+        }
+
+        int j2 = (int)((double)this.minecraft.getWindow().getGuiScaledWidth() * 0.5D);
+        int k2 = (int)((double)this.minecraft.getWindow().getGuiScaledHeight() * 0.5D);
+        double d1 = Math.min((double)this.minecraft.getWindow().getGuiScaledWidth() * 0.75D, (double)this.minecraft.getWindow().getGuiScaledHeight()) * 0.25D;
+        int i1 = (int)(d1 * 0.5D);
+        double d0 = d1 * 4.0D;
+        int j1 = (int)(d0 * 0.5D);
+        RenderSystem.setShaderTexture(0, MOJANG_STUDIOS_LOGO_LOCATION);
+        RenderSystem.enableBlend();
+        RenderSystem.blendEquation(32774);
+        RenderSystem.blendFunc(770, 1);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, f2);
+    
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.disableBlend();
+
+        int k1 = (int)((double)this.minecraft.getWindow().getGuiScaledHeight() * 0.8325D);
+        float f6 = this.reload.getActualProgress();
+        this.currentProgress = Mth.clamp(this.currentProgress * 0.95F + f6 * 0.050000012F, 0.0F, 1.0F);
        
-           RenderSystem.defaultBlendFunc();
-           RenderSystem.disableBlend();
-   
-           int k1 = (int)((double)this.minecraft.getWindow().getGuiScaledHeight() * 0.8325D);
-           float f6 = this.reload.getActualProgress();
-           this.currentProgress = Mth.clamp(this.currentProgress * 0.95F + f6 * 0.050000012F, 0.0F, 1.0F);
+        f2 = 1.0F;
+
+        // added loading overlay image
+  
+        overlay.setCustomLogoPosNonFull(this, pPoseStack, Consts.px, Consts.py, Consts.pUOffset, Consts.pVOffset, Consts.pWidth, Consts.pHight, Consts.pTextureWidth, Consts.pTextureHeight,i,i/ 2 - 137);
           
-           f2 = 1.0F;
-   
-           // added loading overlay image
-     
-           overlay.setCustomLogoPosNonFull(this, pPoseStack, Consts.px, Consts.py, Consts.pUOffset, Consts.pVOffset, Consts.pWidth, Consts.pHight, Consts.pTextureWidth, Consts.pTextureHeight,i,i/ 2 - 137);
-             
-     
-     
-   
-           if (f < 1.0F)
-           {
-               this.drawProgressBar(pPoseStack, i / 2 - j1, k1 - 5, i / 2 + j1, k1 + 5, 1.0F - Mth.clamp(f, 0.0F, 1.0F));
-           }
-   
-           if (f >= 2.0F)
-           {
-               this.minecraft.setOverlay((Overlay)null);
-           }
-   
-           if (this.fadeOutStart == -1L && this.reload.isDone() && (!this.fadeIn || f1 >= 2.0F))
-           {
-               this.fadeOutStart = Util.getMillis();
-   
-               try
-               {
-                   this.reload.checkExceptions();
-                   this.onFinish.accept(Optional.empty());
-               }
-               catch (Throwable throwable)
-               {
-                   this.onFinish.accept(Optional.of(throwable));
-               }
-   
-               if (this.minecraft.screen != null)
-               {
-                   this.minecraft.screen.init(this.minecraft, this.minecraft.getWindow().getGuiScaledWidth(), this.minecraft.getWindow().getGuiScaledHeight());
-               }
-           }
-       }
+  
+  
+
+        if (f < 1.0F)
+        {
+            this.drawProgressBar(pPoseStack, i / 2 - j1, k1 - 5, i / 2 + j1, k1 + 5, 1.0F - Mth.clamp(f, 0.0F, 1.0F));
+        }
+
+        if (f >= 2.0F)
+        {
+            this.minecraft.setOverlay((Overlay)null);
+        }
+
+        if (this.fadeOutStart == -1L && this.reload.isDone() && (!this.fadeIn || f1 >= 2.0F))
+        {
+            this.fadeOutStart = Util.getMillis();
+
+            try
+            {
+                this.reload.checkExceptions();
+                this.onFinish.accept(Optional.empty());
+            }
+            catch (Throwable throwable)
+            {
+                this.onFinish.accept(Optional.of(throwable));
+            }
+
+            if (this.minecraft.screen != null)
+            {
+                this.minecraft.screen.init(this.minecraft, this.minecraft.getWindow().getGuiScaledWidth(), this.minecraft.getWindow().getGuiScaledHeight());
+            }
+        }
+    }
 
     private void drawProgressBar(PoseStack p_96183_, int p_96184_, int p_96185_, int p_96186_, int p_96187_, float p_96188_)
     {
