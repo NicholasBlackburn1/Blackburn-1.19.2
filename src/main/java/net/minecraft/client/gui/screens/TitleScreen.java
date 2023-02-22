@@ -49,6 +49,7 @@ import net.minecraft.world.level.storage.LevelSummary;
 import net.optifine.reflect.Reflector;
 import net.optifine.reflect.ReflectorForge;
 import org.slf4j.Logger;
+import starblazerstudio.screens.CopyRightScreen;
 
 public class TitleScreen extends Screen
 {
@@ -175,13 +176,13 @@ public class TitleScreen extends Screen
         }, Component.translatable("narrator.button.accessibility")));
         this.addRenderableWidget(new PlainTextButton(i1, this.height - 10, l, 10, COPYRIGHT_TEXT, (p_211789_1_) ->
         {
-            this.minecraft.setScreen(new WinScreen(false, Runnables.doNothing()));
+            this.minecraft.setScreen(new CopyRightScreen( Component.literal("Client Info")));
         }, this.font));
         this.minecraft.setConnectedToRealms(false);
 
         if (this.minecraft.options.realmsNotifications().get() && this.realmsNotificationsScreen == null)
         {
-            this.realmsNotificationsScreen = new RealmsNotificationsScreen();
+            this.realmsNotificationsScreen = new ReaTitlelmsNotificationsScreen();
         }
 
         if (this.realmsNotificationsEnabled())
