@@ -5,16 +5,17 @@
 
 
 package starblazerstudio.screens;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.optifine.Config;
 
 import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.GuiUtils;
 
 import com.google.common.util.concurrent.Runnables;
 import com.google.gson.JsonPrimitive;
@@ -59,11 +60,14 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.levelgen.WorldGenSettings;
+import net.minecraft.world.level.storage.LevelStorageSource;
+import net.minecraft.world.level.storage.LevelSummary;
+import net.minecraftforge.api.distmarker.Dist;
+
+
 import  net.minecraft.client.gui.screens.LanguageSelectScreen;
 import net.minecraft.client.gui.screens.OptionsScreen;
-
-
-import starblazerstudio.utils.GuiUtils;
 
 public class TitleScreenOverlay {
 
@@ -176,52 +180,6 @@ public class TitleScreenOverlay {
 
     }
 
-   // this allows me to make custom minecraft loading screens  by just calling this function
-   // int j is hight i think
-    public  void setUpCustomMainMenu(Minecraft minecraft, Screen screen,  int width, int hight, int j, Screen realmsNotificationsScreen){
-
-      Consts.dbg("Setting up custom title screen~");
-
-      // Single player selection
-      screen.addRenderableWidget(new Button(width / 2  + 100, j+72 -100, 100, 20, new TranslatableComponent("menu.singleplayer"), (p_96781_) -> {
-         minecraft.setScreen(new SelectWorldScreen(screen));
-
-      }));
-      Consts.warn("the pos of the  button "+"menu.singleplayer"+" X:"+ " "+Integer.toString(width / 2  + 100)+" "+ " Y:"+Integer.toString(j+72 -100));
-      Consts.dbg("Regestering single player menu");
-      
-      // adds Multipayer selection
-      screen.addRenderableWidget(new Button(width / 2 + 100, j + 72 - 74 , 100, 20, new TranslatableComponent("menu.multiplayer"), (p_169450_) -> {
-      minecraft.setScreen(new JoinMultiplayerScreen(screen));
-      }));
-      Consts.dbg("Regestering mutli player menu");
-
-      // lang selection
-      screen.addRenderableWidget(new ImageButton(width / 2 + 100, j + 72 + 12, 20, 20, 0, 106, 20, Button.WIDGETS_LOCATION, 256, 256, (p_96791_) -> {
-         minecraft.setScreen(new LanguageSelectScreen(screen, minecraft.options, minecraft.getLanguageManager()));
-      }, new TranslatableComponent("narrator.button.language")));
-      Consts.dbg("Regestering lang select menu");
-
-      // Settings screen 
-      screen.addRenderableWidget(new Button(width  / 2  + 100, j+72 - 46, 100, 20, new TranslatableComponent("menu.options"), (p_96788_) -> {
-         minecraft.setScreen(new OptionsScreen(screen, minecraft.options));
-      }));
-      Consts.dbg("Regestering Settings Menu select menu");
-
-      // quit button 
-      screen.addRenderableWidget(new Button(width /2 + 100, j + 72 - 20, 100, 20, new TranslatableComponent("menu.quit"), (p_96786_) -> {
-         minecraft.stop();
-      }));
-      Consts.dbg("Regestering quit");
-     
-   
-      minecraft.setConnectedToRealms(false);
-
-      if (minecraft.options.realmsNotifications && realmsNotificationsScreen == null) {
-         realmsNotificationsScreen = new RealmsNotificationsScreen();
-      }
-
-   }
 
    /**
     * This is for redering the splash title and editon ifno
