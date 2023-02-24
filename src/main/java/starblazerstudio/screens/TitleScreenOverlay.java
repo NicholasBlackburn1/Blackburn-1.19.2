@@ -254,7 +254,7 @@ public class TitleScreenOverlay {
       x = (JsonPrimitive) Consts.background.get(4);
       y = ( JsonPrimitive) Consts.background.get(3);
       
-      gui.CreatebuttonwithoutImage(minecraft, titlescreen, new SelectWorldScreen(titlescreen), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.singleplayer");
+      gui.CreateingleplayerButton(minecraft, titlescreen, new SelectWorldScreen(titlescreen), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.singleplayer");
      
       x = (JsonPrimitive) Consts.background.get(6);
       y = (JsonPrimitive) Consts.background.get(5);

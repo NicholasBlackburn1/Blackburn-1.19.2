@@ -10,7 +10,8 @@ package starblazerstudio.utils;
  import net.minecraft.client.Minecraft;
  import net.minecraft.client.gui.Font;
  import net.minecraft.client.gui.components.ImageButton;
- import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.OptionsScreen;
+import net.minecraft.client.gui.screens.Screen;
  import net.minecraft.network.chat.Component;
  import net.minecraftforge.api.distmarker.OnlyIn;
  import net.optifine.gui.GuiScreenOF;
@@ -124,6 +125,23 @@ package starblazerstudio.utils;
     Consts.error("Couldn't read strings from {}"+"/assets/blackburn/backgrounds.json" +" "+ioexception.toString());
  }
   }
+
+
+  // creates the quit button 
+public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen, int buttonwidth, int j, int x,
+      int y, int i, String string) {
+}
+
+// creates the single player button 
+public void CreateingleplayerButton(Minecraft minecraft, Screen titlescreen, SelectWorldScreen selectWorldScreen,
+        int buttonwidth, int j, int x, int y, int i, String string) {
+}
+
+//creates mulitplayer button
+public void CreateMuliplayerButton(Minecraft minecraft, Screen titlescreen,
+      JoinMultiplayerScreen joinMultiplayerScreen, int buttonwidth, int j, int asInt, int asInt2, int i,
+      String string) {
+}
  
 }
  
