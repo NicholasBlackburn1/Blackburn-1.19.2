@@ -79,6 +79,26 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  import net.minecraft.network.chat.CommonComponents;
  public class GuiUtils {
 
+
+ /***
+  * This Allows me to easly check to see if program is in dev mode
+  * @param random random java 
+  * @param background background int 
+  * @param backgroundCount the size of the background list 
+  * @return
+  */
+ public static int getBackgroundnum(Random random,int background, int backgroundCount){
+   int output = 0;
+  if(Consts.devMode){
+     output = background;
+  }
+  else{
+     output = random.nextInt(backgroundCount);
+  }
+  return output;
+}
+
+
   // loads data from json fiels 
   public static void loadFromJson(InputStream p_128109_) {
     Gson json = new Gson();
@@ -98,6 +118,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
     }
  
  }
+ 
  
   // Dumps json so i cam then hope fully get daya from it 
   public void dumpLayoutJson(){
@@ -160,7 +181,7 @@ public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen
    Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
    Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
    
-   titlescreen.addRenderableWidget(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+   titlescreen.addRenderableWidgetcustom(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
       minecraft.stop();
    }));
    
@@ -199,7 +220,7 @@ public void CreateButton(Minecraft minecraft, Screen titlescreen, Screen onclick
    Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
    Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
    
-   titlescreen.addRenderableWidget(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+   titlescreen.addRenderableWidgetcustom(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
       minecraft.setScreen(onclick);
    }));
    
