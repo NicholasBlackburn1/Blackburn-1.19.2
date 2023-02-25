@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 
 public class Button extends AbstractButton
 {
@@ -19,7 +20,7 @@ public class Button extends AbstractButton
 
     public Button(int pX, int pY, int pWidth, int pHeight, Component pMessage, Button.OnPress pOnPress)
     {
-        this(pX, pY, pWidth, pHeight, pMessage, pOnPress, NO_TOOLTIP);
+        this(pX, pY, pWidth, pHeight, translatableContents, pOnPress, NO_TOOLTIP);
     }
 
     public Button(int pX, int pY, int pWidth, int pHeight, Component pMessage, Button.OnPress pOnPress, Button.OnTooltip pOnTooltip)

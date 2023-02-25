@@ -13,7 +13,8 @@ package starblazerstudio.utils;
 import net.minecraft.client.gui.screens.OptionsScreen;
 import net.minecraft.client.gui.screens.Screen;
  import net.minecraft.network.chat.Component;
- import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraftforge.api.distmarker.OnlyIn;
  import net.optifine.gui.GuiScreenOF;
  
  import com.google.common.util.concurrent.Runnables;
@@ -74,7 +75,8 @@ import net.minecraft.client.gui.screens.Screen;
  import net.minecraft.world.level.storage.LevelStorageSource;
  import net.minecraft.world.level.storage.LevelSummary;
  import net.minecraftforge.api.distmarker.Dist;
- 
+ import net.minecraft.network.chat.Component;
+ import net.minecraft.network.chat.CommonComponents;
  public class GuiUtils {
 
   // loads data from json fiels 
@@ -128,20 +130,82 @@ import net.minecraft.client.gui.screens.Screen;
 
 
   // creates the quit button 
-public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen, int buttonwidth, int j, int x,
-      int y, int i, String string) {
+public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen, int buttonwidth, int j, int ButtonLocationX,int ButtonLocationY, int i, String buttontext) {
+
+   Consts.log("creating quit button at x:"+ButtonLocationX +" y:"+ButtonLocationY);
+
+   int width = 0;
+   int y = 0;
+
+    Consts.dbg("Setting up "+buttontext+ "......");
+    
+    Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
+    Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
+    
+   // convirts negive numbers into actual lfull numebrs just uses negitive as detector 
+    if(ButtonLocationX < 0 ){
+     width =  buttonwidth / 2 -  Math.abs(ButtonLocationX);
+    }else{
+     width = buttonwidth / 2 + ButtonLocationX;
+    }
+   
+    if(ButtonLocationY < 0){
+       y = j+72 - Math.abs(ButtonLocationY);
+    } else{
+       y = j+72 + ButtonLocationY;
+    }
+
+
+
+   Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
+   Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
+   
+   titlescreen.addRenderableWidget(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+      minecraft.stop();
+   }));
+   
+   Consts.dbg("Set up "+new TranslatableContents(buttontext).toString()+"Sucessfully");
+      
 }
 
-// creates the single player button 
-public void CreateingleplayerButton(Minecraft minecraft, Screen titlescreen, SelectWorldScreen selectWorldScreen,
-        int buttonwidth, int j, int x, int y, int i, String string) {
+// creates quit button 
+public void CreateButton(Minecraft minecraft, Screen titlescreen, Screen onclick,int buttonwidth, int j, int ButtonLocationX, int ButtonLocationY, int i, String buttontext) {
+
+   Consts.log("creating quit button at x:"+ButtonLocationX +" y:"+ButtonLocationY);
+
+   int width = 0;
+   int y = 0;
+
+    Consts.dbg("Setting up "+buttontext+ "......");
+    
+    Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
+    Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
+    
+   // convirts negive numbers into actual lfull numebrs just uses negitive as detector 
+    if(ButtonLocationX < 0 ){
+     width =  buttonwidth / 2 -  Math.abs(ButtonLocationX);
+    }else{
+     width = buttonwidth / 2 + ButtonLocationX;
+    }
+   
+    if(ButtonLocationY < 0){
+       y = j+72 - Math.abs(ButtonLocationY);
+    } else{
+       y = j+72 + ButtonLocationY;
+    }
+
+
+
+   Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
+   Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
+   
+   titlescreen.addRenderableWidget(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+      minecraft.setScreen(onclick);
+   }));
+   
+   Consts.dbg("Set up "+new TranslatableContents(buttontext).toString()+"Sucessfully");
+
 }
 
-//creates mulitplayer button
-public void CreateMuliplayerButton(Minecraft minecraft, Screen titlescreen,
-      JoinMultiplayerScreen joinMultiplayerScreen, int buttonwidth, int j, int asInt, int asInt2, int i,
-      String string) {
-}
- 
 }
  
