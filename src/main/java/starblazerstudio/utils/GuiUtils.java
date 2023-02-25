@@ -189,7 +189,19 @@ public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen
       
 }
 
-// creates quit button 
+ /**
+  * No image button
+  * @param minecraft main minecraft instance
+  * @param titlescreen this main title screen
+  * @param onClickedScreen the screen the button will open 
+  * @param ButtonWidth the width of the button
+  * @param j some magic number mojan made 
+  * @param ButtonLocationY Is the y axis of where the button sits on the screen 
+  * @param ButtonLocationX is the x axis of where the button sitis on the screen
+  * @param ButtonLength the length of the button  set to 100 for short buttons 
+  * @param buttonText the Translatable text from a lang.json file
+  * @param texturehight the place where if you have to hight it shows other mapped textures to the buttons set to 20 unless crazy wide button
+  */
 public void CreateButton(Minecraft minecraft, Screen titlescreen, Screen onclick,int buttonwidth, int j, int ButtonLocationX, int ButtonLocationY, int i, String buttontext) {
 
    Consts.log("creating quit button at x:"+ButtonLocationX +" y:"+ButtonLocationY);
@@ -220,7 +232,7 @@ public void CreateButton(Minecraft minecraft, Screen titlescreen, Screen onclick
    Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
    Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
    
-   titlescreen.addRenderableWidgetcustom(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+   titlescreen.addRenderableWidgetcustom(new Button(width, y, buttonwidth, 20, Component.translatable(buttontext), (p_96781_) -> {
       minecraft.setScreen(onclick);
    }));
    
