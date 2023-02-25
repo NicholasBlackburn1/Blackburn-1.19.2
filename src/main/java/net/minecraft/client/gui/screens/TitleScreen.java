@@ -157,7 +157,24 @@ public class TitleScreen extends Screen
         Button button = null;
 
         
-        if(Consts.background.size() == 0){
+         // Creates my custom 
+      if (minecraft.isDemo()) {
+
+         if(Consts.background.size() == 0){
+            Consts.warn("Cannot Register new Main menu  because list is 0");
+
+         } else{
+            Consts.log("Registering main menu");
+            overlay.LoadCustomMainMenu(minecraft,this, width, j);
+
+
+            //overlay.setUpCustomMainMenu(minecraft, this, width,height, j, realmsNotificationsScreen);
+            Consts.log("Registered main menu");
+         }
+
+      } else {
+
+         if(Consts.background.size() == 0){
             Consts.warn("Cannot Register new Main menu  because list is 0");
 
          } else{
@@ -167,45 +184,16 @@ public class TitleScreen extends Screen
 
             //overlay.setUpCustomMainMenu(minecraft, this, width,height, j, realmsNotificationsScreen);
             Consts.log("Registered main menu");
-        }
 
+            
+         }
+      }
+
+    
             
     }
 
-      
-
-    private void createNormalMenuOptions(int pY, int pRowHeight)
-    {
-        this.addRenderableWidget(new Button(this.width / 2 - 100, pY, 200, 20, Component.translatable("menu.singleplayer"), (p_232778_1_) ->
-        {
-            this.minecraft.setScreen(new SelectWorldScreen(this));
-        }));
-        final Component component = this.getMultiplayerDisabledReason();
-        boolean flag = component == null;
-        Button.OnTooltip button$ontooltip = component == null ? Button.NO_TOOLTIP : new Button.OnTooltip()
-        {
-            public void onTooltip(Button p_169458_, PoseStack p_169459_, int p_169460_, int p_169461_)
-            {
-                TitleScreen.this.renderTooltip(p_169459_, TitleScreen.this.minecraft.font.split(component, Math.max(TitleScreen.this.width / 2 - 43, 170)), p_169460_, p_169461_);
-            }
-            public void narrateTooltip(Consumer<Component> p_169456_)
-            {
-                p_169456_.accept(component);
-            }
-        };
-        (this.addRenderableWidget(new Button(this.width / 2 - 100, pY + pRowHeight * 1, 200, 20, Component.translatable("menu.multiplayer"), (p_96775_1_) ->
-        {
-            Screen screen = (Screen)(this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this));
-            this.minecraft.setScreen(screen);
-        }, button$ontooltip))).active = flag;
-        boolean flag1 = Reflector.ModListScreen_Constructor.exists();
-        int i = flag1 ? this.width / 2 + 2 : this.width / 2 - 100;
-        int j = flag1 ? 98 : 200;
-        (this.addRenderableWidget(new Button(i, pY + pRowHeight * 2, j, 20, Component.translatable("menu.online"), (p_210871_1_) ->
-        {
-            this.realmsButtonClicked();
-        }, button$ontooltip))).active = flag;
-    }
+    
 
     @Nullable
     private Component getMultiplayerDisabledReason()
