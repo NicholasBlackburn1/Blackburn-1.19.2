@@ -142,7 +142,14 @@ public abstract class Screen extends AbstractContainerEventHandler implements Wi
         this.minecraft.setScreen((Screen)null);
     }
 
-    public <T extends GuiEventListener & Widget & NarratableEntry> Button addRenderableWidget(Button button)
+    public <T extends GuiEventListener & Widget & NarratableEntry> T addRenderableWidget(T pWidget)
+    {
+        this.renderables.add(pWidget);
+        return this.addWidget(pWidget);
+    }
+
+    // custom button 
+    public <T extends GuiEventListener & Widget & NarratableEntry> Button addRenderableWidgetcustom(Button button)
     {
         this.renderables.add(button);
         return this.addWidget(button);
