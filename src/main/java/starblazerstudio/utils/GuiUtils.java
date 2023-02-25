@@ -149,45 +149,51 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  }
   }
 
+  /***
+   * 
+   * the quit button uwu
+   * @param minecraft
+   * @param titlescreen
+   * @param ButtonWidth
+   * @param j
+   * @param ButtonLocationY
+   * @param ButtonLocationX
+   * @param ButtonLenght
+   * @param buttonText
+   */
+  public void CreatebuttonwithoutImageQuit(Minecraft minecraft,Screen titlescreen, int ButtonWidth, int j, int ButtonLocationY, int ButtonLocationX, int ButtonLenght,  String buttonText){
 
-  // creates the quit button 
-public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen, int buttonwidth, int j, int ButtonLocationX,int ButtonLocationY, int i, String buttontext) {
-
-   Consts.log("creating quit button at x:"+ButtonLocationX +" y:"+ButtonLocationY);
 
    int width = 0;
    int y = 0;
 
-    Consts.dbg("Setting up "+buttontext+ "......");
-    
-    Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
-    Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
-    
-   // convirts negive numbers into actual lfull numebrs just uses negitive as detector 
-    if(ButtonLocationX < 0 ){
-     width =  buttonwidth / 2 -  Math.abs(ButtonLocationX);
-    }else{
-     width = buttonwidth / 2 + ButtonLocationX;
-    }
-   
-    if(ButtonLocationY < 0){
-       y = j+72 - Math.abs(ButtonLocationY);
-    } else{
-       y = j+72 + ButtonLocationY;
-    }
+ Consts.dbg("Setting up "+buttonText+ "......");
+ 
+ Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
+ Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
+ 
+// convirts negive numbers into actual lfull numebrs just uses negitive as detector 
+ if(ButtonLocationX < 0 ){
+  width =  ButtonWidth / 2 -  Math.abs(ButtonLocationX);
+ }else{
+  width = ButtonWidth / 2 + ButtonLocationX;
+ }
+
+ if(ButtonLocationY < 0){
+    y = j+72 - Math.abs(ButtonLocationY);
+ } else{
+    y = j+72 + ButtonLocationY;
+ }
 
 
-
-   Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
-   Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
-   
-   titlescreen.addRenderableWidgetcustom(new Button(width, y, 100, 20, Component.translatable(buttontext), (p_96781_) -> {
+ Consts.warn("the pos of the  button "+(buttonText)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
+   Consts.dbg("Setting up "+ Component.translatable(buttonText).toString()+ "......");
+   titlescreen.addRenderableWidget(new Button(width, y, 100, 20,  Component.translatable(buttonText), (p_96781_) -> {
       minecraft.stop();
    }));
-   
-   Consts.dbg("Set up "+new TranslatableContents(buttontext).toString()+"Sucessfully");
-      
+   Consts.dbg("Set up "+Component.translatable(buttonText).toString()+"Sucessfully");
 }
+
 
  /**
   * No image button
@@ -202,43 +208,37 @@ public void CreatebuttonwithoutImageQuit(Minecraft minecraft, Screen titlescreen
   * @param buttonText the Translatable text from a lang.json file
   * @param texturehight the place where if you have to hight it shows other mapped textures to the buttons set to 20 unless crazy wide button
   */
-public void CreateButton(Minecraft minecraft, Screen titlescreen, Screen onclick,int buttonwidth, int j, int ButtonLocationX, int ButtonLocationY, int i, String buttontext) {
-
-   Consts.log("creating quit button at x:"+ButtonLocationX +" y:"+ButtonLocationY);
-
+  public void CreatebuttonwithoutImage(Minecraft minecraft,Screen titlescreen, Screen onClickedScreen, int ButtonWidth, int j, int ButtonLocationY, int ButtonLocationX, int ButtonLenght,  String buttonText){
    int width = 0;
    int y = 0;
 
-    Consts.dbg("Setting up "+buttontext+ "......");
-    
-    Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
-    Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
-    
-   // convirts negive numbers into actual lfull numebrs just uses negitive as detector 
-    if(ButtonLocationX < 0 ){
-     width =  buttonwidth / 2 -  Math.abs(ButtonLocationX);
-    }else{
-     width = buttonwidth / 2 + ButtonLocationX;
-    }
-   
-    if(ButtonLocationY < 0){
-       y = j+72 - Math.abs(ButtonLocationY);
-    } else{
-       y = j+72 + ButtonLocationY;
-    }
+ Consts.dbg("Setting up "+buttonText+ "......");
+ 
+ Consts.dbg("abs of ButtonLocationx" + Integer.toString(Math.abs(ButtonLocationX)));
+ Consts.dbg("abs of ButtonLocationy" + Integer.toString(Math.abs(ButtonLocationY)));
+ 
 
 
+ if(ButtonLocationX < 0 ){
+  width =  ButtonWidth / 2 -  Math.abs(ButtonLocationX);
+ }else{
+  width = ButtonWidth / 2 + ButtonLocationX;
+ }
 
-   Consts.warn("the pos of the  button "+(buttontext)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
-   Consts.dbg("Setting up "+new TranslatableContents(buttontext).toString()+ "......");
-   
-   titlescreen.addRenderableWidgetcustom(new Button(width, y, buttonwidth, 20, Component.translatable(buttontext), (p_96781_) -> {
-      minecraft.setScreen(onclick);
-   }));
-   
-   Consts.dbg("Set up "+new TranslatableContents(buttontext).toString()+"Sucessfully");
+ if(ButtonLocationY < 0){
+    y = j+72 - Math.abs(ButtonLocationY);
+ } else{
+    y = j+72 + ButtonLocationY;
+ }
 
+
+ Consts.warn("the pos of the  button "+(buttonText)+" X:"+ " "+Integer.toString(width)+" "+ " Y:"+Integer.toString(y));
+ titlescreen.addRenderableWidget(new Button(width, y, 100, 20,Component.translatable(buttonText), (p_96781_) -> {
+    minecraft.setScreen(onClickedScreen);
+ }));
+ Consts.dbg("Set up "+Component.translatable(buttonText).toString()+"Sucessfully");
 }
+
 
 }
  
