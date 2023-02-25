@@ -10,12 +10,15 @@ import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.sounds.SoundEvents;
+import starblazerstudio.screens.DeathScreenOverlay;
 
 public class DeathScreen extends Screen
 {
     private int delayTicker;
     private final Component causeOfDeath;
     private final boolean hardcore;
+    private Component sufix;
     private Component deathScore;
     private final List<Button> exitButtons = Lists.newArrayList();
 
@@ -54,7 +57,9 @@ public class DeathScreen extends Screen
         }
 
         this.deathScore = Component.translatable("deathScreen.score").append(": ").append(Component.literal(Integer.toString(this.minecraft.player.getScore())).withStyle(ChatFormatting.YELLOW));
+        this.sufix = ( Component.translatable(this.minecraft.getSplashManager().getSplash()).a(ChatFormatting.LIGHT_PURPLE));
     }
+    
 
     public boolean shouldCloseOnEsc()
     {
@@ -87,24 +92,16 @@ public class DeathScreen extends Screen
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick)
     {
+        DeathScreenOverlay overlay = new DeathScreenOverlay();
+        
         this.fillGradient(pPoseStack, 0, 0, this.width, this.height, 1615855616, -1602211792);
         pPoseStack.pushPose();
         pPoseStack.scale(2.0F, 2.0F, 2.0F);
         drawCenteredString(pPoseStack, this.font, this.title, this.width / 2 / 2, 30, 16777215);
         pPoseStack.popPose();
 
-        if (this.causeOfDeath != null)
-        {
-            drawCenteredString(pPoseStack, this.font, this.causeOfDeath, this.width / 2, 85, 16777215);
-        }
 
-        drawCenteredString(pPoseStack, this.font, this.deathScore, this.width / 2, 100, 16777215);
-
-        if (this.causeOfDeath != null && pMouseY > 85 && pMouseY < 85 + 9)
-        {
-            Style style = this.getClickedComponentStyleAt(pMouseX);
-            this.renderComponentHoverEffect(pPoseStack, style, pMouseX, pMouseY);
-        }
+        overlay.renderDeathScreen(pPoseStack, this, title, font, causeOfDeath, sufix, this.width, this.height);
 
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
     }
@@ -129,6 +126,8 @@ public class DeathScreen extends Screen
     {
         if (this.causeOfDeath != null && p_95915_ > 85.0D && p_95915_ < (double)(85 + 9))
         {
+            // uwu play sound
+            this.minecraft.player.playSound(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 100.0f, 1.0f);
             Style style = this.getClickedComponentStyleAt((int)pMouseX);
 
             if (style != null && style.getClickEvent() != null && style.getClickEvent().getAction() == ClickEvent.Action.OPEN_URL)
