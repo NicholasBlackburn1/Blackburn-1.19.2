@@ -33,6 +33,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -141,10 +142,10 @@ public abstract class Screen extends AbstractContainerEventHandler implements Wi
         this.minecraft.setScreen((Screen)null);
     }
 
-    public <T extends GuiEventListener & Widget & NarratableEntry> T addRenderableWidget(T pWidget)
+    public <T extends GuiEventListener & Widget & NarratableEntry> Button addRenderableWidget(Button button)
     {
-        this.renderables.add(pWidget);
-        return this.addWidget(pWidget);
+        this.renderables.add(button);
+        return this.addWidget(button);
     }
 
     protected <T extends Widget> T addRenderableOnly(T pWidget)
