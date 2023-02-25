@@ -12,6 +12,7 @@ import com.mojang.realmsclient.gui.screens.RealmsNotificationsScreen;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.BiConsumer;
@@ -48,6 +49,8 @@ import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.LevelSummary;
 import net.optifine.reflect.Reflector;
 import net.optifine.reflect.ReflectorForge;
+
+import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
 import starblazerstudio.screens.CopyRightScreen;
 import starblazerstudio.utils.Consts;
@@ -58,106 +61,83 @@ import com.google.gson.JsonPrimitive;
 
 public class TitleScreen extends Screen
 {
-    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger();
     private static final String DEMO_LEVEL_ID = "Demo_World";
-    public static final Component COPYRIGHT_TEXT = Component.literal("Copyright Mojang AB. Do not distribute!");
+    public static final String COPYRIGHT_TEXT = "Copyright Mojang AB. Do not distribute!";
     public static final CubeMap CUBE_MAP = new CubeMap(new ResourceLocation("textures/gui/title/background/panorama"));
     private static ResourceLocation PANORAMA_OVERLAY = new ResourceLocation("textures/gui/title/background/panorama_overlay.png");
     private static final ResourceLocation ACCESSIBILITY_TEXTURE = new ResourceLocation("textures/gui/accessibility.png");
     private final boolean minceraftEasterEgg;
-    private int i;
-    private int copyrightWidth;
-    private int copyrightX;
     @Nullable
     private String splash;
     private Button resetDemoButton;
     private static final ResourceLocation MINECRAFT_LOGO = new ResourceLocation("textures/gui/title/minecraft.png");
-    private static final ResourceLocation MINECRAFT_EDITION = new ResourceLocation("textures/gui/title/edition.png");
-    @Nullable
-    private RealmsNotificationsScreen realmsNotificationsScreen;
+    private static final ResourceLocation MINECRAFT_EDITION = new ResourceLocation("blackburn/logo/uwuedition.png");
+    private Screen realmsNotificationsScreen;
+    private int copyrightWidth;
+    private int copyrightX;
     private final PanoramaRenderer panorama = new PanoramaRenderer(CUBE_MAP);
     private final boolean fading;
     private long fadeInStart;
-    @Nullable
-    private TitleScreen.WarningLabel warningLabel;
     private Screen modUpdateNotification;
-
+    private int i;
+    
     public TitleScreen()
     {
         this(false);
     }
 
-    public TitleScreen(boolean pFading)
-    {
-        super(Component.translatable("narrator.screen.title"));
-        this.fading = pFading;
-        this.minceraftEasterEgg = (double)RandomSource.create().nextFloat() < 1.0E-4D;
-    }
-
-    private boolean realmsNotificationsEnabled()
-    {
-        return this.minecraft.options.realmsNotifications().get() && this.realmsNotificationsScreen != null;
-    }
-
-    public void tick()
-    {
-        if (this.realmsNotificationsEnabled())
-        {
-            this.realmsNotificationsScreen.tick();
-        }
-
-        this.minecraft.getRealms32BitWarningStatus().showRealms32BitWarningIfNeeded(this);
-    }
-
-    public static CompletableFuture<Void> preloadResources(TextureManager pTexMngr, Executor pBackgroundExecutor)
-    {
-        return CompletableFuture.allOf(pTexMngr.preload(MINECRAFT_LOGO, pBackgroundExecutor), pTexMngr.preload(MINECRAFT_EDITION, pBackgroundExecutor), pTexMngr.preload(PANORAMA_OVERLAY, pBackgroundExecutor), CUBE_MAP.preload(pTexMngr, pBackgroundExecutor));
-    }
-
-    public boolean isPauseScreen()
-    {
-        return false;
-    }
-
-    public boolean shouldCloseOnEsc()
-    {
-        return false;
-    }
-
-    protected void init()
-    {
-
-
-        i++;
-        Consts.showStart = true;
-        
-        TitleScreenOverlay overlay = new TitleScreenOverlay();
-
-        if (this.splash == null) {
-            this.splash = minecraft.getSplashManager().getSplash();
-        }
-
-        // runs only on 2nd startup of main menu
-        if(i == 1){
-            overlay.BlackburnTitleInit();
-        }
-        
-        this.PANORAMA_OVERLAY = new ResourceLocation(overlay.setBackgroundScreen());
-
+   
+    public TitleScreen(boolean p_96733_) {
+        super( Component.translatable("narrator.screen.title"));
+        this.fading = p_96733_;
+        this.minceraftEasterEgg = (double)(new Random()).nextFloat() < 1.0E-4D;
+     }
+  
     
+  
+     public void tick() {
+  
+     }
+  
+     public static CompletableFuture<Void> preloadResources(TextureManager p_96755_, Executor p_96756_) {
+        return CompletableFuture.allOf(p_96755_.preload(MINECRAFT_LOGO, p_96756_), p_96755_.preload(MINECRAFT_EDITION, p_96756_), p_96755_.preload(PANORAMA_OVERLAY, p_96756_), CUBE_MAP.preload(p_96755_, p_96756_));
+     }
+  
+     public boolean isPauseScreen() {
+        return false;
+     }
+  
+     public boolean shouldCloseOnEsc() {
+        return false;
+     }
+  
+     // Chnaged the copy right text out side of the main minecarft version
+     protected void init() {
+  
+      i++;
+      Consts.showStart = true;
+      
+      TitleScreenOverlay overlay = new TitleScreenOverlay();
 
-        i = 24;
-        int j = height / 4 + 48;
+      if (this.splash == null) {
+         this.splash = minecraft.getSplashManager().getSplash();
+      }
 
+      // runs only on 2nd startup of main menu
+      if(i == 1){
+         overlay.BlackburnTitleInit();
+      }
+    
+      this.PANORAMA_OVERLAY = new ResourceLocation(overlay.setBackgroundScreen());
 
-        int l = this.font.width(COPYRIGHT_TEXT);
-        int i1 = this.width - l - 2;
-        int j1 = 24;
-        int k = this.height / 4 + 48;
-        Button button = null;
+      this.copyrightWidth = font.width(Consts.copyright);
+      this.copyrightX = width - copyrightWidth - 2;
 
-        
-         // Creates my custom 
+       i = 24;
+       int j = this.width / 2 - 137;
+
+      // Creates my custom 
       if (minecraft.isDemo()) {
 
          if(Consts.background.size() == 0){
@@ -189,42 +169,13 @@ public class TitleScreen extends Screen
          }
       }
 
-    
-            
     }
-
-    
-
-    @Nullable
-    private Component getMultiplayerDisabledReason()
-    {
-        if (this.minecraft.allowsMultiplayer())
-        {
-            return null;
-        }
-        else
-        {
-            BanDetails bandetails = this.minecraft.multiplayerBan();
-
-            if (bandetails != null)
-            {
-                return bandetails.expires() != null ? Component.translatable("title.multiplayer.disabled.banned.temporary") : Component.translatable("title.multiplayer.disabled.banned.permanent");
-            }
-            else
-            {
-                return Component.translatable("title.multiplayer.disabled");
-            }
-        }
-    }
-
-   
-
-    private void realmsButtonClicked()
-    {
+     
+     private void realmsButtonClicked() {
         this.minecraft.setScreen(new RealmsMainScreen(this));
-    }
-
-    public void render(PoseStack p_96739_, int p_96740_, int p_96741_, float p_96742_) {
+     }
+  
+     public void render(PoseStack p_96739_, int p_96740_, int p_96741_, float p_96742_) {
         
         TitleScreenOverlay overlay = new TitleScreenOverlay();
    
@@ -286,99 +237,58 @@ public class TitleScreen extends Screen
            }
   
            super.render(p_96739_, p_96740_, p_96741_, p_96742_);
-           if (this.realmsNotificationsEnabled() && f1 >= 1.0F) {
-              this.realmsNotificationsScreen.render(p_96739_, p_96740_, p_96741_, p_96742_);
-           }
+        
   
         }
      }
   
-    public boolean mouseClicked(double pMouseX, double p_96736_, int pMouseY)
-    {
-        if (super.mouseClicked(pMouseX, p_96736_, pMouseY))
-        {
-            return true;
+     public boolean mouseClicked(double p_96735_, double p_96736_, int p_96737_) {
+        if (super.mouseClicked(p_96735_, p_96736_, p_96737_)) {
+           return true;
+        } else {
+           if (p_96735_ > (double)this.copyrightX && p_96735_ < (double)(this.copyrightX + this.copyrightWidth) && p_96736_ > (double)(this.height - 10) && p_96736_ < (double)this.height) {
+              this.minecraft.setScreen(new CopyRightScreen(this.title));
+           }
+  
+           return false;
         }
-        else
-        {
-            return this.realmsNotificationsEnabled() && this.realmsNotificationsScreen.mouseClicked(pMouseX, p_96736_, pMouseY);
+     }
+  
+     public void removed() {
+        if (this.realmsNotificationsScreen != null) {
+           this.realmsNotificationsScreen.removed();
         }
-    }
-
-    public void removed()
-    {
-        if (this.realmsNotificationsScreen != null)
-        {
-            this.realmsNotificationsScreen.removed();
-        }
-    }
-
-    private void confirmDemo(boolean p_96778_)
-    {
-        if (p_96778_)
-        {
-            try
-            {
-                LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.minecraft.getLevelSource().createAccess("Demo_World");
-
-                try
-                {
-                    levelstoragesource$levelstorageaccess.deleteLevel();
-                }
-                catch (Throwable throwable1)
-                {
-                    if (levelstoragesource$levelstorageaccess != null)
-                    {
-                        try
-                        {
-                            levelstoragesource$levelstorageaccess.close();
-                        }
-                        catch (Throwable throwable)
-                        {
-                            throwable1.addSuppressed(throwable);
-                        }
+  
+     }
+  
+     private void confirmDemo(boolean p_96778_) {
+        if (p_96778_) {
+           try {
+              LevelStorageSource.LevelStorageAccess levelstoragesource$levelstorageaccess = this.minecraft.getLevelSource().createAccess("Demo_World");
+  
+              try {
+                 levelstoragesource$levelstorageaccess.deleteLevel();
+              } catch (Throwable throwable1) {
+                 if (levelstoragesource$levelstorageaccess != null) {
+                    try {
+                       levelstoragesource$levelstorageaccess.close();
+                    } catch (Throwable throwable) {
+                       throwable1.addSuppressed(throwable);
                     }
-
-                    throw throwable1;
-                }
-
-                if (levelstoragesource$levelstorageaccess != null)
-                {
-                    levelstoragesource$levelstorageaccess.close();
-                }
-            }
-            catch (IOException ioexception1)
-            {
-                SystemToast.onWorldDeleteFailure(this.minecraft, "Demo_World");
-                LOGGER.warn("Failed to delete demo world", (Throwable)ioexception1);
-            }
+                 }
+  
+                 throw throwable1;
+              }
+  
+              if (levelstoragesource$levelstorageaccess != null) {
+                 levelstoragesource$levelstorageaccess.close();
+              }
+           } catch (IOException ioexception) {
+              SystemToast.onWorldDeleteFailure(this.minecraft, "Demo_World");
+              LOGGER.warn("Failed to delete demo world", (Throwable)ioexception);
+           }
         }
-
+  
         this.minecraft.setScreen(this);
-    }
-
-    static record WarningLabel(Font font, MultiLineLabel label, int x, int y)
-    {
-        public void render(PoseStack p_232791_, int p_232792_)
-        {
-            this.label.renderBackgroundCentered(p_232791_, this.x, this.y, 9, 2, 1428160512);
-            this.label.renderCentered(p_232791_, this.x, this.y, 9, 16777215 | p_232792_);
-        }
-        public Font font()
-        {
-            return this.font;
-        }
-        public MultiLineLabel label()
-        {
-            return this.label;
-        }
-        public int x()
-        {
-            return this.x;
-        }
-        public int y()
-        {
-            return this.y;
-        }
-    }
-}
+     }
+  } 
