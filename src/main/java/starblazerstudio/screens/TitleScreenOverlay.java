@@ -254,15 +254,15 @@ public class TitleScreenOverlay {
       x = (JsonPrimitive) Consts.background.get(4);
       y = ( JsonPrimitive) Consts.background.get(3);
       
-      gui.CreateButton(minecraft, titlescreen, new SelectWorldScreen(titlescreen), buttonwidth, j,x.getAsInt(), y.getAsInt(), 20, "menu.singleplayer");
+      gui.CreatebuttonwithoutImage(minecraft, titlescreen, new SelectWorldScreen(titlescreen), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.singleplayer");
      
       x = (JsonPrimitive) Consts.background.get(6);
       y = (JsonPrimitive) Consts.background.get(5);
-      gui.CreateButton(minecraft, titlescreen, new JoinMultiplayerScreen(titlescreen), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.multiplayer");
+      gui.CreatebuttonwithoutImage(minecraft, titlescreen, new JoinMultiplayerScreen(titlescreen), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.multiplayer");
       
       x = (JsonPrimitive) Consts.background.get(8);
       y = (JsonPrimitive) Consts.background.get(7);
-      gui.CreateButton(minecraft, titlescreen, new OptionsScreen(titlescreen, minecraft.options), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.options");
+      gui.CreatebuttonwithoutImage(minecraft, titlescreen, new OptionsScreen(titlescreen, minecraft.options), buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.options");
       
       x = (JsonPrimitive) Consts.background.get(10);
       y = (JsonPrimitive) Consts.background.get(9);
@@ -271,8 +271,6 @@ public class TitleScreenOverlay {
      
       
    }
-
-   
    // does maths for the x an dy pos 
    private int CalculateX(int input,int width){
       int x = 0 ;

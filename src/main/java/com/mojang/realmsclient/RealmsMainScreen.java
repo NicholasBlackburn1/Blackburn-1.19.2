@@ -222,7 +222,7 @@ public class RealmsMainScreen extends RealmsScreen
         {
             this.minecraft.setScreen(realmsGenericErrorScreen);
         }
-      
+        else
         {
             this.connectLock = new ReentrantLock();
 

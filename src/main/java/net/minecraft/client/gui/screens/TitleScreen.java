@@ -114,8 +114,7 @@ public class TitleScreen extends Screen
   
      // Chnaged the copy right text out side of the main minecarft version
      protected void init() {
-  
-      i++;
+  i++;
       Consts.showStart = true;
       
       TitleScreenOverlay overlay = new TitleScreenOverlay();
@@ -135,7 +134,7 @@ public class TitleScreen extends Screen
       this.copyrightX = width - copyrightWidth - 2;
 
        i = 24;
-       int j = this.width / 2 - 137;
+      int j = height / 4 + 48;
 
       // Creates my custom 
       if (minecraft.isDemo()) {
@@ -168,7 +167,6 @@ public class TitleScreen extends Screen
             
          }
       }
-
     }
      
      private void realmsButtonClicked() {
@@ -177,6 +175,8 @@ public class TitleScreen extends Screen
   
      public void render(PoseStack p_96739_, int p_96740_, int p_96741_, float p_96742_) {
         
+
+
         TitleScreenOverlay overlay = new TitleScreenOverlay();
    
          // Shows the Lurking presents 
@@ -200,7 +200,8 @@ public class TitleScreen extends Screen
         blit(p_96739_, 0, 0, this.width, this.height, 0.0F, 0.0F, 16, 128, 16, 128);
         float f1 = this.fading ? Mth.clamp(f - 1.0F, 0.0F, 1.0F) : 1.0F;
         int l = Mth.ceil(f1 * 255.0F) << 24;
-        if ((l & -67108864) != 0) {
+
+       if ((l & -67108864) != 0) {
            RenderSystem.setShader(GameRenderer::getPositionTexShader);
   
            // Renders adition
@@ -237,13 +238,13 @@ public class TitleScreen extends Screen
            }
   
            super.render(p_96739_, p_96740_, p_96741_, p_96742_);
-        
-  
         }
+      
      }
   
      public boolean mouseClicked(double p_96735_, double p_96736_, int p_96737_) {
         if (super.mouseClicked(p_96735_, p_96736_, p_96737_)) {
+            Consts.dbg("moue pos x: "+p_96735_+" y:"+p_96737_);
            return true;
         } else {
            if (p_96735_ > (double)this.copyrightX && p_96735_ < (double)(this.copyrightX + this.copyrightWidth) && p_96736_ > (double)(this.height - 10) && p_96736_ < (double)this.height) {
