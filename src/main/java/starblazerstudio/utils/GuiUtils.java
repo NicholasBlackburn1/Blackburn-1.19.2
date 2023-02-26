@@ -250,8 +250,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  */
 public void allowOneSidedMessages(String s, ChatScreen chatScreen, Minecraft minecraft) {
    if(s.startsWith(".")){
-
-      minecraft.gui.getChat().addRecentChat(s);
+      Consts.warn("command entered from user is"+ " "+ s);
+      chatconsts.enteredcommands.add(s);
 
    }
 }

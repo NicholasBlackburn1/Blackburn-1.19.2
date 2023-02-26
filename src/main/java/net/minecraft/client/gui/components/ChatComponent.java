@@ -349,9 +349,9 @@ public class ChatComponent extends GuiComponent
         this.newMessageSinceScroll = false;
     }
 
-    public void scrollChat(int pPosInc)
+    public void scrollChat(double d)
     {
-        this.chatScrollbarPos += pPosInc;
+        this.chatScrollbarPos += d;
         int i = this.trimmedMessages.size();
 
         if (this.chatScrollbarPos > i - this.getLinesPerPage())
