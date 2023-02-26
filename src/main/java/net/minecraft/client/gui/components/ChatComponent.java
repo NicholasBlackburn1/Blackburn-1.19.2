@@ -69,7 +69,7 @@ public class ChatComponent extends GuiComponent
 
                 // this moves the chat pos
                 pPoseStack.pushPose();
-                pPoseStack.translate(chatconsts.chatx 8.0D, chatconsts.chaty);
+                pPoseStack.translate(chatconsts.chaty, 8, chatconsts.chatx);
                 pPoseStack.scale(f, f, 1.0F);
 
 
