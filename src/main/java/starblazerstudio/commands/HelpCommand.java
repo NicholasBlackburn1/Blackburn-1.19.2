@@ -29,7 +29,7 @@ public class HelpCommand implements ICommandRegister{
 
                         // lists all the available commands loaded
                         while (true){
-                            mc.gui.getChat().addMessage(Component.translatable(I18n.atrue(chatconsts.commands.get(i).toString())+" -> "+I18n.a(chatconsts.commanddesc.get(i).toString())));
+                            mc.gui.getChat().addMessage(Component.translatable(I18n.a(chatconsts.commands.get(i).toString())+" -> "+I18n.a(chatconsts.commanddesc.get(i).toString())));
                             i++;
                             if(i == chatconsts.commands.size()){
                                 break;
