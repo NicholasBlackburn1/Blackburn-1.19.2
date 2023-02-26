@@ -215,14 +215,6 @@ public class ChatScreen extends Screen
 
     public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers)
     {
-
-        String s = input.getValue().trim();
-                
-        // allows me to send one sided messaged
-        final GuiUtils utils = new GuiUtils();
-        utils.allowOneSidedMessages(s, this, this.minecraft);
-        
-        
         if (this.commandSuggestions.keyPressed(pKeyCode, pScanCode, pModifiers))
         {
             return true;
@@ -260,7 +252,8 @@ public class ChatScreen extends Screen
             }
             else
             {     
-            
+                
+             
                 return false;
             }
             
@@ -269,10 +262,12 @@ public class ChatScreen extends Screen
         {
        
 
-            if (this.handleChatInput(this.input.getValue(), true))
-            {
-                this.minecraft.setScreen((Screen)null);
-            }
+            String s = input.getValue().trim();
+                
+            // allows me to send one sided messaged
+            final GuiUtils utils = new GuiUtils();
+            utils.allowOneSidedMessages(s, this, this.minecraft);
+            
 
             return true;
         }
