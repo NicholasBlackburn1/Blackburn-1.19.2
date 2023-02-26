@@ -21,23 +21,22 @@ public class ClientStartup{
      public void sendStartupMessages(Minecraft mine){
       
       CommandRegister register = new CommandRegister();
+      
+      // registes the commands
+      if(!mine.pause){
+        register.registerCommands(mine);
+      }
 
       if(mine.level != null){
         
         if (!mine.pause && Consts.showStart) {
             register.addToCommandDescList();
             register.addToCommandList();
+         
             messages();
             Consts.showStart = false;
         }
-        
-        // registes the commands
-        if(!mine.pause){
-          register.registerCommands(mine);
-        }
-        
-          
-        }
+
 
       }  
     }
