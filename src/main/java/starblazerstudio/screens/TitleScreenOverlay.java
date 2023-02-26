@@ -275,6 +275,7 @@ public class TitleScreenOverlay {
    private int CalculateX(int input,int width){
       int x = 0 ;
       if(input < 0){
+
          x =  width / 2 -  Math.abs(input);
         }else{
          x =width / 2 + input;
