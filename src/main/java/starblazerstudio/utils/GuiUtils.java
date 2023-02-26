@@ -122,13 +122,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  
  
   // Dumps json so i cam then hope fully get daya from it 
-  public void dumpLayoutJson(String json,int backgroundcount){
+  public void dumpLayoutJson(String json,int background){
     try{
       
     InputStream inputstream = GuiUtils.class.getResourceAsStream(json);
  
     try {
-       loadFromJson(inputstream,);
+       loadFromJson(inputstream,background);
  
     } catch (Throwable throwable1) {
  

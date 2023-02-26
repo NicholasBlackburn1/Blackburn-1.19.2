@@ -10,17 +10,22 @@ public class ClientStartup{
     
       // allows me to send start up messa
       private void messages(){
-        Consts.minecraft.gui.getChat().addMessage(new Component.translatable("blackburn.message.startup"));
-        Consts.minecraft.gui.getChat().addMessage(new  Component.translatable("blackburn.message.howto"));
+        Consts.minecraft.gui.getChat().addMessage(Component.translatable("blackburn.message.startup"));
+        Consts.minecraft.gui.getChat().addMessage(Component.translatable("blackburn.message.howto"));
     }
 
 
      //allows me to send start up messages
      public void sendStartupMessages(Minecraft mine){
+      
 
+      // allows me to register 
       if (!mine.pause && Consts.showStart) {
-          messages();
-          Consts.showStart = false;
-      }
-     }
+          if(mine.level != null){
+            messages();
+            Consts.showStart = false;
+          }
+        }
+
+      }  
 }
