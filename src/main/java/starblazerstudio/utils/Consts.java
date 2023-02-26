@@ -68,7 +68,7 @@ public class Consts {
     public static float pVOffsetfull = 0;
 
     public static String RELEASE = "DEBUG";
-    public static String VERSION = "Foxburn";
+    public static String VERSION = "1.19.2-DEV-1.0";
     public static String Date = null;
 
     public static String TwitchCurrentMessage;
@@ -79,7 +79,7 @@ public class Consts {
 
     public static String TwitchConnected= "blackburn.twitch.connected.false";
 
-    public static String ReleaseName = "§cB§6l§ea§ac§9k§bb§5u§cr§6n§e'§as§r";
+    public static String ReleaseName = "FoxBurn";
 
 
     // CopyRight Text

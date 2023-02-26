@@ -61,7 +61,7 @@ public class GameConfig
         {
             this.demo = pDemo;
             this.launchVersion = pLaunchVersion;
-            this.versionType = Consts.versiontype;
+            this.versionType = pVersionType;
             this.disableMultiplayer = pDisableMultiplayer;
             this.disableChat = pDisableChat;
         }
