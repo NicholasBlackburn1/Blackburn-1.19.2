@@ -68,7 +68,7 @@ public class Consts {
     public static float pVOffsetfull = 0;
 
     public static String RELEASE = "DEBUG";
-    public static String VERSION = "§c1§6.§e1§a8§9.§b1§5-§cB§6l§ea§ac§9k§bb§5u§cr§6n§r";
+    public static String VERSION = "Foxburn";
     public static String Date = null;
 
     public static String TwitchCurrentMessage;
@@ -105,7 +105,7 @@ public class Consts {
     public static String lewdsplashlocal = "texts/splashes-lewd.txt";
 
     // versiontype
-    public static String versiontype = "Foxburn-1.19.2";
+    public static String versiontype = "1.19.2";
 
 
     public static void dbg(String s)
