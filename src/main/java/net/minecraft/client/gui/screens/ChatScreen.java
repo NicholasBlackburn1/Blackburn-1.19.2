@@ -360,7 +360,7 @@ public class ChatScreen extends Screen
     {
         this.setFocused(this.input);
         this.input.setFocus(true);
-        fill(pPoseStack, chatconsts.minx, this.height - chatconsts.miny, this.width - chatconsts.maxx, this.height -  chatconsts.maxx, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
+        fill(pPoseStack, chatconsts.minx, this.height - chatconsts.miny, this.width - chatconsts.maxx, this.height -  chatconsts.maxy, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
         this.input.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
         boolean flag = this.minecraft.getProfileKeyPairManager().signer() != null;

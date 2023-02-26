@@ -7,7 +7,10 @@ public class chatconsts {
     public static int chatwidth = 0;
     public static int chatx = 0;
     public static int chaty =0;
-    public static int minx;
-    public static int miny;
-    public static int maxx;
+
+
+    public static int minx =20;
+    public static int miny = 22;
+    public static int maxx = 22;
+    public static int maxy = 22;
 }
