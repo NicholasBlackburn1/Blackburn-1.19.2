@@ -248,7 +248,7 @@ public class TitleScreen extends Screen
            return true;
         } else {
            if (p_96735_ > (double)this.copyrightX && p_96735_ < (double)(this.copyrightX + this.copyrightWidth) && p_96736_ > (double)(this.height - 10) && p_96736_ < (double)this.height) {
-              this.minecraft.setScreen(new CopyRightScreen(this.title));
+              this.minecraft.setScreen(new CopyRightScreen(Component.translatable("Nicky's Software OWO~")));
            }
   
            return false;
