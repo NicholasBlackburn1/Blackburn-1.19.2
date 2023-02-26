@@ -119,13 +119,15 @@ public class TitleScreen extends Screen
       
       TitleScreenOverlay overlay = new TitleScreenOverlay();
 
-      if (this.splash == null) {
+      if (this.splash == null && Consts.ishorny == true) {
+         
          this.splash = minecraft.getSplashManager().getSplash();
       }
 
       // runs only on 2nd startup of main menu
       if(i == 1){
          overlay.BlackburnTitleInit();
+
       }
     
       this.PANORAMA_OVERLAY = new ResourceLocation(overlay.setBackgroundScreen());
