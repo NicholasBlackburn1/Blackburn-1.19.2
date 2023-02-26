@@ -104,6 +104,9 @@ public class Consts {
 
     public static String lewdsplashlocal = "texts/splashes-lewd.txt";
 
+    // versiontype
+    public static String versiontype = "Foxburn-1.19.2";
+
 
     public static void dbg(String s)
     {

@@ -283,7 +283,7 @@ public class VideoSettingsScreen extends GuiScreenOF
         }
 
         drawString(pPoseStack, this.minecraft.font, s, 2, this.height - 10, 8421504);
-        String s2 = "Minecraft 1.19.2";
+        String s2 = "Foxburn 1.19.2";
         int i = this.minecraft.font.width(s2);
         drawString(pPoseStack, this.minecraft.font, s2, this.width - i - 2, this.height - 10, 8421504);
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
