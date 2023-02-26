@@ -18,19 +18,8 @@ public class Consts {
     public static List background = new ArrayList<Integer>();
     public static List keys = new ArrayList<Integer>();
 
-    public static List commands = new LinkedList<String>();
-    public static List commanddesc = new LinkedList<String>();
 
-
-    public static List blocklistseen = new LinkedList<Block>();
-    public static List blocklistseenpos = new LinkedList<Double>();
-
- // Tewitch chat
-    public static List chatmessage = new LinkedList<String>();
-    public static List chatuser = new LinkedList<String>();
-    public static List finalmessage = new LinkedList<String>();
-
-    public static Minecraft minecraft  = Minecraft.getInstance();
+    public static Minecraft minecraft;
 
     
     public static boolean devMode = false;

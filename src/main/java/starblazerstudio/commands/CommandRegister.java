@@ -30,14 +30,14 @@ public class CommandRegister {
 
     // adds commands 
     public void addToCommandList(){
-        Consts.commands.add(0,help.getName());
+        chatconsts.commands.add(0,help.getName());
       
         
     }
 
 
     public void addToCommandDescList(){
-        Consts.commanddesc.add(0,help.getDesc());
+        chatconsts.commanddesc.add(0,help.getDesc());
      
         
     }

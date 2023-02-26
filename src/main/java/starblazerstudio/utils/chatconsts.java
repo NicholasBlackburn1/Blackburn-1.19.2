@@ -1,6 +1,8 @@
 package starblazerstudio.utils;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class chatconsts {
     
@@ -10,6 +12,10 @@ public class chatconsts {
     public static int chatx = 4;
     public static int chaty =0;
 
+    // command arraylist
+    public static List <String> enteredcommands = new LinkedList<String>();
 
-    public static ArrayList <String> enteredcommands = new ArrayList<>();
+    public static List commands = new LinkedList<String>();
+    public static List commanddesc = new LinkedList<String>();
+
 }
