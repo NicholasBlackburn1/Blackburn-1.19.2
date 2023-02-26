@@ -17,10 +17,11 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
+import starblazerstudio.utils.Consts;
 
 public class SplashManager extends SimplePreparableReloadListener<List<String>>
 {
-    private static final ResourceLocation SPLASHES_LOCATION = new ResourceLocation("texts/splashes.txt");
+    private static ResourceLocation SPLASHES_LOCATION = new ResourceLocation("texts/splashes.txt");
     private static final RandomSource RANDOM = RandomSource.create();
     private final List<String> splashes = Lists.newArrayList();
     private final User user;
@@ -29,6 +30,25 @@ public class SplashManager extends SimplePreparableReloadListener<List<String>>
     {
         this.user = pUser;
     }
+
+      /**
+       * This allows me to make lewd splashes
+       * @param splashes
+       * @param local
+       * @param islewd
+       */
+      public void enableLewdSpashes(ResourceLocation splashes,String local,Boolean islewd){
+
+        if(islewd == true){
+            Consts.warn("lewd mode is active... loading lewd splashes..");
+            
+            splashes = new ResourceLocation(local);
+            Consts.warn("lewd splashes loaded...");
+
+            SplashManager.SPLASHES_LOCATION = splashes;
+        }
+
+      }
 
     protected List<String> prepare(ResourceManager pResourceManager, ProfilerFiller pProfiler)
     {
