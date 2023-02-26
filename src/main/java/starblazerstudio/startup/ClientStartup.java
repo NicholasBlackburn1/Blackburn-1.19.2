@@ -21,6 +21,7 @@ public class ClientStartup{
      //allows me to send start up messages
      public void sendStartupMessages(Minecraft mine){
       
+      Consts.minecraft = mine;
       CommandRegister register = new CommandRegister();
       
       // registes the commands

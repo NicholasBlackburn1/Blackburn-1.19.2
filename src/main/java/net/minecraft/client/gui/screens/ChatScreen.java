@@ -32,8 +32,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import starblazerstudio.utils.GuiUtils;
-import starblazerstudio.utils.chathandler;
-
 import org.apache.commons.lang3.StringUtils;
 
 public class ChatScreen extends Screen
