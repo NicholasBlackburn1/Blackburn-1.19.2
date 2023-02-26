@@ -1643,7 +1643,7 @@ public class GameRenderer implements ResourceManagerReloadListener, AutoCloseabl
                                 {
                                     --this.serverWaitTime;
                                 }
-
+                                GameRender
                                 this.lastServerTicks = k;
                             }
                         }
@@ -1691,11 +1691,10 @@ public class GameRenderer implements ResourceManagerReloadListener, AutoCloseabl
 
             this.initialized = true;
         }
-
-        // allows me to run all my client code 
+        // allows me to tap onto main thread in mc 
         ClientStartup startup = new ClientStartup();
         startup.sendStartupMessages(this.minecraft);
-      
+            
 
         Level level = this.minecraft.level;
 

@@ -8,7 +8,7 @@ import starblazerstudio.commands.CommandRegister;
 import starblazerstudio.utils.Consts;
 public class ClientStartup{
 
-  private CommandRegister register = new CommandRegister();
+  
     
       // allows me to send start up messa
       private void messages(){
@@ -20,15 +20,22 @@ public class ClientStartup{
      //allows me to send start up messages
      public void sendStartupMessages(Minecraft mine){
       
+      CommandRegister register = new CommandRegister();
 
       // allows me to register commands and startup stuff
-      if (!mine.pause && Consts.showStart) {
-          if(mine.level != null){
-            messages();
-            Consts.showStart = false;
+      
+        if(mine.level != null){
 
             register.addToCommandDescList();
             register.addToCommandList();
+
+            messages();
+            Consts.showStart = false;
+
+            // registes the commands
+            if(!mine.pause){
+              register.registerCommands(mine);
+            }
             
           }
         }
