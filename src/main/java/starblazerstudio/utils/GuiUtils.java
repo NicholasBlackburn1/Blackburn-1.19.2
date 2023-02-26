@@ -125,7 +125,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
   public void dumpLayoutJson(String json){
     try{
       
-    InputStream inputstream = GuiUtils.class.getResourceAsStream("/assets/minecraft/blackburn/backgrounds.json");
+    InputStream inputstream = GuiUtils.class.getResourceAsStream(json);
  
     try {
        loadFromJson(inputstream);

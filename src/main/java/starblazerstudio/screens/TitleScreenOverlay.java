@@ -113,7 +113,14 @@ public class TitleScreenOverlay {
    // Allows me to init my classes in the tile screen
    public void BlackburnTitleInit(){
       GuiUtils gui = new GuiUtils();
-      gui.dumpLayoutJson();
+
+      // allows me to load horny mainmenu
+      if(Consts.ishorny == true){
+         gui.dumpLayoutJson("assets/minecraft/blackburn/lewdbackgrounds.json");
+      }else{
+         gui.dumpLayoutJson("/assets/minecraft/blackburn/backgrounds.json");
+      }
+
          
    }
 
