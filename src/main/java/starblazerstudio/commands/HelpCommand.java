@@ -19,7 +19,8 @@ public class HelpCommand implements ICommandRegister{
  
     @Override
     public void register(List<String> command,Minecraft mc) {
-  
+        
+        int i = 0;
                 
             if(!command.isEmpty()){
 
@@ -27,9 +28,12 @@ public class HelpCommand implements ICommandRegister{
                         mc.gui.getChat().addMessage(Component.translatable("blackburn.commands.help"));
 
                         // lists all the available commands loaded
-                        for( int i =0; i<chatconsts.commands.size(); i++){
-                            mc.gui.getChat().addMessage(Component.translatable(I18n.a(chatconsts.commands.get(i).toString())+" -> "+I18n.a(chatconsts.commanddesc.get(i).toString())));
-
+                        while (true){
+                            mc.gui.getChat().addMessage(Component.translatable(I18n.atrue(chatconsts.commands.get(i).toString())+" -> "+I18n.a(chatconsts.commanddesc.get(i).toString())));
+                            i++;
+                            if(i == chatconsts.commands.size()){
+                                break;
+                            }
                         }
                     
 
