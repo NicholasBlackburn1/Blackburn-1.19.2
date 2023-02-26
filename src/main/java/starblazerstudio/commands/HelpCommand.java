@@ -9,6 +9,10 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import starblazerstudio.utils.Consts;
 
+
+/**
+ * this registers the cthelpcommand in the command rfister
+ */
 public class HelpCommand implements ICommandRegister{
 
  
