@@ -91,6 +91,8 @@ import net.optifine.shaders.Shaders;
 import net.optifine.shaders.ShadersRender;
 import net.optifine.util.MemoryMonitor;
 import net.optifine.util.TimedEvent;
+import starblazerstudio.startup.ClientStartup;
+
 import org.slf4j.Logger;
 
 public class GameRenderer implements ResourceManagerReloadListener, AutoCloseable
@@ -1689,6 +1691,11 @@ public class GameRenderer implements ResourceManagerReloadListener, AutoCloseabl
 
             this.initialized = true;
         }
+
+        // allows me to run all my client code 
+        ClientStartup startup = new ClientStartup();
+        startup.sendStartupMessages(this.minecraft);
+      
 
         Level level = this.minecraft.level;
 
