@@ -43,7 +43,7 @@ def create_baseFile(id,basedir,fileextention):
                 output.append(data)
                 id +=1
 
-                if(id == 26):
+                if(id == 27):
                     with open('src/main/resources/assets/minecraft/blackburn/backgrounds.json', 'a', encoding='utf8') as outfile:
                         print(json.dumps(data, sort_keys=False, indent=4))
                         json.dump(output, outfile, sort_keys=False, indent=4)

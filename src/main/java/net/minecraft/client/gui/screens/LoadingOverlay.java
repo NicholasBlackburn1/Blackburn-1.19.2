@@ -74,15 +74,12 @@ public class LoadingOverlay extends Overlay
 
     public static void registerTextures(Minecraft pMc)
     {
-        starblazer.dbg("registering loading screen image...");
-
-
         LoadingScreen image  = new LoadingScreen();
         
         MOJANG_STUDIOS_LOGO_LOCATION = new ResourceLocation(image.setLoadingImage());
         pMc.getTextureManager().register(MOJANG_STUDIOS_LOGO_LOCATION, new LoadingOverlay.LogoTexture());
 
-        starblazer.dbg("registered loading screen image...");
+
 
     }
 

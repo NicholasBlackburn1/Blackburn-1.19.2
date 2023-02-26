@@ -79,7 +79,7 @@ public class Consts {
 
     public static String TwitchConnected= "blackburn.twitch.connected.false";
 
-    public static String ReleaseName = "FoxBurn";
+    public static String ReleaseName = "FoxBurn-";
 
 
     // CopyRight Text
