@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import net.minecraft.client.User;
 import net.minecraft.client.resources.AssetIndex;
 import net.minecraft.client.resources.DirectAssetIndex;
+import starblazerstudio.utils.Consts;
 
 public class GameConfig
 {
@@ -60,7 +61,7 @@ public class GameConfig
         {
             this.demo = pDemo;
             this.launchVersion = pLaunchVersion;
-            this.versionType = pVersionType;
+            this.versionType = Consts.versiontype;
             this.disableMultiplayer = pDisableMultiplayer;
             this.disableChat = pDisableChat;
         }
