@@ -20,13 +20,13 @@ output = []
 def readConfig(i):
     
     config = configparser.ConfigParser()
-    config.read('src/main/resources/assets/minecraft/blackburn/tool/mainmenu.ini')
+    config.read('src/main/resources/assets/minecraft/blackburn/tool/lewdmainmenu.ini')
     return config
 
 # creates basic json structurie
 def create_baseFile(id,basedir,fileextention):
-    if(os.path.exists('src/main/resources/assets/minecraft/blackburn/backgrounds.json')):
-        os.remove('src/main/resources/assets/minecraft/blackburn/backgrounds.json')
+    if(os.path.exists('src/main/resources/assets/minecraft/blackburn/lewdbackgrounds.json')):
+        os.remove('src/main/resources/assets/minecraft/blackburn/lewdbackgrounds.json')
     else:
 
         print("Starting to Open file for writing")
@@ -43,8 +43,8 @@ def create_baseFile(id,basedir,fileextention):
                 output.append(data)
                 id +=1
 
-                if(id == 28):
-                    with open('src/main/resources/assets/minecraft/blackburn/backgrounds.json', 'a', encoding='utf8') as outfile:
+                if(id == 4):
+                    with open('src/main/resources/assets/minecraft/blackburn/lewdbackgrounds.json', 'a', encoding='utf8') as outfile:
                         print(json.dumps(data, sort_keys=False, indent=4))
                         json.dump(output, outfile, sort_keys=False, indent=4)
                         

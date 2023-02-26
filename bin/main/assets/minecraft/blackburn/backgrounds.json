@@ -623,5 +623,30 @@
         "edition_texture_width": "128",
         "lang_posX": "0",
         "lang_posY": "0"
+    },
+    {
+        "id": 27,
+        "image": "blackburn/background/27.png",
+        "buttonLenght": "100",
+        "sp_posX": "0",
+        "sp_posY": "0",
+        "mp_posX": "0",
+        "mp_posY": "0",
+        "settings_posX": "0",
+        "settings_posY": "0",
+        "quit_posX": "0",
+        "quit_posY": "0",
+        "splash_posX": "0",
+        "splash_posY": "0",
+        "splash_rot": "-20",
+        "edition_posX": "80",
+        "edition_posY": "-40",
+        "edition_posXNonFull": "80",
+        "edition_posy_nonfull": "-40",
+        "edition_width": "128",
+        "edition_hight": "19",
+        "edition_texture_width": "128",
+        "lang_posX": "0",
+        "lang_posY": "0"
     }
 ]
