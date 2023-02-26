@@ -8,9 +8,9 @@ public class chatconsts {
     public static int chatx = 0;
     public static int chaty =0;
 
-
-    public static int minx =20;
-    public static int miny = 22;
-    public static int maxx = 22;
-    public static int maxy = 22;
+    // physical box
+    public static int minx =4;
+    public static int miny = 12;
+    public static int maxx = 4;
+    public static int maxy = 12;
 }
