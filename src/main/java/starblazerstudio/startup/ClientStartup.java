@@ -6,6 +6,7 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import starblazerstudio.commands.CommandRegister;
 import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.chatconsts;
 public class ClientStartup{
 
   
@@ -27,6 +28,7 @@ public class ClientStartup{
         register.registerCommands(mine);
       }
 
+      // runs startup and registers commands
       if(mine.level != null){
         
         if (!mine.pause && Consts.showStart) {
@@ -39,6 +41,9 @@ public class ClientStartup{
 
 
       }  
-    }
+     }
+     }
+    
+    
     
     
