@@ -32,6 +32,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import starblazerstudio.utils.GuiUtils;
+import starblazerstudio.utils.chathandler;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -248,10 +249,10 @@ public class ChatScreen extends Screen
             {
                 this.minecraft.gui.getChat().scrollChat(-this.minecraft.gui.getChat().getLinesPerPage() + 1);
                 return true;
-            }
-            else
-            {
-                return false;
+            }else{
+                // allows me to get custom chat input 
+                chathandler chathadler = new chathandler();
+                chathadler.getUserinput(this, input, minecraft);
             }
             
         }
