@@ -128,7 +128,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
     InputStream inputstream = GuiUtils.class.getResourceAsStream(json);
  
     try {
-       loadFromJson(inputstream,backgroundcount);
+       loadFromJson(inputstream,);
  
     } catch (Throwable throwable1) {
  
