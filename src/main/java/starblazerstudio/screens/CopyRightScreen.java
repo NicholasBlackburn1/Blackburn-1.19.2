@@ -11,6 +11,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.chatconsts;
 
 
 public class CopyRightScreen extends Screen{
@@ -30,7 +31,7 @@ public class CopyRightScreen extends Screen{
         
         this.drawCenteredString(p_96295_, this.font,"§6Blackburn Software Stats UwU",this.width/2 ,140, 16777215);
         this.drawCenteredString(p_96295_, this.font,"§6Version:"+"§r "+Consts.VERSION+Consts.RELEASE,this.width/2 ,150, 16777215);
-        this.drawCenteredString(p_96295_, this.font,"§6:"+"§r "+Consts.commands.size()+ " are Loaded!",this.width/2 ,160, 16777215);
+        this.drawCenteredString(p_96295_, this.font,"§6Features:"+"§r "+chatconsts.commands.size()+ " are Loaded!",this.width/2 ,160, 16777215);
         try {
 			File jarFile = new File
 			(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI());
