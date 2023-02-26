@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.chatconsts;
 
 public class CommandRegister {
     
@@ -13,7 +14,7 @@ public class CommandRegister {
     public void registerCommands(Minecraft mc){
 
 
-        List<String> command = mc.gui.getChat().getRecentChat();
+        List<String> command = chatconsts.enteredcommands;
 
         
         help.register(command, mc);
