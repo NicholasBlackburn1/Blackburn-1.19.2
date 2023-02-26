@@ -9,7 +9,7 @@ import starblazerstudio.utils.chatconsts;
 public class CommandRegister {
     
     HelpCommand help = new HelpCommand();
-    
+    VersionCommand version = new VersionCommand();
 
     public void registerCommands(Minecraft mc){
 
@@ -18,6 +18,7 @@ public class CommandRegister {
 
         
         help.register(command, mc);
+        version.register(command, mc);
       
 
 
@@ -31,6 +32,7 @@ public class CommandRegister {
     // adds commands 
     public void addToCommandList(){
         chatconsts.commands.add(0,help.getName());
+        chatconsts.commands.add(1,version.getName());
       
         
     }
@@ -38,7 +40,7 @@ public class CommandRegister {
 
     public void addToCommandDescList(){
         chatconsts.commanddesc.add(0,help.getDesc());
-     
+        chatconsts.commanddesc.add(1,version.getDesc());
         
     }
 

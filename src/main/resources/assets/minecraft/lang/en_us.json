@@ -28,7 +28,7 @@
   "blackburn.commands.getscreen.pre":"§6.getscreen§r",
 
   "blackburn.commands.version.desc":" §eshows u the Version of client§r",
-  "blackburn.commands.help.desc":" §e Lists all the commands and their Usages.§r",
+  "blackburn.commands.help.desc":"  §e Lists all the commands and their Usages.§r",
 
 
   "blackburn.commands.version":"Version is",
