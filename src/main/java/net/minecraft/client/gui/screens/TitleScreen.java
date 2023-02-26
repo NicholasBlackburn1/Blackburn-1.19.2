@@ -119,8 +119,8 @@ public class TitleScreen extends Screen
       
       TitleScreenOverlay overlay = new TitleScreenOverlay();
 
-      if (this.splash == null && Consts.ishorny == true) {
-         
+      if (this.splash == null) {
+         minecraft.getSplashManager().enableLewdSpashes(BACKGROUND_LOCATION, null);
          this.splash = minecraft.getSplashManager().getSplash();
       }
 

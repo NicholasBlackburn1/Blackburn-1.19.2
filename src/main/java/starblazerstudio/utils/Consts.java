@@ -84,7 +84,7 @@ public class Consts {
 
     // CopyRight Text
     public static String copyright = "§cC§6o§ep§ay§9R§bi§5g§ch§6t§ee§ad §bB§5y §6N§ei§ac§9k§by §cB§6l§ea§ac§9k§bb§5u§cr§6n";
-
+    getSplash()
 
     public static boolean enablePosInfo = false;
     public static boolean enableLightInfo = false;
