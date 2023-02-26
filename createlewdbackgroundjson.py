@@ -12,7 +12,7 @@ from pathlib import Path
 id = 0
 fileid = 0
 
-basedir = "blackburn/background/"
+basedir = "blackburn/lewdbackgrounds/"
 fileextention = ".png"
 
 output = []
