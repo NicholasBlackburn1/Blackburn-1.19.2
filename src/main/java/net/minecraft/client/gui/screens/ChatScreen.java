@@ -31,6 +31,8 @@ import net.minecraft.network.chat.PreviewableCommand;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import starblazerstudio.utils.GuiUtils;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class ChatScreen extends Screen
@@ -251,6 +253,13 @@ public class ChatScreen extends Screen
             {
                 return false;
             }
+            
+            String s = this.input.getValue().trim();
+            
+            // allows me to send one sided messaged
+            GuiUtils utils = new GuiUtils();
+            utils.allowOneSidedMessages(s, this, this.minecraft);
+            return true;
         }
         else
         {

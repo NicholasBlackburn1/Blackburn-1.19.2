@@ -124,6 +124,8 @@ public class DeathScreen extends Screen
 
     public boolean mouseClicked(double pMouseX, double p_95915_, int pMouseY)
     {
+        this.minecraft.player.playSound(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 100.0f, 1.0f);
+        
         if (this.causeOfDeath != null && p_95915_ > 85.0D && p_95915_ < (double)(85 + 9))
         {
             // uwu play sound

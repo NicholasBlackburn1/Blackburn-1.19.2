@@ -10,6 +10,7 @@ package starblazerstudio.utils;
  import net.minecraft.client.Minecraft;
  import net.minecraft.client.gui.Font;
  import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.screens.ChatScreen;
 import net.minecraft.client.gui.screens.OptionsScreen;
 import net.minecraft.client.gui.screens.Screen;
  import net.minecraft.network.chat.Component;
@@ -237,6 +238,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
     minecraft.setScreen(onClickedScreen);
  }));
  Consts.dbg("Set up "+Component.translatable(buttonText).toString()+"Sucessfully");
+}
+
+
+/**
+ * this should allow me to make custoim chat commands
+ * @param s
+ * @param chatScreen
+ * @param minecraft
+ */
+public void allowOneSidedMessages(String s, ChatScreen chatScreen, Minecraft minecraft) {
 }
 
 
