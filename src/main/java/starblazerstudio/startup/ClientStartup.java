@@ -22,23 +22,24 @@ public class ClientStartup{
       
       CommandRegister register = new CommandRegister();
 
-      // allows me to register commands and startup stuff
-      
-        if(mine.level != null){
-
+      if(mine.level != null){
+        
+        if (!mine.pause && Consts.showStart) {
             register.addToCommandDescList();
             register.addToCommandList();
-
             messages();
             Consts.showStart = false;
-
-            // registes the commands
-            if(!mine.pause){
-              register.registerCommands(mine);
-            }
-            
-          }
+        }
+        
+        // registes the commands
+        if(!mine.pause){
+          register.registerCommands(mine);
+        }
+        
+          
         }
 
       }  
+    }
+    
     
