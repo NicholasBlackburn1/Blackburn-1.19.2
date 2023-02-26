@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "image": "blackburn/background/1.png",
+        "image": "blackburn/lewdbackgrounds/1.png",
         "buttonLenght": "100",
         "sp_posX": "100",
         "sp_posY": "-100",
@@ -26,7 +26,7 @@
     },
     {
         "id": 2,
-        "image": "blackburn/background/2.png",
+        "image": "blackburn/lewdbackgrounds/2.png",
         "buttonLenght": "100",
         "sp_posX": "100",
         "sp_posY": "-100",
@@ -51,7 +51,7 @@
     },
     {
         "id": 3,
-        "image": "blackburn/background/3.png",
+        "image": "blackburn/lewdbackgrounds/3.png",
         "buttonLenght": "100",
         "sp_posX": "100",
         "sp_posY": "-100",

@@ -116,9 +116,9 @@ public class TitleScreenOverlay {
 
       // allows me to load horny mainmenu
       if(Consts.ishorny == true){
-         gui.dumpLayoutJson("assets/minecraft/blackburn/lewdbackgrounds.json");
+         gui.dumpLayoutJson("/assets/minecraft/blackburn/lewdbackgrounds.json",3);
       }else{
-         gui.dumpLayoutJson("/assets/minecraft/blackburn/backgrounds.json");
+         gui.dumpLayoutJson("/assets/minecraft/blackburn/backgrounds.json",28);
       }
 
          

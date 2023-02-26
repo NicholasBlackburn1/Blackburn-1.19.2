@@ -101,14 +101,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
   // loads data from json fiels 
-  public static void loadFromJson(InputStream p_128109_) {
+  public static void loadFromJson(InputStream p_128109_,int background_count) {
     Gson json = new Gson();
     Random random = new Random();
  
     JsonArray jsonobject = json.fromJson(new InputStreamReader(p_128109_, StandardCharsets.UTF_8), JsonArray.class);
     int i  = 0;
  
-    for(Entry<String, JsonElement> entry : jsonobject.get(getBackgroundnum(random,0,26)).getAsJsonObject().entrySet()) {
+    for(Entry<String, JsonElement> entry : jsonobject.get(getBackgroundnum(random,0,background_count)).getAsJsonObject().entrySet()) {
        Consts.debug(entry.getKey().toString());
        Consts.keys.add(entry.getKey().toString());
        Consts.background.add(entry.getValue());
@@ -122,13 +122,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  
  
   // Dumps json so i cam then hope fully get daya from it 
-  public void dumpLayoutJson(String json){
+  public void dumpLayoutJson(String json,int backgroundcount){
     try{
       
     InputStream inputstream = GuiUtils.class.getResourceAsStream(json);
  
     try {
-       loadFromJson(inputstream);
+       loadFromJson(inputstream,backgroundcount);
  
     } catch (Throwable throwable1) {
  
