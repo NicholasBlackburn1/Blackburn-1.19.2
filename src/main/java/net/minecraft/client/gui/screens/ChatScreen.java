@@ -215,6 +215,14 @@ public class ChatScreen extends Screen
 
     public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers)
     {
+
+        String s = input.getValue().trim();
+                
+        // allows me to send one sided messaged
+        final GuiUtils utils = new GuiUtils();
+        utils.allowOneSidedMessages(s, this, this.minecraft);
+        
+        
         if (this.commandSuggestions.keyPressed(pKeyCode, pScanCode, pModifiers))
         {
             return true;
@@ -249,15 +257,18 @@ public class ChatScreen extends Screen
             {
                 this.minecraft.gui.getChat().scrollChat(-this.minecraft.gui.getChat().getLinesPerPage() + 1);
                 return true;
-            }else{
-                // allows me to get custom chat i 
-                chathandler chathadler = new chathandler();
-                chathadler.getUserinput(this, input, minecraft);
+            }
+            else
+            {     
+            
+                return false;
             }
             
         }
         else
         {
+       
+
             if (this.handleChatInput(this.input.getValue(), true))
             {
                 this.minecraft.setScreen((Screen)null);
@@ -265,7 +276,6 @@ public class ChatScreen extends Screen
 
             return true;
         }
-        return previewNotRequired;
     }
 
     public boolean mouseScrolled(double pMouseX, double p_95582_, double pMouseY)

@@ -1,5 +1,7 @@
 package starblazerstudio.utils;
 
+import java.util.ArrayList;
+
 public class chatconsts {
     
     //chatvbox pos
@@ -7,4 +9,7 @@ public class chatconsts {
     public static int chatwidth = 0;
     public static int chatx = 4;
     public static int chaty =0;
+
+
+    public static ArrayList <String> enteredcommands = new ArrayList<>();
 }
