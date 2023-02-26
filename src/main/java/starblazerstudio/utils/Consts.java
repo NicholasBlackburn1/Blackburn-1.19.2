@@ -102,6 +102,8 @@ public class Consts {
 
     public static String commandprefix = "command.blackburn.";
 
+    public static String lewdsplashlocal = "texts/splashes-lewd.txt";
+
 
     public static void dbg(String s)
     {
