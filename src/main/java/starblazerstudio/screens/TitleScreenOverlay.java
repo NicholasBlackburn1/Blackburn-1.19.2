@@ -154,7 +154,7 @@ public class TitleScreenOverlay {
       if (minecraft.isDemo()) {
          s = s + " Demo";
       } else {
-         s = s + ("release".equalsIgnoreCase(minecraft.getVersionType()) ? "" : "/" + minecraft.getVersionType());
+         s = s + ("release".equalsIgnoreCase(minecraft.getVersionType()));
       }
 
       if (Minecraft.checkModStatus().shouldReportAsModified()) {
