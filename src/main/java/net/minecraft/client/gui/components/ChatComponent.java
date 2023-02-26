@@ -22,6 +22,8 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.ChatVisiblity;
+import starblazerstudio.utils.chatconsts;
+
 import org.slf4j.Logger;
 
 public class ChatComponent extends GuiComponent
@@ -64,9 +66,13 @@ public class ChatComponent extends GuiComponent
                 boolean flag = this.isChatFocused();
                 float f = (float)this.getScale();
                 int l = Mth.ceil((float)this.getWidth() / f);
+
+                // this moves the chat pos
                 pPoseStack.pushPose();
-                pPoseStack.translate(4.0D, 8.0D, 0.0D);
+                pPoseStack.translate(chatconsts.chatx 8.0D, chatconsts.chaty);
                 pPoseStack.scale(f, f, 1.0F);
+
+
                 double d0 = this.minecraft.options.chatOpacity().get() * (double)0.9F + (double)0.1F;
                 double d1 = this.minecraft.options.textBackgroundOpacity().get();
                 double d2 = this.minecraft.options.chatLineSpacing().get();

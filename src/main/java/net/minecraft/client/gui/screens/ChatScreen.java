@@ -32,7 +32,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import starblazerstudio.utils.GuiUtils;
-import starblazerstudio.utils.chatconsts;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -360,12 +359,9 @@ public class ChatScreen extends Screen
     {
         this.setFocused(this.input);
         this.input.setFocus(true);
-        fill(pPoseStack, chatconsts.minx, this.height - chatconsts.miny, this.width - chatconsts.maxx, this.height -  chatconsts.maxy, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
-        
+        fill(pPoseStack, 2, this.height - 14, this.width - 2, this.height - 2, this.minecraft.options.getBackgroundColor(Integer.MIN_VALUE));
         this.input.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-       
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        
         boolean flag = this.minecraft.getProfileKeyPairManager().signer() != null;
         ChatPreviewAnimator.State chatpreviewanimator$state = this.chatPreviewAnimator.get(Util.getMillis(), this.getDisplayedPreviewText());
 
@@ -381,8 +377,7 @@ public class ChatScreen extends Screen
             if (flag)
             {
                 pPoseStack.pushPose();
-                // this might change chat
-                fill(pPoseStack, 0, this.height - 0, 0, this.height - 0, -8932375);
+                fill(pPoseStack, 0, this.height - 14, 2, this.height - 2, -8932375);
                 pPoseStack.popPose();
             }
         }
