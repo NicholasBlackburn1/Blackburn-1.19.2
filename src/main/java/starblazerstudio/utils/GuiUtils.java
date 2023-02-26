@@ -122,8 +122,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  
  
   // Dumps json so i cam then hope fully get daya from it 
-  public void dumpLayoutJson(){
+  public void dumpLayoutJson(String json){
     try{
+      
     InputStream inputstream = GuiUtils.class.getResourceAsStream("/assets/minecraft/blackburn/backgrounds.json");
  
     try {
