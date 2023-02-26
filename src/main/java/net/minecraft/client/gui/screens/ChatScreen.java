@@ -254,12 +254,6 @@ public class ChatScreen extends Screen
                 return false;
             }
             
-            String s = this.input.getValue().trim();
-            
-            // allows me to send one sided messaged
-            GuiUtils utils = new GuiUtils();
-            utils.allowOneSidedMessages(s, this, this.minecraft);
-            return true;
         }
         else
         {

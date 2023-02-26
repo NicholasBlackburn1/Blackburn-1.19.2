@@ -248,6 +248,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  * @param minecraft
  */
 public void allowOneSidedMessages(String s, ChatScreen chatScreen, Minecraft minecraft) {
+   if(s.startsWith(".")){
+
+      minecraft.gui.getChat().addRecentChat(s);
+
+   }
 }
 
 
