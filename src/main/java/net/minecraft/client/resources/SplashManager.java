@@ -39,11 +39,10 @@ public class SplashManager extends SimplePreparableReloadListener<List<String>>
        */
       public void enableLewdSpashes(String local,Boolean islewd){
 
-        ResourceLocation spLocation = new ResourceLocation(local);
 
         if(islewd == true){
             Consts.warn("lewd mode is active... loading lewd splashes..");
-            SplashManager.SPLASHES_LOCATION = spLocation;
+            SplashManager.SPLASHES_LOCATION = new ResourceLocation(local);
             Consts.warn("lewd splashes loaded...");
 
         }

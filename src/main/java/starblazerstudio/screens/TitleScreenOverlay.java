@@ -81,17 +81,7 @@ public class TitleScreenOverlay {
       Calendar calendar = Calendar.getInstance();
       calendar.setTime(new Date());
       
-      // runs when time is lewdy
-      if(calendar.get(Calendar.HOUR_OF_DAY) == 0 || calendar.get(Calendar.HOUR_OF_DAY) < 5){
-       Consts.dbg("Showing lewdy Images...");
-      }
-
-      // only runs when  time is not lewdy
-      if(calendar.get(Calendar.HOUR_OF_DAY) != 0 || calendar.get(Calendar.HOUR_OF_DAY) > 5){
-         Consts.dbg("Showing Non Lewdy Images...");
-         
-              
-
+     
          Consts.log("Finished registering default main menu here is list entry"+ Consts.background.toString());
          
          // set's baground only when arrray is populated 
@@ -101,11 +91,8 @@ public class TitleScreenOverlay {
             output = Consts.background.get(1).toString().replaceAll("^\"+|\"+$", "");
             Consts.log("Set background to"+" "+ output);
          }
-         
-         
-      } else{
-         output = "blackburn/background/1.png";
-      }
+   
+
       return output;
       
    }
