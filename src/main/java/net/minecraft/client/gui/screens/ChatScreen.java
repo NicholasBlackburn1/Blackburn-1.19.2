@@ -250,7 +250,7 @@ public class ChatScreen extends Screen
                 this.minecraft.gui.getChat().scrollChat(-this.minecraft.gui.getChat().getLinesPerPage() + 1);
                 return true;
             }else{
-                // allows me to get custom chat input 
+                // allows me to get custom chat i 
                 chathandler chathadler = new chathandler();
                 chathadler.getUserinput(this, input, minecraft);
             }
@@ -265,6 +265,7 @@ public class ChatScreen extends Screen
 
             return true;
         }
+        return previewNotRequired;
     }
 
     public boolean mouseScrolled(double pMouseX, double p_95582_, double pMouseY)
