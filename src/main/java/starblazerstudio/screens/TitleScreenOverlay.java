@@ -13,7 +13,7 @@ import net.minecraft.network.chat.Component;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.optifine.Config;
-
+import starblazerstudio.discord.RichPresence;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GuiUtils;
 
@@ -68,6 +68,8 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import  net.minecraft.client.gui.screens.LanguageSelectScreen;
 import net.minecraft.client.gui.screens.OptionsScreen;
+
+import starblazerstudio.discord.RichPresence;
 
 public class TitleScreenOverlay {
 
@@ -262,6 +264,8 @@ public class TitleScreenOverlay {
       y = (JsonPrimitive) Consts.background.get(9);
       gui.CreatebuttonwithoutImageQuit(minecraft, titlescreen, buttonwidth, j, x.getAsInt(), y.getAsInt(), 20, "menu.quit");
       
+
+      RichPresence.lurkingPresence();
      
       
    }
