@@ -42,10 +42,14 @@ public void setupBot(){
 
         Consts.info("started twitch bot...");
         start();
+        
     }
     catch(Exception e){
         Consts.error(e.getLocalizedMessage());
+
     }
+    
+    
 }
 
 // starts suwu
