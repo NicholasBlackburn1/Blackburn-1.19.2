@@ -27,13 +27,7 @@ public class TwitchCommand implements ICommandRegister{
 
             if (command.contains(".twitch")){
 
-                // if twitch isnt connected
-                if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.false"))){
-
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
-                    command.clear();
-
+           
                 }if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.true"))){
 
                     
@@ -43,7 +37,8 @@ public class TwitchCommand implements ICommandRegister{
 
 
                 }else{
-                    mc.gui.getChat().addMessage(Component.translatable("not fished yet - twitch devs.."));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
                     command.clear();
                 }
 
