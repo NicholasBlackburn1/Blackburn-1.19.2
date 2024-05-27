@@ -424,7 +424,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
         Consts.loader.getOS();
 
         RichPresence.setup();
-       RichPresence.startingPresence();
+       
         
 
         if (this.allowsMultiplayer() && pGameConfig.server.hostname != null)
