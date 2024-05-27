@@ -9,11 +9,14 @@ import org.apache.logging.log4j.LogManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Block;
 import starblazerstudio.discord.loading;
+import starblazerstudio.twitch.TwitchIRC;
 
 
 
 public class Consts {
 
+
+    public static TwitchIRC twitchconnector = new TwitchIRC();
     public static String rpcdll;
     public static loading loader = new loading();
     
