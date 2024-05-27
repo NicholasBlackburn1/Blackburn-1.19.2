@@ -18,8 +18,8 @@ import starblazerstudio.utils.Consts;
 
 public class TwitchSettingsScreen extends Screen
 {
-    private static final Component NAME_LABEL = Component.translatable("blackburn.enterName");
-    private static final Component IP_LABEL = Component.translatable("addServer.enterIp");
+    private static final Component NAME_LABEL = Component.translatable("blackburn.twitch.email");
+    private static final Component IP_LABEL = Component.translatable("blackburn.twitch.password");
     private Button addButton;
     private final BooleanConsumer callback;
   
@@ -42,25 +42,42 @@ public class TwitchSettingsScreen extends Screen
 
     protected void init()
     {
+        // sets up the twich name box
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         this.nameEdit = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20, Component.translatable("addServer.enterName"));
         this.nameEdit.setFocus(true);
-        this.nameEdit.setValue(Consts.TwitchUsername);
+        this.nameEdit.setValue(this.nameEdit.getValue());
+      
         this.nameEdit.setResponder((p_169304_) ->
+
         {
-            this.updateAddButtonStatus();
+            Consts.TwitchUsername = this.nameEdit.getValue();
         });
+
+        
         this.addWidget(this.nameEdit);
+
+        // creates the witch pass box
         this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("addServer.enterIp"));
         this.ipEdit.setMaxLength(128);
-        this.ipEdit.setValue(Consts.TwitchPass);
+        this.ipEdit.setValue(this.ipEdit.getValue());
+     
         this.ipEdit.setResponder((p_169302_) ->
         {
-            this.updateAddButtonStatus();
+            Consts.TwitchPass = this.ipEdit.getValue();
         });
         this.addWidget(this.ipEdit);
        
-        this.updateAddButtonStatus();
+
+    // connection button
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect.add"), (p_96030_) ->
+        {
+            this.updateAddButtonStatus();
+        }));
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
+        {
+            onClose();
+        }));
     }
 
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight)
@@ -85,7 +102,7 @@ public class TwitchSettingsScreen extends Screen
 
     private void updateAddButtonStatus()
     {
-        Consts.twitchconnector.setupBot();
+        //Consts.twitchconnector.setupBot();
     }
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick)
