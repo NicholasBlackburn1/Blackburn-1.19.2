@@ -26,10 +26,10 @@
   "blackburn.commands.help.pre":"§6.help§r",
   "blackburn.commands.crit.pre":"§6.crit§r",
 
-  "blackburn.commands.twitchstat.pre":"§6.twitchstat",
+  "blackburn.commands.twitchstat.pre":"§6.twitchstat§r",
   "blackburn.commands.twitchstat.desc": "§eLets u see the current  twitch connection status§r",
   
-  "blackburn.commands.twitchchat.pre":"§6.twchat",
+  "blackburn.commands.twitchchat.pre":"§6.twchat§r",
   "blackburn.commands.twitchchat.desc": "§e Toggles the Twitch irc chat",
 
 

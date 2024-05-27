@@ -28,7 +28,7 @@ public class TwitchStatus implements ICommandRegister{
             if (command.contains(".twitchstat")){
 
            
-                }if(Consts.TwitchConnected == true){
+                if(Consts.TwitchConnected == true){
 
                     mc.gui.getChat().clearMessages(true);
 
@@ -44,13 +44,8 @@ public class TwitchStatus implements ICommandRegister{
                     mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
                     command.clear();
                 }
-            
      
 
-                   
-                
-                    
-                
         
             }   
 
@@ -58,4 +53,5 @@ public class TwitchStatus implements ICommandRegister{
         }
         
     }
+}
     

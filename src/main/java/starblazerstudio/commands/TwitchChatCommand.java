@@ -21,6 +21,7 @@ public class TwitchChatCommand implements ICommandRegister{
 
             if (command.contains(".twchat enable")){
                 mc.gui.getChat().clearMessages(true);
+                 command.clear();
             }
 
 
