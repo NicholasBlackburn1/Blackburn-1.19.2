@@ -8,7 +8,7 @@ import starblazerstudio.utils.Consts;
 public class RichPresence {
 
     private static final DiscordRPC lib = DiscordRPC.INSTANCE;
-    private static final String APPLICATION_ID = "886991053121519657";
+    private static final String APPLICATION_ID = "1244530156085841920";
 
     // Sets up the Discord RPC for use
     public static void setup() {
@@ -38,17 +38,18 @@ public class RichPresence {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.state = "Minecraft is Starting....";
         presence.details = "Loading the UwU's....";
-        presence.largeImageKey = "projeto_14_6";
+        presence.largeImageKey = "main";
         presence.largeImageText = "Cum on me ~";
         lib.Discord_UpdatePresence(presence);
+        Consts.warn("setup richpresents stuff....");
     }
 
     // Creates a rich presence when lurking in the main menu
-    public void lurkingPresence() {
+    public static void lurkingPresence() {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.state = "Lurking in the Main Menu~~";
         presence.details = "Hehe~ I see you";
-        presence.largeImageKey = "projeto_14_6";
+        presence.largeImageKey = "main";
         presence.largeImageText = "OwO you looked";
         lib.Discord_UpdatePresence(presence);
     }
