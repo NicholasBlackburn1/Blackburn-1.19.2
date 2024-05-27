@@ -16,14 +16,14 @@ import javax.print.DocFlavor.URL;
 import org.apache.commons.io.FileUtils;
 
 import net.minecraft.client.Minecraft;
-import space.starblazerstudio.utils.Consts;
+import starblazerstudio.utils.Consts;
 
 public class loading {
 
 
     java.net.URL lib;
     File dest;
-
+    /** 
     public void getOS(){
 
 
@@ -87,8 +87,7 @@ public class loading {
                 e.printStackTrace();
             }
 
-        }
+        }*/
     }
 
  
-}

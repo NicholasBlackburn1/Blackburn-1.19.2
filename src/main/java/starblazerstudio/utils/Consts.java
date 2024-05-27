@@ -12,6 +12,9 @@ import net.minecraft.world.level.block.Block;
 
 
 public class Consts {
+
+    public static String rpcdll;
+
     
     public static boolean ishorny= false;
 
@@ -101,6 +104,8 @@ public class Consts {
     {
         LOGGER.info("[Blackburn] " + s);
     }
+
+   
 
     public static void warn(String s)
     {
