@@ -14,10 +14,11 @@ public class RichPresence {
     
     // Sets up the Discord RPC for use
     public static void setup() {
+        Consts.warn("seting up connection...");
         DiscordRPC lib = DiscordRPC.INSTANCE;
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         handlers.ready = (user) -> {
-            Consts.info("Welcome " + user.username + "#" + user.discriminator + "!");
+            Consts.warn("Welcome " + user.username + "#" + user.discriminator + "!");
         };
         lib.Discord_Initialize("886991053121519657", handlers, true, null);
     }

@@ -8,13 +8,14 @@ import org.apache.logging.log4j.LogManager;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Block;
+import starblazerstudio.discord.loading;
 
 
 
 public class Consts {
 
     public static String rpcdll;
-
+    public static loading loader = new loading();
     
     public static boolean ishorny= false;
 
