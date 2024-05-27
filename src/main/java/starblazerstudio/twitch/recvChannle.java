@@ -33,7 +33,7 @@ public class recvChannle {
                 event.getUser().getName());
                 Consts.chatmessage.add(event.getMessage());
                 
-               Consts.finalmessage.add(codes.chatColor(McColors.RED)+event.getUser().getName()+codes.chatColor(McColors.WHITE)+":"+codes.chatColor(McColors.GREEN)+event.getMessage());
+               Consts.finalmessage = (codes.chatColor(McColors.RED)+event.getUser().getName()+codes.chatColor(McColors.WHITE)+":"+codes.chatColor(McColors.GREEN)+event.getMessage());
                 
             }
         

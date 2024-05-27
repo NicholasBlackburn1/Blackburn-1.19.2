@@ -37,7 +37,7 @@ public class Consts {
     // Tewitch chat
     public static List chatmessage = new LinkedList<String>();
     public static List chatuser = new LinkedList<String>();
-    public static List finalmessage = new LinkedList<String>();
+    public static String finalmessage = "";
     public static  boolean enableTwitch = false;
     
     private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger();
