@@ -28,11 +28,19 @@ public class TwitchCommand implements ICommandRegister{
             if (command.contains(".twitch")){
 
                 // if twitch isnt connected
-                if(Consts.TwitchConnected.contains("§4 NO!")){
+                if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.false"))){
 
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.version.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
-
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
                     command.clear();
+
+                }if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.true"))){
+
+                    
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.true")));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectacctrue")));
+                    command.clear();
+
 
                 }
 
