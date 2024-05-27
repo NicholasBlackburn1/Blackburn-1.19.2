@@ -105,6 +105,11 @@ public class OptionsScreen extends Screen
         {
             this.minecraft.setScreen(new AccessibilityOptionsScreen(this, this.options));
         }));
+             // this is the twitch settings button 
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 148, 200, 20, Component.translatable("blackburn.twitch.title"), (p_238870_) ->
+        {
+            this.minecraft.setScreen(new ShareToLanScreen(this));
+        }));
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 168, 200, 20, CommonComponents.GUI_DONE, (p_96257_) ->
         {
             this.minecraft.setScreen(this.lastScreen);

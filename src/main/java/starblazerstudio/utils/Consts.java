@@ -31,7 +31,10 @@ public class Consts {
     public static boolean crit = false;
     public static boolean nofall = false;
 
-
+    // Tewitch chat
+    public static List chatmessage = new LinkedList<String>();
+    public static List chatuser = new LinkedList<String>();
+    public static List finalmessage = new LinkedList<String>();
     public static  boolean enableTwitch = false;
     
     private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger();
