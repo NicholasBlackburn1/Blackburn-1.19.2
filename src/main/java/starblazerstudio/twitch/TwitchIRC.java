@@ -39,8 +39,9 @@ public void setupBot(){
         .build();
         this.eventHandler  = this.twitchClient.getEventManager().getEventHandler(SimpleEventHandler.class);
         this.channle = new recvChannle(this.eventHandler);
+        Consts.TwitchConnected = true;
 
-        Consts.TwitchConnected = I18n.a(blackburn.twitch.connected.true);
+        
 
         Consts.info("started twitch bot...");
         start();
