@@ -38,6 +38,7 @@ public class ClientStartup{
          
             messages();
             Consts.showStart = false;
+
         }
 
 

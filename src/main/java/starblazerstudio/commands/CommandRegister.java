@@ -3,6 +3,8 @@ package starblazerstudio.commands;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.chatconsts;
 
@@ -24,6 +26,15 @@ public class CommandRegister {
         twitchstatus.register(command,mc);
         twitchChat.register(command,mc);
       
+
+
+        if(Consts.enableTwitch == true && Consts.TwitchConnected == true){
+
+            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "+Consts.finalmessage));
+            Consts.finalmessage.remove(1);
+            
+
+        }
 
 
 
