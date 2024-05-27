@@ -241,6 +241,10 @@ import org.apache.commons.io.FileUtils;
 import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
+import starblazerstudio.utils.*;
+import starblazerstudio.discord.*;
+
+
 public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements WindowEventHandler
 {
     static Minecraft instance;
@@ -414,6 +418,14 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
         this.singleplayerServer = null;
         String s;
         int i;
+
+        
+        // gets os info
+        Consts.loader.getOS();
+
+        RichPresence.setup();
+       RichPresence.startingPresence();
+        
 
         if (this.allowsMultiplayer() && pGameConfig.server.hostname != null)
         {

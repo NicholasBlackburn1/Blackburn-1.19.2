@@ -48,12 +48,12 @@ public class loading {
         // linux oso
         if(System.getProperty("os.name").startsWith("Linux")){
 
-            Consts.log("Linux is detected loading RPC so");
+            Consts.warn("Linux is detected loading RPC so");
 
             this.lib = getClass().getResource("/assets/minecraft/blackburn/discord/linux-x86-64/libdiscord-rpc.so");
             this.dest= new File(Minecraft.getInstance().gameDirectory.getAbsolutePath()+"/"+"libdiscord-rpc.so");
             
-            Consts.log("Copying files... to "+Minecraft.getInstance().gameDirectory.getAbsolutePath()+"/"+"libdiscord-rpc.so");
+            Consts.warn("Copying files... to "+Minecraft.getInstance().gameDirectory.getAbsolutePath()+"/"+"libdiscord-rpc.so");
             try {
                 FileUtils.copyURLToFile(lib, dest);
                 Consts.error("copyed successfully");
