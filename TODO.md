@@ -3,15 +3,11 @@
 
 ### NEED TO DO
 
-1. custom backgrounds and loading screen
-2. twitch stream chat intagration
+1. custom backgrounds and loading screen - x
+2. twitch stream chat intagration       
 3. discord inagration
-4. movable chat
-
-
-## movable chat 
-1. allows users to move the in game chat to where ever theyd like on the screen
-
+4. basic commands  -x 
+5. custom menu sound
 
 ## make seperate build 
 1. seperate lewd builds
