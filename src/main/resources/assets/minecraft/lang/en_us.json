@@ -20,12 +20,18 @@
   "blackburn.command.enabled": "§a is Enabled!",
   "blackburn.command.disabled": "§4 is Disabled!",
 
-  "blackburn.command.crit.useage":"§5 to use command please do <.command> enable / disable",
+  "blackburn.command.twitchchat.useage":"§5 to use command please do <.twitchchat> enable / disable",
 
   "blackburn.commands.version.pre":"§6.version§r",
   "blackburn.commands.help.pre":"§6.help§r",
   "blackburn.commands.crit.pre":"§6.crit§r",
-  "blackburn.commands.twitch.pre":"§6.twitch",
+
+  "blackburn.commands.twitchstat.pre":"§6.twitchstat",
+  "blackburn.commands.twitchstat.desc": "§eLets u see the current  twitch connection status§r",
+  
+  "blackburn.commands.twitchchat.pre":"§6.twitchchat",
+  "blackburmn.commands.twitchchat.desc": "§e Toggles the Twitch irc chat",
+
 
 
   "blackburn.commands.getblock.pre":"§6.getblock§r",
@@ -35,8 +41,6 @@
   "blackburn.commands.version.desc":" §eshows u the Version of client§r",
   "blackburn.commands.help.desc":"§e Lists all the commands and their Usages.§r",
 
-  "blackburn.commands.twitch.desc": "§eLets u see the current  twitch connection status§r",
-  
 
   "blackburn.commands.version":"Version is",
   "blackburn.commands.help":"§a Lists all the available commands~",

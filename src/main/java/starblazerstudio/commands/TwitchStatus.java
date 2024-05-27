@@ -7,17 +7,17 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import starblazerstudio.utils.Consts;
 
-public class TwitchCommand implements ICommandRegister{
+public class TwitchStatus implements ICommandRegister{
 
     @Override
     public String getDesc() {
-        return "blackburn.commands.twitch.desc";
+        return "blackburn.commands.twitchstat.desc";
     }
 
     @Override
     public String getName() {
       
-        return "blackburn.commands.twitch.pre";
+        return "blackburn.commands.twitchstat.pre";
     }
 
     @Override
@@ -25,10 +25,10 @@ public class TwitchCommand implements ICommandRegister{
         
          if(!command.isEmpty()){
 
-            if (command.contains(".twitch")){
+            if (command.contains(".twitchstat")){
 
            
-                }if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.true"))){
+                }if(Consts.TwitchConnected == true){
 
                     mc.gui.getChat().clearMessages(true);
 
@@ -44,6 +44,8 @@ public class TwitchCommand implements ICommandRegister{
                     mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
                     command.clear();
                 }
+            
+     
 
                    
                 
