@@ -10,6 +10,7 @@ import com.github.twitch4j.chat.TwitchChat;
 import com.github.twitch4j.chat.TwitchChatBuilder;
 import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 
+import net.minecraft.client.resources.language.I18n;
 import starblazerstudio.utils.Consts;
 
 public class TwitchIRC {
@@ -39,6 +40,7 @@ public void setupBot(){
         this.eventHandler  = this.twitchClient.getEventManager().getEventHandler(SimpleEventHandler.class);
         this.channle = new recvChannle(this.eventHandler);
 
+        Consts.TwitchConnected = I18n.a(blackburn.twitch.connected.true);
 
         Consts.info("started twitch bot...");
         start();
