@@ -22,14 +22,18 @@
   "blackburn.commands.version.pre":"§6.version§r",
   "blackburn.commands.help.pre":"§6.help§r",
   "blackburn.commands.crit.pre":"§6.crit§r",
+  "blackburn.command.twitch.pre":"§5.twitch",
+
 
   "blackburn.commands.getblock.pre":"§6.getblock§r",
   "blackburn.commands.getblocks.pre":"§6.getblockarroundme§r",
   "blackburn.commands.getscreen.pre":"§6.getscreen§r",
 
   "blackburn.commands.version.desc":" §eshows u the Version of client§r",
-  "blackburn.commands.help.desc":"  §e Lists all the commands and their Usages.§r",
+  "blackburn.commands.help.desc":"§e Lists all the commands and their Usages.§r",
 
+  "blackburn.command.twitch.desc": " §eLets u see ur stream chat in minecraft",
+  
 
   "blackburn.commands.version":"Version is",
   "blackburn.commands.help":"§a Lists all the available commands~",
@@ -186,7 +190,7 @@
   "selectWorld.edit.resetIcon": "Reset Icon",
   "selectWorld.edit.openFolder": "Open World Folder",
   "selectWorld.edit.save": "Save",
-  "selectWorld.edit.backup": "Make Backup",
+  "selectWorld.edit.backup": "but discord Make Backup",
   "selectWorld.edit.backupFolder": "Open Backups Folder",
   "selectWorld.edit.backupFailed": "Backup failed",
   "selectWorld.edit.backupCreated": "Backed up: %s",
@@ -269,7 +273,7 @@
   "createWorld.customize.custom.page3": "Extra Advanced Settings (Expert Users Only!)",
   "createWorld.customize.custom.randomize": "Randomize",
   "createWorld.customize.custom.prev": "Previous Page",
-  "createWorld.customize.custom.next": "Next Page",
+  "createWorld.customize.custobut discord m.next": "Next Page",
   "createWorld.customize.custom.defaults": "Defaults",
   "createWorld.customize.custom.confirm1": "This will overwrite your current",
   "createWorld.customize.custom.confirm2": "settings and cannot be undone.",
