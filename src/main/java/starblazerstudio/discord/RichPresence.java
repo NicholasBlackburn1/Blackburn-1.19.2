@@ -1,9 +1,4 @@
-
-/***
- * this class is for handling the presents on discord
- */
-package  starblazerstudio.discord;
-
+package starblazerstudio.discord;
 
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
@@ -11,16 +6,31 @@ import club.minnced.discord.rpc.DiscordRichPresence;
 import starblazerstudio.utils.Consts;
 
 public class RichPresence {
-    
+
+    private static final DiscordRPC lib = DiscordRPC.INSTANCE;
+    private static final String APPLICATION_ID = "886991053121519657";
+
     // Sets up the Discord RPC for use
     public static void setup() {
-        Consts.warn("seting up connection...");
-        DiscordRPC lib = DiscordRPC.INSTANCE;
         DiscordEventHandlers handlers = new DiscordEventHandlers();
         handlers.ready = (user) -> {
             Consts.warn("Welcome " + user.username + "#" + user.discriminator + "!");
+            startingPresence();
         };
-        lib.Discord_Initialize("886991053121519657", handlers, true, null);
+
+        lib.Discord_Initialize(APPLICATION_ID, handlers, true, null);
+
+        // Start a new thread to handle Discord RPC callbacks
+        new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                lib.Discord_RunCallbacks();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }, "Discord-RPC-Callback-Handler").start();
     }
 
     // Creates a rich presence when the game is starting
@@ -30,7 +40,7 @@ public class RichPresence {
         presence.details = "Loading the UwU's....";
         presence.largeImageKey = "projeto_14_6";
         presence.largeImageText = "Cum on me ~";
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     // Creates a rich presence when lurking in the main menu
@@ -40,7 +50,7 @@ public class RichPresence {
         presence.details = "Hehe~ I see you";
         presence.largeImageKey = "projeto_14_6";
         presence.largeImageText = "OwO you looked";
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     // Creates a custom rich presence with title and details
@@ -48,7 +58,7 @@ public class RichPresence {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.state = title;
         presence.details = details;
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     // Creates a custom rich presence with title, details, image, and image text
@@ -58,7 +68,7 @@ public class RichPresence {
         presence.details = details;
         presence.largeImageKey = image;
         presence.largeImageText = imageText;
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     // Creates a rich presence with status, image, and player count without description
@@ -68,7 +78,7 @@ public class RichPresence {
         presence.largeImageKey = image;
         presence.partySize = currentPlayers;
         presence.partyMax = maxPlayers;
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
     }
 
     // Creates a rich presence with status, description, image, and player count
@@ -80,8 +90,7 @@ public class RichPresence {
         presence.largeImageKey = image;
         presence.partySize = currentPlayers;
         presence.partyMax = maxPlayers;
-        DiscordRPC.INSTANCE.Discord_UpdatePresence(presence);
+        lib.Discord_UpdatePresence(presence);
         Consts.error("Sent update to Discord...");
     }
-
 }
