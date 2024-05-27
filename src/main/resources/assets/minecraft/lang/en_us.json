@@ -20,7 +20,7 @@
   "blackburn.command.enabled": "§a is Enabled!",
   "blackburn.command.disabled": "§4 is Disabled!",
 
-  "blackburn.command.twitchchat.useage":"§5 to use command please do <.twitchchat> enable / disable",
+  "blackburn.command.twitchchat.useage":"§e to use command please do <.twchat> enable / disable",
 
   "blackburn.commands.version.pre":"§6.version§r",
   "blackburn.commands.help.pre":"§6.help§r",

@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
+import starblazerstudio.utils.Consts;
 
 public class TwitchChatCommand implements ICommandRegister{
 
@@ -15,14 +16,26 @@ public class TwitchChatCommand implements ICommandRegister{
             if (command.contains(".twchat")){
                 
                 mc.gui.getChat().clearMessages(true);
+                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "));
                 mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.command.twitchchat.useage")));
                 command.clear();
             }
 
             if (command.contains(".twchat enable")){
-                mc.gui.getChat().clearMessages(true);
-                 command.clear();
+                Consts.enableTwitch = true;
+                command.clear();
+                
+                
             }
+
+            if (command.contains(".twchat disable")){
+                Consts.enableTwitch = false;
+                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > " + "is Disabled!"));
+                command.clear();
+                
+                
+            }
+
 
 
         }
