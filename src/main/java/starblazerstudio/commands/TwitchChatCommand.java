@@ -12,14 +12,14 @@ public class TwitchChatCommand implements ICommandRegister{
     public void register(List<String> command, Minecraft mc) {
         if(!command.isEmpty()){
 
-            if (command.contains(".twitchchat")){
+            if (command.contains(".twchat")){
                 
                 mc.gui.getChat().clearMessages(true);
                 mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.command.twitchchat.useage")));
                 command.clear();
             }
 
-            if (command.contains(".twitchchat enable")){
+            if (command.contains(".twchat enable")){
                 mc.gui.getChat().clearMessages(true);
             }
 
