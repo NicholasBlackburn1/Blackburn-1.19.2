@@ -52,7 +52,11 @@ dependencies {
 
     implementation 'club.minnced:java-discord-rpc:2.0.1'
     implementation 'commons-io:commons-io:2.16.1'
-      
+    implementation group: "com.github.twitch4j", name: "twitch4j", version: "1.8.0"
+
+	
+    
+    shade group: "com.github.twitch4j", name: "twitch4j", version: "1.8.0"
     shade 'club.minnced:java-discord-rpc:2.0.1'
     shade 'commons-io:commons-io:2.16.1'
 

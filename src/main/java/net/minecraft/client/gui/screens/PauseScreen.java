@@ -93,6 +93,13 @@ public class PauseScreen extends Screen
             }));
         }
 
+           // this is the twitch settings button 
+           this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 148, 200, 20, new Component.translatable(("blackburn.twitch.title"), (p_96266_) ->
+           {
+               this.minecraft.setScreen(new ShareToLanScreen(this));
+           }));
+   
+
         Component component = this.minecraft.isLocalServer() ? Component.translatable("menu.returnToMenu") : Component.translatable("menu.disconnect");
         this.addRenderableWidget(new Button(this.width / 2 - 102, this.height / 4 + 120 + -16, 204, 20, component, (p_96315_) ->
         {
