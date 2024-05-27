@@ -37,7 +37,7 @@ public class TwitchStatus implements ICommandRegister{
                     command.clear();
 
 
-                }else{
+                }if(Consts.TwitchConnected == false){
                     mc.gui.getChat().clearMessages(true);
                  
                     mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
