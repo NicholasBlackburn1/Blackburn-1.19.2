@@ -31,13 +31,13 @@ public class TwitchCommand implements ICommandRegister{
                 }if(Consts.TwitchConnected.contains(I18n.a("blackburn.twitch.connected.true"))){
 
                     
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.true")));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "+"is connected? "+I18n.a("blackburn.twitch.connected.true")));
                     mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectacctrue")));
                     command.clear();
 
 
                 }else{
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre")).append(" "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "+"is connected? "+I18n.a("blackburn.twitch.connected.false")));
                     mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.connectaccfail")));
                     command.clear();
                 }
@@ -54,4 +54,3 @@ public class TwitchCommand implements ICommandRegister{
         
     }
     
-}
