@@ -1,9 +1,4 @@
-
-/**
- * this loads the discord rpc lib
- */
 package starblazerstudio.discord;
-
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,14 +11,14 @@ import javax.print.DocFlavor.URL;
 import org.apache.commons.io.FileUtils;
 
 import net.minecraft.client.Minecraft;
-import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.*;
 
 public class loading {
 
 
     java.net.URL lib;
     File dest;
-    /** 
+
     public void getOS(){
 
 
@@ -87,7 +82,8 @@ public class loading {
                 e.printStackTrace();
             }
 
-        }*/
+        }
     }
 
  
+}
