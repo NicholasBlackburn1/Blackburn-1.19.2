@@ -11,13 +11,13 @@ public class TwitchCommand implements ICommandRegister{
 
     @Override
     public String getDesc() {
-        return "blackburn.commands.twich.pre";
+        return "blackburn.commands.twitch.desc";
     }
 
     @Override
     public String getName() {
       
-        return "blackburn.commands.twitch.desc";
+        return "blackburn.commands.twitch.pre";
     }
 
     @Override
@@ -42,6 +42,9 @@ public class TwitchCommand implements ICommandRegister{
                     command.clear();
 
 
+                }else{
+                    mc.gui.getChat().addMessage(Component.translatable("not fished yet - twitch devs.."));
+                    command.clear();
                 }
 
                    

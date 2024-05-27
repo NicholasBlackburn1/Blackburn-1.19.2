@@ -25,7 +25,7 @@
   "blackburn.commands.version.pre":"§6.version§r",
   "blackburn.commands.help.pre":"§6.help§r",
   "blackburn.commands.crit.pre":"§6.crit§r",
-  "blackburn.command.twitch.pre":"§5.twitch",
+  "blackburn.commands.twitch.pre":"§6.twitch",
 
 
   "blackburn.commands.getblock.pre":"§6.getblock§r",
@@ -35,7 +35,7 @@
   "blackburn.commands.version.desc":" §eshows u the Version of client§r",
   "blackburn.commands.help.desc":"§e Lists all the commands and their Usages.§r",
 
-  "blackburn.command.twitch.desc": " §eLets u see ur stream chat in minecraft",
+  "blackburn.commands.twitch.desc": "§eLets u see the current  twitch connection status§r",
   
 
   "blackburn.commands.version":"Version is",
