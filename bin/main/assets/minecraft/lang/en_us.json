@@ -3,7 +3,7 @@
   "blackburn.message.cutie":"§d§lpsst...§r§e§lthis is a beta release~",
   "blackburn.message.howto":"§a To use commands do .<command name here>",
 
-
+  "blackburn.commands.twitch.pre.col":"§5Twitch",
   "blackburn.twitch.connected.false": "§4 NO!",
   "blackburn.twitch.connected.true": "§a Yes!",
 
