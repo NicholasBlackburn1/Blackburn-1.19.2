@@ -1,3 +1,7 @@
+
+/**
+ * this loads the discord rpc lib
+ */
 package starblazerstudio.discord;
 
 
