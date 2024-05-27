@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -25,6 +26,7 @@ public class TwitchSettingsScreen extends Screen
   
     private EditBox ipEdit;
     private EditBox nameEdit;
+    private Checkbox isConnected;
     private final Screen lastScreen;
 
     public TwitchSettingsScreen(Screen last){
@@ -58,7 +60,7 @@ public class TwitchSettingsScreen extends Screen
         this.addWidget(this.nameEdit);
 
         // creates the witch pass box
-        this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("addServer.enterIp"));
+        this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("blackburn.twitch.password"));
         this.ipEdit.setMaxLength(128);
         this.ipEdit.setValue(this.ipEdit.getValue());
      
@@ -67,10 +69,10 @@ public class TwitchSettingsScreen extends Screen
             Consts.TwitchPass = this.ipEdit.getValue();
         });
         this.addWidget(this.ipEdit);
-       
+
 
     // connection button
-        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect.add"), (p_96030_) ->
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_) ->
         {
             this.updateAddButtonStatus();
         }));
