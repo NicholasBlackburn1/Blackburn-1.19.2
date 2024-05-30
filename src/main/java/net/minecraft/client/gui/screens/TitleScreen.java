@@ -54,6 +54,7 @@ import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
 import starblazerstudio.screens.CopyRightScreen;
 import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.StatusVerifiyer;
 import starblazerstudio.screens.TitleScreenOverlay;
 
 import com.google.common.util.concurrent.Runnables;
@@ -118,6 +119,7 @@ public class TitleScreen extends Screen
       Consts.showStart = true;
       
       TitleScreenOverlay overlay = new TitleScreenOverlay();
+      StatusVerifiyer verifiyer = new StatusVerifiyer();
 
       if (this.splash == null) {
          minecraft.getSplashManager().enableLewdSpashes(Consts.lewdsplashlocal, Consts.ishorny);
@@ -126,6 +128,8 @@ public class TitleScreen extends Screen
 
       // runs only on 2nd startup of main menu
       if(i == 1){
+         
+         verifiyer.veryifiyUser(minecraft);
          overlay.BlackburnTitleInit();
 
       }
