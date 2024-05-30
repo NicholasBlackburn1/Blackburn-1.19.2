@@ -29,7 +29,7 @@ configurations {
     compile.extendsFrom shade
 }
 
-group = 'me.yourname'
+group = 'starblazer.studios'
 version = '1.0.0'
 
 ext {
