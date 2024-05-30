@@ -16,6 +16,7 @@ import net.optifine.Config;
 import starblazerstudio.discord.RichPresence;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GuiUtils;
+import starblazerstudio.utils.StatusVerifiyer;
 
 import com.google.common.util.concurrent.Runnables;
 import com.google.gson.JsonPrimitive;
@@ -103,6 +104,7 @@ public class TitleScreenOverlay {
    public void BlackburnTitleInit(){
       GuiUtils gui = new GuiUtils();
 
+    
       // allows me to load horny mainmenu
       if(Consts.ishorny == true){
          gui.dumpLayoutJson("/assets/minecraft/blackburn/lewdbackgrounds.json",3);

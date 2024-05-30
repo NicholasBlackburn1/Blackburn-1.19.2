@@ -21,12 +21,14 @@ public class StatusVerifiyer {
 
     // generates respnce for users stats
     public void veryifiyUser(Minecraft mc){
+
+        Consts.warn("St");
            try {
             // The URL of the endpoint
             URL url = new URL(Consts.verifiyerurl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
             conn.setRequestProperty("Accept", "application/json");
 
