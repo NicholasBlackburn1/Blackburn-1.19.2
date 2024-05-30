@@ -34,6 +34,7 @@ public class StatusVerifiyer {
 
             // JSON payload
             String jsonInputString = "{\"uuid\": \""+mc.getUser().getUuid().toString()+"\"}";
+            Consts.error("Json Paylod -> "+ jsonInputString.toString());
 
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
@@ -43,6 +44,7 @@ public class StatusVerifiyer {
             // Read the response
             int responseCode = conn.getResponseCode();
             Consts.warn("Response Code: " + responseCode);
+            int status;
 
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(conn.getInputStream(), "utf-8"))) {
@@ -52,6 +54,16 @@ public class StatusVerifiyer {
                     response.append(responseLine.trim());
                 }
                 Consts.warn("Response: " + response.toString());
+                
+
+            if (Integer.parseInt(response.toString()) == 1) {
+                Consts.warn("User can access the content.");
+                Consts.ishorny = true;
+
+            } else {
+                Consts.warn("User cannot access the content."); // Print a warning or handle accordingly
+               Consts.ishorny = false;
+            }
             }
         } catch (Exception e) {
             e.printStackTrace();
