@@ -27,12 +27,16 @@ public class CommandRegister {
         twitchChat.register(command,mc);
       
 
-
+        // enables twitch messages to diusplay in chat
         if(Consts.enableTwitch == true && Consts.TwitchConnected == true){
 
             mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.twitch.pre.col")).append(" > "+Consts.finalmessage));
             
-            
+            // trys to remove repet messges
+            if (mc.gui.getChat().getRecentChat().toString().equals(Consts.finalmessage)){
+                Consts.error("shouldnt be copying string .... "+ Consts.finalmessage);
+            }
+           
 
         }
 
