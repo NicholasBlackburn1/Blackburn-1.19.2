@@ -16,8 +16,10 @@
 
 
 
-## professional build
-1. 
+## Lewd build 
+1. fix backgrounds on title screen
+2. change splash text to blackburn 1.18 client's splash
+3. can add small referances to my peronallity into the client
 
 ## text readabillity 
 1. reable text on main menu
