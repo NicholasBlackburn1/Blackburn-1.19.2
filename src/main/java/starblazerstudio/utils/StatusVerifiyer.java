@@ -59,6 +59,7 @@ public class StatusVerifiyer {
                 Consts.warn("Response: " + response.toString());
                 
 
+<<<<<<< HEAD
 
                 // Parse the JSON string
                 JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
@@ -68,6 +69,10 @@ public class StatusVerifiyer {
 
             if (canAccess == 1) {
                 Consts.warn("User can access the Lewd content.");
+=======
+            if (Integer.parseInt(response.toString()) == 1) {
+                Consts.warn("User can access the content.");
+>>>>>>> 2c55822903e488e52386075e31201b1258eab415
                 Consts.ishorny = true;
 
             } else {
