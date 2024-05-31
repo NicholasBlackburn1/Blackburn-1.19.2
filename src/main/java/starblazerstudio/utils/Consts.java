@@ -67,7 +67,7 @@ public class Consts {
     public static float pVOffsetfull = 0;
 
     public static String RELEASE = "DEBUG";
-    public static String VERSION = "1.19.2-DEV-1.0";
+    public static String VERSION = "1.19.2-DEV-1.5";
     public static String Date = null;
 
     public static String TwitchCurrentMessage;

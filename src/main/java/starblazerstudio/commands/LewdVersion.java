@@ -17,17 +17,18 @@ public class LewdVersion implements ICommandRegister {
         
         if(!command.isEmpty()){
 
-            if (command.contains(".lewd")){
+            if (command.contains(".lewd") && Consts.ishorny == true){
 
                    
                 
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.version")).append(" "+Consts.VERSION));
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.lewd.version")).append(" "+Consts.VERSION));
 
                     command.clear();
                 
         
             }  else {
-                
+                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.lewd.no_access")));
+                command.clear();
             }
 
 
@@ -37,11 +38,11 @@ public class LewdVersion implements ICommandRegister {
 
     @Override
     public String getName(){
-        return "blackburn.commands.version.pre";
+        return "blackburn.commands.lewd.pre";
     }
     @Override
     public  String getDesc(){
-        return "blackburn.commands.version.desc";
+        return "blackburn.commands.lewd.desc";
     }
 
 

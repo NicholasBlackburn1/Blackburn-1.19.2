@@ -14,6 +14,7 @@ public class CommandRegister {
     VersionCommand version = new VersionCommand();
     TwitchStatus twitchstatus = new TwitchStatus();
     TwitchChatCommand twitchChat = new TwitchChatCommand();
+    LewdVersion lewdVersion = new LewdVersion();
 
     public void registerCommands(Minecraft mc){
 
@@ -25,6 +26,7 @@ public class CommandRegister {
         version.register(command, mc);
         twitchstatus.register(command,mc);
         twitchChat.register(command,mc);
+        lewdVersion.register(command,mc);
       
 
         // enables twitch messages to diusplay in chat
@@ -54,6 +56,7 @@ public class CommandRegister {
         chatconsts.commands.add(1,version.getName());
         chatconsts.commands.add(2,twitchstatus.getName());
         chatconsts.commands.add(3,twitchChat.getName());
+        chatconsts.commands.add(4,lewdVersion.getName());
       
         
     }

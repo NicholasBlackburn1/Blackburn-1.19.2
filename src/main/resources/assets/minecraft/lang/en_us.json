@@ -45,6 +45,12 @@
   "blackburn.commands.version":"Version is",
   "blackburn.commands.help":"§a Lists all the available commands~",
 
+  "blackburn.commands.lewd.pre":"§6.lewd",
+  "blackburn.commands.lewd.desc":"§a Shows all the lewd commands",
+
+  "blackburn.lewd.version":"§5 Lewd >§r",
+  "blackburn.lewd.no_access": "§5 Im Sorry but This command doesnt exist!",
+
 
   "advancements.blackburn.root.title": "UwU Advancements",
   "advancements.blackburn.root.description":"This is where my custom Advacements UwU",
