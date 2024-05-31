@@ -8,11 +8,12 @@
 
 3. discord inagration -x 
 4. basic commands  -x 
-5. custom menu sound
+5. custom menu sound -X
 
 ## make seperate build 
-1. seperate lewd builds
-2.  seperate professional build
+1. seperate lewd builds -X 
+2.  seperate professional build -X 
+
 
 
 ## professional build
