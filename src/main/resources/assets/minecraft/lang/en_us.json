@@ -10,21 +10,7 @@
   "blackburn.commands.twitch.connectaccfail": "§e Please Connect Your twitch account!",
   "blackburn.commands.twitch.connectacctrue": "Account Connected §e YES",
 
-  "blackburn.twitch.title":"Twitch IRC Settings",
-  "blackburn.twitch.email":"Twitch Username",
-  "blackburn.twitch.password": "Twitch Oauth",
-  "blakcburn.twitch.connect":"Connect to Twitch irc",
-  "blakcburn.twitch.exit":"go back",
-
-  "blackburn.death.sufix": "",
-  "blackburn.command.enabled": "§a is Enabled!",
-  "blackburn.command.disabled": "§4 is Disabled!",
-
-  "blackburn.command.twitchchat.useage":"§e to use command please do <.twchat> enable / disable",
-
-  "blackburn.commands.version.pre":"§6.version§r",
-  "blackburn.commands.help.pre":"§6.help§r",
-  "blackburn.commands.crit.pre":"§6.crit§r",
+  "blackburn.twitch.title":"Twitch IRC Settings",lackburn.clientsettings.title
 
   "blackburn.commands.twitchstat.pre":"§6.twitchstat§r",
   "blackburn.commands.twitchstat.desc": "§eLets u see the current  twitch connection status§r",
@@ -61,6 +47,7 @@
   "blackburn.message.commands.pre":"there are",
   "blackburn.message.commands.end": "§rCommands loaded!",
 
+  "blackburn.clientsettings.title":"FoxBurn Settings",
 
   "language.name": "English",
   "language.region": "United States",

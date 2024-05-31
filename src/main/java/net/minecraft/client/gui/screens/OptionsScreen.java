@@ -18,6 +18,7 @@ import net.minecraft.network.protocol.game.ServerboundLockDifficultyPacket;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.world.Difficulty;
+import starblazerstudio.screens.ClientSettingsScreen;
 import starblazerstudio.screens.TwitchSettingsScreen;
 
 public class OptionsScreen extends Screen
@@ -107,9 +108,9 @@ public class OptionsScreen extends Screen
             this.minecraft.setScreen(new AccessibilityOptionsScreen(this, this.options));
         }));
              // this is the twitch settings button 
-        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 148, 200, 20, Component.translatable("blackburn.twitch.title"), (p_238870_) ->
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 148, 200, 20, Component.translatable("blackburn.clientsettings.title"), (p_238870_) ->
         {
-            this.minecraft.setScreen(new TwitchSettingsScreen(this.lastScreen));
+            this.minecraft.setScreen(new ClientSettingsScreen(this.lastScreen));
         }));
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 6 + 168, 200, 20, CommonComponents.GUI_DONE, (p_96257_) ->
         {
