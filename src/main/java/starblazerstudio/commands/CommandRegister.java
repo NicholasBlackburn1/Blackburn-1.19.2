@@ -67,6 +67,7 @@ public class CommandRegister {
         chatconsts.commanddesc.add(1,version.getDesc());
         chatconsts.commanddesc.add(2,twitchstatus.getDesc());
         chatconsts.commanddesc.add(3,twitchChat.getDesc());
+        chatconsts.commanddesc.add(4,lewdVersion.getDesc());
         
     }
 

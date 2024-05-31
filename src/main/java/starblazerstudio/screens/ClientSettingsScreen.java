@@ -1,0 +1,93 @@
+package starblazerstudio.screens;
+import com.mojang.blaze3d.vertex.PoseStack;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Checkbox;
+import net.minecraft.client.gui.components.CycleButton;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.SoundOptionsScreen;
+import net.minecraft.client.multiplayer.ServerData;
+import net.minecraft.client.multiplayer.resolver.ServerAddress;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
+import net.optifine.gui.GuiScreenOF;
+import starblazerstudio.twitch.TwitchIRC;
+import starblazerstudio.utils.Consts;
+
+public class ClientSettingsScreen extends Screen
+{
+
+    private static final Component TwitchIrc = Component.translatable("blackburn.twitch.title");
+    private static final Component IP_LABEL = Component.translatable("blackburn.twitch.password");
+    private Button addButton;
+    private final BooleanConsumer callback;
+  
+    private EditBox ipEdit;
+    private EditBox nameEdit;
+    private Checkbox isConnected;
+    private final Screen lastScreen;
+
+    public ClientSettingsScreen(Screen last){
+        super(Component.translatable(I18n.a("blackburn.clientsettings.title")));
+        this.callback = null;
+        this.lastScreen = last;
+
+    }
+
+    public void tick()
+    {
+        this.nameEdit.tick();
+        this.ipEdit.tick();
+    }
+
+    protected void init()
+    { 
+        this.addRenderableWidget(new Button(this.width / 2 + 5, this.height / 6 + 48 - 6, 150, 20, Component.translatable("blackburn.twitch.title"), (p_96274_) ->
+        {
+            this.minecraft.setScreen(new TwitchSettingsScreen(this));
+        }));
+     
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
+        {
+            onClose();
+        }));
+    }
+
+    public void resize(Minecraft pMinecraft, int pWidth, int pHeight)
+    {
+        String s = this.ipEdit.getValue();
+        String s1 = this.nameEdit.getValue();
+        this.init(pMinecraft, pWidth, pHeight);
+        this.ipEdit.setValue(s);
+        this.nameEdit.setValue(s1);
+    }
+
+    public void removed()
+    {
+        this.minecraft.keyboardHandler.setSendRepeatsToGui(false);
+    }
+
+    
+    public void onClose()
+    {
+        this.minecraft.setScreen(this.lastScreen);
+    }
+
+    private void updateAddButtonStatus()
+    {
+        //Consts.twitchconnector.setupBot();
+    }
+
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick)
+    {
+        this.renderBackground(pPoseStack);
+        drawCenteredString(pPoseStack, this.font, this.title, this.width / 2, 17, 16777215);
+        
+        this.nameEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.ipEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+    }
+}
