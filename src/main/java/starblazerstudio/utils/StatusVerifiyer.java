@@ -15,6 +15,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import net.minecraft.client.Minecraft;
 
 public class StatusVerifiyer {
@@ -56,8 +59,15 @@ public class StatusVerifiyer {
                 Consts.warn("Response: " + response.toString());
                 
 
-            if (Integer.parseInt(response.toString()) == 1) {
-                Consts.warn("User can access the content.");
+
+                // Parse the JSON string
+                JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
+
+                // Extract the integer value
+                int canAccess = jsonObject.get("can_access").getAsInt();
+
+            if (canAccess == 1) {
+                Consts.warn("User can access the Lewd content.");
                 Consts.ishorny = true;
 
             } else {
