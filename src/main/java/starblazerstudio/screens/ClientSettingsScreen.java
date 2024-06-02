@@ -25,9 +25,7 @@ public class ClientSettingsScreen extends Screen
     private Button addButton;
     private final BooleanConsumer callback;
   
-    private EditBox ipEdit;
-    private EditBox nameEdit;
-    private Checkbox isConnected;
+    
     private final Screen lastScreen;
 
     public ClientSettingsScreen(Screen last){
@@ -37,19 +35,22 @@ public class ClientSettingsScreen extends Screen
 
     }
 
+    // this where pupping for data comes from 
     public void tick()
     {
-        this.nameEdit.tick();
-        this.ipEdit.tick();
+       
     }
 
     protected void init()
     { 
+        // the twtich button 
         this.addRenderableWidget(new Button(this.width / 2 + 5, this.height / 6 + 48 - 6, 150, 20, Component.translatable("blackburn.twitch.title"), (p_96274_) ->
         {
             this.minecraft.setScreen(new TwitchSettingsScreen(this));
         }));
-     
+        
+
+        // the exit button 
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
         {
             onClose();
@@ -58,11 +59,8 @@ public class ClientSettingsScreen extends Screen
 
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight)
     {
-        String s = this.ipEdit.getValue();
-        String s1 = this.nameEdit.getValue();
         this.init(pMinecraft, pWidth, pHeight);
-        this.ipEdit.setValue(s);
-        this.nameEdit.setValue(s1);
+      
     }
 
     public void removed()
@@ -76,18 +74,12 @@ public class ClientSettingsScreen extends Screen
         this.minecraft.setScreen(this.lastScreen);
     }
 
-    private void updateAddButtonStatus()
-    {
-        //Consts.twitchconnector.setupBot();
-    }
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick)
     {
         this.renderBackground(pPoseStack);
         drawCenteredString(pPoseStack, this.font, this.title, this.width / 2, 17, 16777215);
-        
-        this.nameEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        this.ipEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+    
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
     }
 }

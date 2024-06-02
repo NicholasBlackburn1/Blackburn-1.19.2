@@ -3,7 +3,7 @@
  * this is the verifyer for the status of the users uuid (to see if they can access the freinds only  content)
  */
 
-package starblazerstudio.utils;
+package starblazerstudio.network;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import net.minecraft.client.Minecraft;
+import starblazerstudio.utils.Consts;
 
 public class StatusVerifiyer {
 
@@ -79,5 +80,11 @@ public class StatusVerifiyer {
             e.printStackTrace();
         }
     }
+
+    public void setOnlineStatus(){
+        
     }
+
+
+}
     

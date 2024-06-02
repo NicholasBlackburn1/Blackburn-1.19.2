@@ -10,8 +10,7 @@
   "blackburn.commands.twitch.connectaccfail": "§e Please Connect Your twitch account!",
   "blackburn.commands.twitch.connectacctrue": "Account Connected §e YES",
 
-  "blackburn.twitch.title":"Twitch IRC Settings",lackburn.clientsettings.title
-
+  "blackburn.twitch.title":"Twitch IRC Settings",
   "blackburn.commands.twitchstat.pre":"§6.twitchstat§r",
   "blackburn.commands.twitchstat.desc": "§eLets u see the current  twitch connection status§r",
   
@@ -31,6 +30,9 @@
   "blackburn.commands.version":"Version is",
   "blackburn.commands.help":"§a Lists all the available commands~",
 
+  "blackburn.commands.help.pre":"§6.help§r",
+  "blackburn.commands.version.pre":"§6.version§r",
+  
   "blackburn.commands.lewd.pre":"§6.lewd",
   "blackburn.commands.lewd.desc":"§a Shows all the lewd commands",
 
