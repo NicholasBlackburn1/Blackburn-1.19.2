@@ -16,7 +16,7 @@ import net.optifine.Config;
 import starblazerstudio.discord.RichPresence;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GuiUtils;
-import starblazerstudio.utils.StatusVerifiyer;
+import starblazerstudio.network.StatusVerifier;
 
 import com.google.common.util.concurrent.Runnables;
 import com.google.gson.JsonPrimitive;
@@ -179,7 +179,7 @@ public class TitleScreenOverlay {
     }
 
 
-   /**
+   /**StatusVerifier
     * This is for redering the splash title and editon ifno
     * @param screen
     * @param splash
