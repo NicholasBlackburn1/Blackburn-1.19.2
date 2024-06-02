@@ -93,6 +93,7 @@ public class Consts {
     // verifyer code
     public static String  homeurl = "127.0.0.1:5000";
     public static String  verifiyerurl = "http://"+homeurl+"/verify_uuid";
+    public static String  setOnlineurl = "http://"+homeurl+"/set_online_status";
 
     public static List twitchlog = new LinkedList<>();
 
