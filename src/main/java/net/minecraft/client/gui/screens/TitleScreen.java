@@ -129,7 +129,7 @@ public class TitleScreen extends Screen
       // runs only on 2nd startup of main menu
       if(i == 1){
          
-         verifiyer.verifyUser(minecraft);
+         verifiyer.verifyPreimumUser(minecraft);
          overlay.BlackburnTitleInit();
 
       }
