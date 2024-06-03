@@ -1,8 +1,19 @@
 package starblazerstudio.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Checkbox;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import starblazerstudio.utils.Consts;
+import starblazerstudio.utils.GitHubIssueCreator;
+import starblazerstudio.utils.key;
 
 public class BugReportScreen   extends Screen
 {
@@ -15,6 +26,7 @@ public class BugReportScreen   extends Screen
     private EditBox body;
     private Checkbox isConnected;
     private final Screen lastScreen;
+    private GitHubIssueCreator issueCreator;
 
     public TwitchSettingsScreen(Screen last){
         super(Component.translatable(I18n.a("blackburn.bugmenu.title")));
@@ -31,6 +43,11 @@ public class BugReportScreen   extends Screen
 
     protected void init()
     {
+
+        
+        String titleinput ="";
+        String bodyinput="";
+
         // sets up the Title box
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         this.title = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20, Component.translatable("addServer.enterName"));
@@ -40,28 +57,30 @@ public class BugReportScreen   extends Screen
         this.title.setResponder((p_169304_) ->
 
         {
-            this.title.getValue();
+            titleinput = this.title.getValue();
         });
 
         
-        this.addWidget(this.nameEdit);
+        this.addWidget(this.title);
 
         // creates the witch pass box
-        this.ipEdit = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("blackburn.twitch.password"));
-        this.ipEdit.setMaxLength(128);
-        this.ipEdit.setValue(this.ipEdit.getValue());
+        this.body = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("blackburn.twitch.password"));
+        this.body.setMaxLength(128);
+        this.body.setValue(this.body.getValue());
      
-        this.ipEdit.setResponder((p_169302_) ->
+        this.body.setResponder((p_169302_) ->
         {
-            Consts.TwitchPass = this.ipEdit.getValue();
+            bodyinput = this.body.getValue();
         });
-        this.addWidget(this.ipEdit);
+        this.addWidget(this.body);
 
 
     // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_) ->
         {
-            Consts.twitchconnector.setupBot();
+            issueCreator = new GitHubIssueCreator("NicholasBlackburn1","Blackburn-1.19.2",key.githubkey);
+            issueCreator.createIssue(titleinput,bodyinput,"");
+
         }));
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
         {

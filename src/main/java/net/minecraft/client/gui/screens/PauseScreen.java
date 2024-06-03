@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screens.advancements.AdvancementsScreen;
 import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
 import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
 import net.minecraft.network.chat.Component;
+import starblazerstudio.screens.BugReportScreen;
 
 public class PauseScreen extends Screen
 {
@@ -67,6 +68,7 @@ public class PauseScreen extends Screen
                 if (p_169339_)
                 {
                   // TODO: Add Button linking to custom screen 
+                  new BugReportScreen();
                 }
 
                 this.minecraft.setScreen(this);
