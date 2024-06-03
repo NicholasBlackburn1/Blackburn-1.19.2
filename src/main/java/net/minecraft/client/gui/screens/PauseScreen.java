@@ -68,7 +68,7 @@ public class PauseScreen extends Screen
                 if (p_169339_)
                 {
                   // TODO: Add Button linking to custom screen 
-                  new BugReportScreen();
+                  new BugReportScreen(this);
                 }
 
                 this.minecraft.setScreen(this);

@@ -15,7 +15,7 @@ import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.key;
 
-public class BugReportScreen   extends Screen
+public class BugReportScreen extends Screen
 {
     private static final Component TITLE_COMPONENT = Component.translatable("blackburn.bugmenu.title");
     private static final Component BODY_COMPONENT = Component.translatable("blackburn.bugmenu.body");
@@ -28,11 +28,11 @@ public class BugReportScreen   extends Screen
     private final Screen lastScreen;
     private GitHubIssueCreator issueCreator;
 
-    public TwitchSettingsScreen(Screen last){
-        super(Component.translatable(I18n.a("blackburn.bugmenu.title")));
+    public BugReportScreen(Screen last){
+      
+        super(Component.translatable(I18n.a("blackburn.bugmenu.screentitle")));
         this.callback = null;
         this.lastScreen = last;
-
     }
 
     public void tick()
@@ -79,7 +79,7 @@ public class BugReportScreen   extends Screen
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_) ->
         {
             issueCreator = new GitHubIssueCreator("NicholasBlackburn1","Blackburn-1.19.2",key.githubkey);
-            issueCreator.createIssue(titleinput,bodyinput,"");
+            
 
         }));
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
@@ -90,11 +90,11 @@ public class BugReportScreen   extends Screen
 
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight)
     {
-        String s = this.ipEdit.getValue();
-        String s1 = this.nameEdit.getValue();
+        String s = this.body.getValue();
+        String s1 = this.title.getValue();
         this.init(pMinecraft, pWidth, pHeight);
-        this.ipEdit.setValue(s);
-        this.nameEdit.setValue(s1);
+        this.body.setValue(s);
+        this.title.setValue(s1);
     }
 
     public void removed()
@@ -117,10 +117,10 @@ public class BugReportScreen   extends Screen
     {
         this.renderBackground(pPoseStack);
         drawCenteredString(pPoseStack, this.font, this.title, this.width / 2, 17, 16777215);
-        drawString(pPoseStack, this.font, NAME_LABEL, this.width / 2 - 100, 53, 10526880);
-        drawString(pPoseStack, this.font, IP_LABEL, this.width / 2 - 100, 94, 10526880);
-        this.nameEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
-        this.ipEdit.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        drawString(pPoseStack, this.font, TITLE_COMPONENT, this.width / 2 - 100, 53, 10526880);
+        drawString(pPoseStack, this.font, BODY_COMPONENT, this.width / 2 - 100, 94, 10526880);
+        this.title.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.body.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
     }
 }
