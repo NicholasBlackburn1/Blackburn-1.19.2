@@ -20,7 +20,7 @@
  public class StatusVerifier {
  
      // Generates response for user's status
-     public void verifyUser(Minecraft mc) {
+     public void verifyPreimumUser(Minecraft mc) {
          Consts.warn("Starting to run verify answer");
          try {
              // The URL of the endpoint

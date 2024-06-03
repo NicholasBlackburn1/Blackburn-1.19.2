@@ -119,17 +119,16 @@ public class TitleScreen extends Screen
       Consts.showStart = true;
       
       TitleScreenOverlay overlay = new TitleScreenOverlay();
-      StatusVerifier verifiyer = new StatusVerifier();
 
-      if (this.splash == null) {
+      if (this.splash == null) { 
          minecraft.getSplashManager().enableLewdSpashes(Consts.lewdsplashlocal, Consts.ishorny);
          this.splash = minecraft.getSplashManager().getSplash();
       }
 
       // runs only on 2nd startup of main menu
       if(i == 1){
-         
-         verifiyer.verifyPreimumUser(minecraft);
+         StatusVerifier ver = new StatusVerifier();
+         ver.verifyPreimumUser(minecraft);
          overlay.BlackburnTitleInit();
 
       }
