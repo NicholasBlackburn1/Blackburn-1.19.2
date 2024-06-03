@@ -66,7 +66,7 @@ public class PauseScreen extends Screen
             this.minecraft.setScreen(new ConfirmLinkScreen((p_169339_) -> {
                 if (p_169339_)
                 {
-                    Util.getPlatform().openUri("https://aka.ms/snapshotbugs?ref=game");
+                  // TODO: Add Button linking to custom screen 
                 }
 
                 this.minecraft.setScreen(this);

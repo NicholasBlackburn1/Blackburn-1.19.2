@@ -4,6 +4,7 @@ package starblazerstudio.utils;
  * GitHubIssueCreator is a Java class that provides functionality to create GitHub issues
  * programmatically using the GitHub API.
  */
+
 public class GitHubIssueCreator {
 
     private final String repoOwner; // GitHub repository owner's username
