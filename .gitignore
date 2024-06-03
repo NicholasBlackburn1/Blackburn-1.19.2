@@ -1,7 +1,7 @@
 .gradle
 build/
 bin/
-
+src/main/java/starblazerstudio/utils/key.java
 #Run files
 runclient
 
