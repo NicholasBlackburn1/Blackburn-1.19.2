@@ -39,7 +39,7 @@ public class ClientStartup{
             register.addToCommandList();
          
             messages();
-            statusVerifier.setOnlineStatus(mine, 1); 
+            statusVerifier.setOnlineStatus(mine, 1,"1.19.2"); 
           
             Consts.showStart = false;
 

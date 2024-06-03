@@ -72,7 +72,7 @@
      }
  
      // Sets the online status of the user
-     public void setOnlineStatus(Minecraft mc, int isConnected) {
+     public void setOnlineStatus(Minecraft mc, int isConnected, String version) {
          try {
              // The URL of the endpoint
              URL url = new URL(Consts.setOnlineurl);
@@ -83,7 +83,7 @@
              conn.setRequestProperty("Accept", "application/json");
  
              // JSON payload
-             String jsonInputString = "{\"uuid\": \"" + mc.getUser().getUuid().toString() + "\", \"is_online\": " + isConnected + "}";
+             String jsonInputString = "{\"uuid\": \"" + mc.getUser().getUuid().toString() + "\", \"is_online\": " + isConnected +"\", \"version\": \""+version+"\"}";
              Consts.error("Json Payload -> " + jsonInputString);
  
              try (OutputStream os = conn.getOutputStream()) {
