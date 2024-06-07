@@ -14,11 +14,11 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.optifine.util.LinkedList;
+import starblazerstudio.screens.guicomponetns.GuiDropdownList;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.IssueLabel;
 import starblazerstudio.utils.key;
-import starblazerstudio.utils.IssueLable;
 
 public class BugReportScreen extends Screen {
 
@@ -35,7 +35,7 @@ public class BugReportScreen extends Screen {
     private String titleinput = "";
     private String bodyinput = "";
 
-    private LinkedList<IssueLabel> isssue = new LinkedList<IssueLabel>();
+    private GuiDropdownList dropdownList;
 
     public BugReportScreen(Screen last) {
 
@@ -75,21 +75,25 @@ public class BugReportScreen extends Screen {
         });
         this.addWidget(this.body);
 
-        // 
+        // Issue selection
+
+        this.addRenderableWidget(new GuiDropdownList(50, 50, 150, 20, new String[][]{{"Option 1", "option1"}, {"Option 2", "option2"}}, (button) -> {
+            // Handle button press action here
+            System.out.println("Button pressed!");
+            
+        }));
 
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_)
                 -> {
 
-            issueCreator = new GitHubIssueCreator("NicholasBlackburn1", "Blackburn-1.19.2", key.githubkey);
-            try {
-                issueCreator.createIssue(titleinput, bodyinput, isssue);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+                    issueCreator = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
+                    //issueCreator.createIssue(titleinput,bodyinput);
 
         }));
+
+
+
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_)
                 -> {
             onClose();
@@ -118,7 +122,7 @@ public class BugReportScreen extends Screen {
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
         this.renderBackground(pPoseStack);
-        drawCenteredString(pPoseStack, this.font, this.title, this.width / 2, 17, 16777215);
+
         drawString(pPoseStack, this.font, TITLE_COMPONENT, this.width / 2 - 100, 53, 10526880);
         drawString(pPoseStack, this.font, BODY_COMPONENT, this.width / 2 - 100, 94, 10526880);
         this.title.render(pPoseStack, pMouseX, pMouseY, pPartialTick);

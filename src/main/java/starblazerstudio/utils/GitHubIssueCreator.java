@@ -6,8 +6,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-import net.optifine.util.LinkedList;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +44,7 @@ public class GitHubIssueCreator {
      * @param labels List of labels/tags for the issue
      * @throws IOException If an I/O error occurs while making HTTP request
      */
-    public void createIssue(String title, String body, LinkedList<IssueLabel> labels) throws IOException {
+    public void createIssue(String title, String body, List<String> labels) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
 
@@ -62,12 +60,7 @@ public class GitHubIssueCreator {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\"title\":\"").append(title).append("\",");
         jsonBuilder.append("\"body\":\"").append(body).append("\",");
-
-        // Convert IssueLabel enum list to a JSON array string
-        String labelsJsonArray = labels.stream()
-                                       .map(IssueLabel::toString)
-                                       .collect(Collectors.joining("\",\"", "[\"", "\"]"));
-        jsonBuilder.append("\"labels\":").append(labelsJsonArray).append("}");
+        jsonBuilder.append("\"labels\":").append(labelsToJsonArray(labels)).append("}");
 
         // Set request body
         StringEntity entity = new StringEntity(jsonBuilder.toString());
@@ -83,5 +76,19 @@ public class GitHubIssueCreator {
 
         // Close the HttpClient
         httpClient.close();
+    }
+
+    /**
+     * Converts a list of labels to a JSON array string.
+     *
+     * @param labels List of labels
+     * @return JSON array string representing the labels
+     */
+    private String labelsToJsonArray(List<String> labels) {
+        // Convert the list of labels to a JSON array string
+        String labelsJsonArray = labels.stream()
+                                       .map(label -> "\"" + label + "\"")
+                                       .collect(Collectors.joining(",", "[", "]"));
+        return labelsJsonArray;
     }
 }

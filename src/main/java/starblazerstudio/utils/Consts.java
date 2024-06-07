@@ -80,6 +80,10 @@ public class Consts {
 
     public static String ReleaseName = "FoxBurn-";
 
+    // repo
+    public static String repouser  ="NicholasBlackburn1";
+    public static String reponame="Blackburn-1.19.2";
+
 
     // CopyRight Text
     public static String copyright = "§cC§6o§ep§ay§9R§bi§5g§ch§6t§ee§ad §bB§5y §6N§ei§ac§9k§by §cB§6l§ea§ac§9k§bb§5u§cr§6n";
