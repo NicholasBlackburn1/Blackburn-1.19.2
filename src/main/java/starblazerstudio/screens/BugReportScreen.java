@@ -36,12 +36,14 @@ public class BugReportScreen extends Screen {
     private String bodyinput = "";
 
     private GuiDropdownList dropdownList;
+    private final Screen laast;
 
     public BugReportScreen(Screen last) {
 
         super(Component.translatable(I18n.a("blackburn.bugmenu.screentitle")));
         this.callback = null;
-        this.lastScreen = last;
+        this.laast = last;
+     
     }
 
     public void tick() {
