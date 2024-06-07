@@ -63,6 +63,7 @@ public class BugReportScreen extends Screen {
                 Component.translatable("addServer.enterName"));
         this.title.setFocus(true);
         this.title.setValue(this.title.getValue());
+        this.title.setMaxLength(255);
 
         this.title.setResponder((p_169304_) -> {
             titleinput = this.title.getValue();
@@ -73,7 +74,7 @@ public class BugReportScreen extends Screen {
         // creates the witch pass box
         this.body = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20,
                 Component.translatable("blackburn.twitch.password"));
-        this.body.setMaxLength(128);
+        this.body.setMaxLength(255);
         this.body.setValue(this.body.getValue());
 
         this.body.setResponder((p_169302_) -> {
