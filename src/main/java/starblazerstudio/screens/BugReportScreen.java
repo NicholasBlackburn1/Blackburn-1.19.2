@@ -42,6 +42,7 @@ public class BugReportScreen extends Screen {
 
         super(Component.translatable(I18n.a("blackburn.bugmenu.screentitle")));
         this.callback = null;
+        this.lastScreen = last;
         this.laast = last;
      
     }
@@ -79,7 +80,7 @@ public class BugReportScreen extends Screen {
 
         // Issue selection
 
-        this.addRenderableWidget(new GuiDropdownList(50, 50, 150, 20, new String[][]{{"Option 1", "option1"}, {"Option 2", "option2"}}, (button) -> {
+        this.addRenderableWidget(new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, new String[][]{{"", ""}, {"Option 2", "option2"}}, (button) -> {
             // Handle button press action here
             System.out.println("Button pressed!");
             

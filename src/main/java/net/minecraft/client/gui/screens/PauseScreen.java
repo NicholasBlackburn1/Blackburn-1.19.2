@@ -62,18 +62,14 @@ public class PauseScreen extends Screen
                 this.minecraft.setScreen(this);
             }, s, true));
         }));
+        
         Button button = this.addRenderableWidget(new Button(this.width / 2 + 4, this.height / 4 + 72 + -16, 98, 20, Component.translatable("menu.reportBugs"), (p_96331_) ->
         {
-            this.minecraft.setScreen(new ConfirmLinkScreen((p_169339_) -> {
-                if (p_169339_)
-                {
-                  // TODO: Add Button linking to custom screen 
-                  new BugReportScreen(this);
-                }
-
-                this.minecraft.setScreen(this);
-            }, "https://aka.ms/snapshotbugs?ref=game", true));
+          this.minecraft.setScreen(new BugReportScreen(this));
+            
         }));
+
+
         button.active = !SharedConstants.getCurrentVersion().getDataVersion().isSideSeries();
         this.addRenderableWidget(new Button(this.width / 2 - 102, this.height / 4 + 96 + -16, 98, 20, Component.translatable("menu.options"), (p_96323_) ->
         {
