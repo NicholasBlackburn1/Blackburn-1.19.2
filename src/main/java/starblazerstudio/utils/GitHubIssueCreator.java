@@ -44,7 +44,7 @@ public class GitHubIssueCreator {
      * @param labels List of labels/tags for the issue
      * @throws IOException If an I/O error occurs while making HTTP request
      */
-    public void createIssue(String title, String body, List<String> labels) throws IOException {
+    public void createIssue(String title, String body, String label) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
 
@@ -60,7 +60,7 @@ public class GitHubIssueCreator {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\"title\":\"").append(title).append("\",");
         jsonBuilder.append("\"body\":\"").append(body).append("\",");
-        jsonBuilder.append("\"labels\":").append(labelsToJsonArray(labels)).append("}");
+        jsonBuilder.append("\"labels\":").append(label).append("}");
 
         // Set request body
         StringEntity entity = new StringEntity(jsonBuilder.toString());

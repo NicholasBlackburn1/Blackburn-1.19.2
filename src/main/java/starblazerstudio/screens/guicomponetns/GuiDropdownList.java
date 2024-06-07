@@ -1,12 +1,10 @@
 package starblazerstudio.screens.guicomponetns;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.*;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
+
+import com.mojang.blaze3d.vertex.PoseStack;
 
 public class GuiDropdownList extends Button {
     private final String[][] data;
@@ -54,7 +52,7 @@ public class GuiDropdownList extends Button {
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
-    public String getSelectedText() {
-        return data[selectedIndex][1];
+    public String getSelected() {
+        return data[selectedIndex][0];
     }
 }

@@ -10,16 +10,16 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage.System;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.optifine.util.LinkedList;
 import starblazerstudio.screens.guicomponetns.GuiDropdownList;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.IssueLabel;
 import starblazerstudio.utils.key;
+
+import java.util.LinkedList; // Import LinkedList from java.util
 
 public class BugReportScreen extends Screen {
 
@@ -38,6 +38,8 @@ public class BugReportScreen extends Screen {
 
     private GuiDropdownList dropdownList;
     private final Screen laast;
+
+    private String selected_label = "";
 
     public BugReportScreen(Screen last) {
 
@@ -83,27 +85,27 @@ public class BugReportScreen extends Screen {
         * isssue scellection
         */
         LinkedList<String[]> labelOptions = new LinkedList<>();
-        labelOptions.add(new String[]{"", ""}); // Add an empty option
+        labelOptions.add(new String[]{"Test", "test"}); // Add an empty option
         for (IssueLabel label : IssueLabel.values()) {
             labelOptions.add(new String[]{label.toString(), label.toString()});
         }
 
-        this.dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, labelOptions.toArray(new String[0][]), (button) -> {
+        this.addRenderableWidget( dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 10 + 18, 29, 20, labelOptions.toArray(new String[0][]), (button) -> {
             // Handle button press action here
             System.out.println("Button pressed!");
             // Get the selected label
-            String selectedLabel = this.dropdownList.getSelected();
-            System.out.println("Selected label: " + selectedLabel);
-        });
+            selected_label = this.dropdownList.getSelected();
+            System.out.println("Selected label: " + selected_label);
+        }));
 
-        this.addRenderableWidget(this.dropdownList);
+       
 
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_)
                 -> {
 
                     issueCreator = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
-                    //issueCreator.createIssue(titleinput,bodyinput);
+                    issueCreator.createIssue(titleinput,bodyinput,selected_label);
 
         }));
 
