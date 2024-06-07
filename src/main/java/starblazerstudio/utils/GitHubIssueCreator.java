@@ -10,12 +10,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import starblazerstudio.utils.IssueLabel;
 /**
  * GitHubIssueCreator is a Java class that provides functionality to create GitHub issues
  * programmatically using the GitHub API.
  * 
- * TODO: rrmeber that the tgithub key is in the key,java
+ * TODO: Remember that the GitHub key is in the key.java
  */
 
 public class GitHubIssueCreator {
@@ -24,9 +23,6 @@ public class GitHubIssueCreator {
     private final String repoName; // GitHub repository name
     private final String token; // Personal access token for authentication
 
-
-
-    
     /**
      * Constructor for GitHubIssueCreator class.
      *
@@ -48,7 +44,7 @@ public class GitHubIssueCreator {
      * @param labels List of labels/tags for the issue
      * @throws IOException If an I/O error occurs while making HTTP request
      */
-    public void createIssue(String title, String body, IssueLable labels) throws IOException {
+    public void createIssue(String title, String body, List<IssueLabel> labels) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
 
@@ -64,16 +60,12 @@ public class GitHubIssueCreator {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\"title\":\"").append(title).append("\",");
         jsonBuilder.append("\"body\":\"").append(body).append("\",");
-        jsonBuilder.append("\"labels\":[");
 
-        for (int i = 0; i < labels.size(); i++) {
-            jsonBuilder.append("\"").append(labels.get(i)).append("\"");
-            if (i < labels.size() - 1) {
-                jsonBuilder.append(",");
-            }
-        }
-
-        jsonBuilder.append("]}");
+        // Convert IssueLabel enum list to a JSON array string
+        String labelsJsonArray = labels.stream()
+                                       .map(IssueLabel::toString)
+                                       .collect(Collectors.joining("\",\"", "[\"", "\"]"));
+        jsonBuilder.append("\"labels\":").append(labelsJsonArray).append("}");
 
         // Set request body
         StringEntity entity = new StringEntity(jsonBuilder.toString());
