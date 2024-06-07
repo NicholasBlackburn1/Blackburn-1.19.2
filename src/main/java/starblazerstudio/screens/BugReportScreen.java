@@ -90,7 +90,7 @@ public class BugReportScreen extends Screen {
             labelOptions.add(new String[]{label.toString(), label.toString()});
         }
 
-        this.addRenderableWidget( dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 10 + 18, 29, 20, labelOptions.toArray(new String[0][]), (button) -> {
+        this.addRenderableWidget( dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 20, 29, 20, labelOptions.toArray(new String[0][]), (button) -> {
             // Handle button press action here
             System.out.println("Button pressed!");
             // Get the selected label

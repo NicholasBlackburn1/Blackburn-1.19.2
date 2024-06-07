@@ -17,6 +17,8 @@ import net.optifine.gui.GuiScreenOF;
 import starblazerstudio.twitch.TwitchIRC;
 import starblazerstudio.utils.Consts;
 
+import starblazerstudio.screens.BugReportScreen;
+
 public class ClientSettingsScreen extends Screen
 {
 
@@ -24,6 +26,7 @@ public class ClientSettingsScreen extends Screen
     private static final Component IP_LABEL = Component.translatable("blackburn.twitch.password");
     private Button addButton;
     private final BooleanConsumer callback;
+
   
     
     private final Screen lastScreen;
@@ -49,6 +52,12 @@ public class ClientSettingsScreen extends Screen
             this.minecraft.setScreen(new TwitchSettingsScreen(this));
         }));
         
+         // the twtich button 
+         this.addRenderableWidget(new Button(this.width / 2 + 5, this.height / 6 + 48 + 6, 150, 20, Component.translatable("blackburn.bugmenu.title"), (p_96274_) ->
+         {
+             this.minecraft.setScreen(new BugReportScreen(this));
+         }));
+         
 
         // the exit button 
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_) ->
