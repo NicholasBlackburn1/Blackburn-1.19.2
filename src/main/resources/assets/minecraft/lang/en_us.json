@@ -51,7 +51,9 @@
 
   "blackburn.clientsettings.title":"FoxBurn Settings",
 
-  "blackburn.bugmenu.title":"Report Bugs",
+  "blackburn.bugmenu.title":"Title",
+  "blackburn.bugmenu.body":"Body",
+  "blackburn.bugmenu.connect":"Submmit report",
 
   "language.name": "English",
   "language.region": "United States",

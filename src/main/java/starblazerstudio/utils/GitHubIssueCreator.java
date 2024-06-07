@@ -62,8 +62,11 @@ public class GitHubIssueCreator {
         httpPost.setHeader("Accept", "application/vnd.github+json");
         httpPost.setHeader("X-GitHub-Api-Version", "2022-11-28");
 
+        // device report -> DISPLAYS device info at the end of the issue report
+        String device_info = "    CPU Cores "+Runtime.getRuntime().availableProcessors();
+
         // JSON payload for creating an issue
-        String jsonPayload = String.format("{\"title\":\"%s\",\"body\":\"%s\",\"labels\":[\"%s\"]}", title, body, label);
+        String jsonPayload = String.format("{\"title\":\"%s\",\"body\":\"%s\",\"labels\":[\"%s\"]}", title, body+device_info, label);
 
         // Set request body
         StringEntity entity = new StringEntity(jsonPayload);
