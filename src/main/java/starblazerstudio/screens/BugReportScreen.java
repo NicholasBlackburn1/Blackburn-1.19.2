@@ -47,7 +47,7 @@ public class BugReportScreen extends Screen {
         this.callback = null;
         this.lastScreen = last;
         this.laast = last;
-     
+
     }
 
     public void tick() {
@@ -59,67 +59,65 @@ public class BugReportScreen extends Screen {
 
         // sets up the Title box
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-        this.title = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20, Component.translatable("addServer.enterName"));
+        this.title = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20,
+                Component.translatable("addServer.enterName"));
         this.title.setFocus(true);
         this.title.setValue(this.title.getValue());
 
-        this.title.setResponder((p_169304_)
-                -> {
+        this.title.setResponder((p_169304_) -> {
             titleinput = this.title.getValue();
         });
 
         this.addWidget(this.title);
 
         // creates the witch pass box
-        this.body = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20, Component.translatable("blackburn.twitch.password"));
+        this.body = new EditBox(this.font, this.width / 2 - 100, 106, 200, 20,
+                Component.translatable("blackburn.twitch.password"));
         this.body.setMaxLength(128);
         this.body.setValue(this.body.getValue());
 
-        this.body.setResponder((p_169302_)
-                -> {
+        this.body.setResponder((p_169302_) -> {
             bodyinput = this.body.getValue();
         });
         this.addWidget(this.body);
 
-       /**
-        * isssue scellection
-        */
+        /**
+         * isssue scellection
+         */
         LinkedList<String[]> labelOptions = new LinkedList<>();
-        labelOptions.add(new String[]{"Test", "test"}); // Add an empty option
+        labelOptions.add(new String[] { "Select Tag", "" }); // Add an empty option
         for (IssueLabel label : IssueLabel.values()) {
-            labelOptions.add(new String[]{label.toString(), label.toString()});
+            labelOptions.add(new String[] { label.toString(), label.toString() });
         }
 
-        this.addRenderableWidget( dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 20, 29, 20, labelOptions.toArray(new String[0][]), (button) -> {
-            // Handle button press action here
-            System.out.println("Button pressed!");
-            // Get the selected label
-            selected_label = this.dropdownList.getSelected();
-            System.out.println("Selected label: " + selected_label);
-        }));
-
-       
+        this.addRenderableWidget(dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 80, 50, 20,
+                labelOptions.toArray(new String[0][]), (button) -> {
+                    // Handle button press action here
+                    System.out.println("Button pressed!");
+                    // Get the selected label
+                    selected_label = this.dropdownList.getSelected();
+                    System.out.println("Selected label: " + selected_label);
+                }));
 
         // connection button
-        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_)
-                -> {
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20,
+                Component.translatable("blakcburn.twitch.connect"), (p_96030_) -> {
 
-                    issueCreator = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
+                    issueCreator = new GitHubIssueCreator(Consts.repouser, Consts.reponame, key.githubkey);
 
-                        try {
-                issueCreator.createIssue(titleinput, bodyinput, selected_label);
-            } catch (Exception e) {
-                e.printStackTrace(); // Log the exception stack trace
-            }
-
-        }));
+                    try {
+                        issueCreator.createIssue(titleinput, bodyinput, selected_label);
+                    } catch (Exception e) {
+                        e.printStackTrace(); // Log the exception stack trace
+                    }
 
 
+                }));
 
-        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, CommonComponents.GUI_CANCEL, (p_169297_)
-                -> {
-            onClose();
-        }));
+        this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20,
+                CommonComponents.GUI_CANCEL, (p_169297_) -> {
+                    onClose();
+                }));
     }
 
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight) {
@@ -139,7 +137,7 @@ public class BugReportScreen extends Screen {
     }
 
     private void updateAddButtonStatus() {
-        //Consts.twitchconnector.setupBot();
+        // Consts.twitchconnector.setupBot();
     }
 
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {

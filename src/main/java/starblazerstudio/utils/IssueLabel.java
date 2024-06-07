@@ -2,16 +2,9 @@ package starblazerstudio.utils;
 
 
 public enum IssueLabel {
-    FEATURE("feature"),
+    FEATURE("Feature"),
     BUG("bug"),
-    DOCUMENTATION("documentation"),
     QUESTION("question"),
-    HELP_WANTED("help wanted"),
-    GOOD_FIRST_ISSUE("good first issue"),
-    ENHANCEMENT("enhancement"),
-    INVALID("invalid"),
-    WONTFIX("wontfix"),
-    DUPLICATE("duplicate"),
     MAINTENANCE("maintenance"),
     PERFORMANCE("performance");
 
