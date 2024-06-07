@@ -50,7 +50,7 @@ public class GitHubIssueCreator {
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
         
         Consts.warn("GITHUB URL: "+apiUrl);
-        Consts.warn("Token:"+token);
+        Consts.warn("Token:"+key.githubkey);
 
         // Create HTTP client
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -58,8 +58,9 @@ public class GitHubIssueCreator {
         
 
         // Set request headers
-        httpPost.setHeader("Authorization", "token " + token);
         httpPost.setHeader("Accept", "application/vnd.github.v3+json");
+        httpPost.setHeader("Authorization", "Bearer " + key.githubkey);
+        httpPost.setHeader("X-GitHub-Api-Version","2022-11-28");
 
         // JSON payload for creating an issue
         StringBuilder jsonBuilder = new StringBuilder();
