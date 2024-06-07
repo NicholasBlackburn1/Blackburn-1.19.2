@@ -10,6 +10,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.multiplayer.chat.LoggedChatMessage.System;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -78,13 +79,24 @@ public class BugReportScreen extends Screen {
         });
         this.addWidget(this.body);
 
-        // Issue selection
+       /**
+        * isssue scellection
+        */
+        LinkedList<String[]> labelOptions = new LinkedList<>();
+        labelOptions.add(new String[]{"", ""}); // Add an empty option
+        for (IssueLabel label : IssueLabel.values()) {
+            labelOptions.add(new String[]{label.toString(), label.toString()});
+        }
 
-        this.addRenderableWidget(new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, new String[][]{{"", ""}, {"Option 2", "option2"}}, (button) -> {
+        this.dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 120 + 18, 200, 20, labelOptions.toArray(new String[0][]), (button) -> {
             // Handle button press action here
             System.out.println("Button pressed!");
-            
-        }));
+            // Get the selected label
+            String selectedLabel = this.dropdownList.getSelected();
+            System.out.println("Selected label: " + selectedLabel);
+        });
+
+        this.addRenderableWidget(this.dropdownList);
 
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_)
