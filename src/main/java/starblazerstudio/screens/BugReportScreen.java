@@ -106,7 +106,7 @@ public class BugReportScreen extends Screen {
 
                     issueCreator = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
 
-                try {
+                        try {
                 issueCreator.createIssue(titleinput, bodyinput, selected_label);
             } catch (Exception e) {
                 e.printStackTrace(); // Log the exception stack trace

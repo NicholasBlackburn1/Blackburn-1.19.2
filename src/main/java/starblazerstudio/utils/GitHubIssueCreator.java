@@ -5,6 +5,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import starblazerstudio.utils.Consts;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,10 +48,14 @@ public class GitHubIssueCreator {
     public void createIssue(String title, String body, String label) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
+        
+        Consts.warn("GITHUB URL: "+apiUrl);
+        Consts.warn("Token:"+token);
 
         // Create HTTP client
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(apiUrl);
+        
 
         // Set request headers
         httpPost.setHeader("Authorization", "token " + token);
