@@ -14,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.key;
+import starblazerstudio.utils.IssueLable;
 
 public class BugReportScreen extends Screen
 {
@@ -27,6 +28,8 @@ public class BugReportScreen extends Screen
     private Checkbox isConnected;
     private final Screen lastScreen;
     private GitHubIssueCreator issueCreator;
+    private String titleinput = "";
+    private String bodyinput = "";
 
     public BugReportScreen(Screen last){
       
@@ -43,10 +46,6 @@ public class BugReportScreen extends Screen
 
     protected void init()
     {
-
-        
-        String titleinput ="";
-        String bodyinput="";
 
         // sets up the Title box
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
@@ -79,7 +78,7 @@ public class BugReportScreen extends Screen
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blakcburn.twitch.connect"), (p_96030_) ->
         {
             issueCreator = new GitHubIssueCreator("NicholasBlackburn1","Blackburn-1.19.2",key.githubkey);
-            issueCreator.createIssue(titleinput,bodyinput,);
+            //issueCreator.createIssue(titleinput,bodyinput,IssueLable.feature);
             
 
         }));
