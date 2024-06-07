@@ -6,6 +6,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
+import net.optifine.util.LinkedList;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +46,7 @@ public class GitHubIssueCreator {
      * @param labels List of labels/tags for the issue
      * @throws IOException If an I/O error occurs while making HTTP request
      */
-    public void createIssue(String title, String body, List<IssueLabel> labels) throws IOException {
+    public void createIssue(String title, String body, LinkedList<IssueLabel> labels) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
 
