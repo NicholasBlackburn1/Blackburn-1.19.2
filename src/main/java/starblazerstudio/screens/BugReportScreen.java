@@ -102,7 +102,7 @@ public class BugReportScreen extends Screen {
 
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20,
-                Component.translatable("blakcburn.bugmenu.connect"), (p_96030_) -> {
+                Component.translatable("blackburn.bugmenu.connect"), (p_96030_) -> {
 
                     issueCreator = new GitHubIssueCreator(Consts.repouser, Consts.reponame, key.githubkey);
 

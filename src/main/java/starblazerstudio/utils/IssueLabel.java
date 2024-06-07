@@ -3,11 +3,8 @@ package starblazerstudio.utils;
 
 public enum IssueLabel {
     FEATURE("Feature"),
-    BUG("bug"),
-    QUESTION("question"),
-    MAINTENANCE("maintenance"),
-    PERFORMANCE("performance");
-
+    BUG("BUG"),
+    CRASH("crash");
     private final String label;
 
     IssueLabel(String label) {

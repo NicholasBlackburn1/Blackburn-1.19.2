@@ -10,6 +10,7 @@
 4. basic commands  -x 
 5. custom menu sound -X
 6. Custom Bug reporter in game -X
+7. when client crashes Submit Bug report 
 
 ## make seperate build 
 1. seperate lewd builds -X 

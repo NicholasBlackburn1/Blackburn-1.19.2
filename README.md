@@ -9,6 +9,8 @@
 3. discord inagration -x 
 4. basic commands  -x 
 5. custom menu sound -X
+6. Custom Bug reporter in game -X
+7. Online Reporting Crash reporter -X
 
 ## make seperate build 
 1. seperate lewd builds -X 
@@ -23,3 +25,4 @@
 
 ## text readabillity 
 1. reable text on main menu
+

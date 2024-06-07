@@ -889,12 +889,23 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
 
     public static void crash(CrashReport pReport)
     {
+        
+        GitHubIssueCreator issuetracker = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
+    
+
         File file1 = new File(getInstance().gameDirectory, "crash-reports");
         File file2 = new File(file1, "crash-" + Util.getFilenameFormattedDateTime() + "-client.txt");
         Bootstrap.realStdoutPrintln(pReport.getFriendlyReport());
 
         if (pReport.getSaveFile() != null)
-        {
+        {   
+            try{
+            issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pReport.getExceptionMessage(),"crash");
+            }
+            catch(Exception e){
+                Consts.error(e.getLocalizedMessage());
+            }
+
             Bootstrap.realStdoutPrintln("#@!@# Game crashed! Crash report saved to: #@!@# " + pReport.getSaveFile());
             System.exit(-1);
         }
