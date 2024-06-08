@@ -91,7 +91,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  public static int getBackgroundnum(Random random,int background, int backgroundCount){
    int output = 0;
   if(Consts.devMode){
-     output = 29;
+     output = background;
   }
   else{
      output = random.nextInt(backgroundCount);
@@ -99,26 +99,25 @@ import net.minecraftforge.api.distmarker.OnlyIn;
   return output;
 }
 
-
   // loads data from json fiels 
   public static void loadFromJson(InputStream p_128109_,int background_count) {
-    Gson json = new Gson();
-    Random random = new Random();
- 
-    JsonArray jsonobject = json.fromJson(new InputStreamReader(p_128109_, StandardCharsets.UTF_8), JsonArray.class);
-    int i  = 0;
- 
-    for(Entry<String, JsonElement> entry : jsonobject.get(getBackgroundnum(random,0,background_count)).getAsJsonObject().entrySet()) {
-       Consts.debug(entry.getKey().toString());
-       Consts.keys.add(entry.getKey().toString());
-       Consts.background.add(entry.getValue());
- 
-       Consts.log("Linked list for keys"+ " "+ entry.getKey().toString()+ " "+ entry.getValue().toString());
-       Consts.log("Linked List for data"+ " "+ Consts.background.toString());
-       
-    }
- 
- }
+   Gson json = new Gson();
+   Random random = new Random();
+
+   JsonArray jsonobject = json.fromJson(new InputStreamReader(p_128109_, StandardCharsets.UTF_8), JsonArray.class);
+   int i  = 0;
+
+   for(Entry<String, JsonElement> entry : jsonobject.get(getBackgroundnum(random,28,background_count)).getAsJsonObject().entrySet()) {
+      Consts.debug(entry.getKey().toString());
+      Consts.keys.add(entry.getKey().toString());
+      Consts.background.add(entry.getValue());
+
+      Consts.log("Linked list for keys"+ " "+ entry.getKey().toString()+ " "+ entry.getValue().toString());
+      Consts.log("Linked List for data"+ " "+ Consts.background.toString());
+      
+   }
+
+}
  
  
   // Dumps json so i cam then hope fully get daya from it 
