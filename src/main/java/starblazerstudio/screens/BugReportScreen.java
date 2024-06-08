@@ -39,7 +39,7 @@ public class BugReportScreen extends Screen {
     private GuiDropdownList dropdownList;
     private final Screen laast;
 
-    private String selected_label = "";
+    private static String selected_label = "";
 
     public BugReportScreen(Screen last) {
 
@@ -94,10 +94,10 @@ public class BugReportScreen extends Screen {
         this.addRenderableWidget(dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 80, 50, 20,
                 labelOptions.toArray(new String[0][]), (button) -> {
                     // Handle button press action here
-                    System.out.println("Button pressed!");
+                   Consts.error("Button pressed!");
                     // Get the selected label
                     selected_label = this.dropdownList.getSelected();
-                    System.out.println("Selected label: " + selected_label);
+                    Consts.error("Selected label: " + selected_label);
                 }));
 
         // connection button
