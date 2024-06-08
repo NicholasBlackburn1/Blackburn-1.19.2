@@ -13,12 +13,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import starblazerstudio.screens.guicomponents.GuiDropdownList;
+import starblazerstudio.guicomponents.GuiDropdownList;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.IssueLabel;
 import starblazerstudio.utils.key;
-import starblazerstudio.screens.guicomponents.GuiToastNotification;
+import starblazerstudio.guicomponents.GuiToastNotification;
 
 import java.util.LinkedList; // Import LinkedList from java.util
 

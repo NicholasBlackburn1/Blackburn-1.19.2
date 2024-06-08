@@ -1,4 +1,4 @@
-package starblazerstudio.screens.guicomponents;
+package starblazerstudio.guicomponents;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
