@@ -27,6 +27,7 @@ public class BugReportScreen extends Screen {
     private static final Component BODY_COMPONENT = Component.translatable("blackburn.bugmenu.body");
     private Button addButton;
     private final BooleanConsumer callback;
+    
 
     private EditBox title;
     private EditBox body;
@@ -101,7 +102,7 @@ public class BugReportScreen extends Screen {
 
 
         // shows that u summited the stuff succwssfully
-        this.addRenderableWidget(new Checkbox(this.width / 2 - 100, this.height / 4 + 80, 50, 20, Component.translatable("blackburn.bugmenu.isconnected"), false));
+        this.addRenderableWidget(new Checkbox(this.width / 2 + 60, this.height / 4 + 80, 50, 20, Component.translatable("blackburn.bugmenu.isconnected"),Consts.isconnected ));
 
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20,
@@ -110,6 +111,7 @@ public class BugReportScreen extends Screen {
                     issueCreator = new GitHubIssueCreator(Consts.repouser, Consts.reponame, key.githubkey);
 
                         Consts.error("Selected label: " + Consts.bugmenulabel);
+                        Consts.isconnected = true;
 
                     try {
                         issueCreator.createIssue(titleinput, bodyinput, Consts.bugmenulabel);
