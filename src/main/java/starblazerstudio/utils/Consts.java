@@ -99,6 +99,9 @@ public class Consts {
     public static String  verifiyerurl = "http://"+homeurl+"/verify_premium_user";
     public static String  setOnlineurl = "http://"+homeurl+"/active_user_login";
 
+    //bugmenu
+    public static String bugmenulabel = "";
+
     public static List twitchlog = new LinkedList<>();
 
     public boolean getEnablePos(){

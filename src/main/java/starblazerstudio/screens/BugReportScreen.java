@@ -93,11 +93,8 @@ public class BugReportScreen extends Screen {
 
         this.addRenderableWidget(dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 80, 50, 20,
                 labelOptions.toArray(new String[0][]), (button) -> {
-                    // Handle button press action here
-                   Consts.error("Button pressed!");
-                    // Get the selected label
-                    selected_label = this.dropdownList.getSelected();
-                    Consts.error("Selected label: " + selected_label);
+                  
+                    
                 }));
 
         // connection button
@@ -106,8 +103,10 @@ public class BugReportScreen extends Screen {
 
                     issueCreator = new GitHubIssueCreator(Consts.repouser, Consts.reponame, key.githubkey);
 
+                        Consts.error("Selected label: " + Consts.bugmenulabel);
+
                     try {
-                        issueCreator.createIssue(titleinput, bodyinput, selected_label);
+                        issueCreator.createIssue(titleinput, bodyinput, Consts.bugmenulabel);
                     } catch (Exception e) {
                         e.printStackTrace(); // Log the exception stack trace
                     }

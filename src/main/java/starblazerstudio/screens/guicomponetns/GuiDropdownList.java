@@ -56,6 +56,7 @@ public class GuiDropdownList extends Button {
                     this.expanded = false;
                    Consts.warn("Selected index: " + this.selectedIndex); // Debug statement
                    Consts.warn("Selected label: " + data[i][0]); // Debug statement
+                   Consts.bugmenulabel = data[i][0];
                     return true;
                 }
             }
