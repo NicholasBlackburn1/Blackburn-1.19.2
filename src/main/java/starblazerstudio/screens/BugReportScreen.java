@@ -18,7 +18,6 @@ import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.IssueLabel;
 import starblazerstudio.utils.key;
-import starblazerstudio.guicomponents.GuiToastNotification;
 
 import java.util.LinkedList; // Import LinkedList from java.util
 
@@ -38,7 +37,7 @@ public class BugReportScreen extends Screen {
     private String bodyinput = "";
 
     private GuiDropdownList dropdownList;
-    private GuiToastNotification toastNotification;
+ 
     private final Screen laast;
 
     private static String selected_label = "";
@@ -57,11 +56,7 @@ public class BugReportScreen extends Screen {
         this.body.tick();
     }
 
-    private void showToast(String message) {
-        this.toastNotification = new GuiToastNotification(this.minecraft, this.width / 2 - 100, this.height / 2 - 20, 200, 20, Component.nullToEmpty(message));
-        this.addRenderableWidget(toastNotification);
-    }
-
+   
     protected void init() {
 
         // sets up the Title box
@@ -104,6 +99,10 @@ public class BugReportScreen extends Screen {
                     
                 }));
 
+
+        // shows that u summited the stuff succwssfully
+        this.addRenderableWidget(new Checkbox(this.width / 2 - 100, this.height / 4 + 80, 50, 20, Component.translatable("blackburn.bugmenu.isconnected"), false));
+
         // connection button
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20,
                 Component.translatable("blackburn.bugmenu.connect"), (p_96030_) -> {
@@ -114,7 +113,7 @@ public class BugReportScreen extends Screen {
 
                     try {
                         issueCreator.createIssue(titleinput, bodyinput, Consts.bugmenulabel);
-                        showToast("Issue Request Recived!~");
+                        
                         
                     } catch (Exception e) {
                         e.printStackTrace(); // Log the exception stack trace
