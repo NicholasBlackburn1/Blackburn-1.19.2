@@ -5,19 +5,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import starblazerstudio.utils.Consts;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * GitHubIssueCreator is a Java class that provides functionality to create GitHub issues
  * programmatically using the GitHub API.
- * 
- * TODO: Remember that the GitHub key is in the key.java
  */
-
 public class GitHubIssueCreator {
 
     private final String repoOwner; // GitHub repository owner's username
@@ -42,13 +37,13 @@ public class GitHubIssueCreator {
      *
      * @param title  Title of the issue
      * @param body   Description or body of the issue
-     * @param labels List of labels/tags for the issue
+     * @param label  Label of the issue
      * @throws IOException If an I/O error occurs while making HTTP request
      */
     public void createIssue(String title, String body, String label) throws IOException {
         // Construct GitHub API URL for creating issues
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/issues", repoOwner, repoName);
-        
+
         // Log the URL and the API key
         Consts.warn("GITHUB URL: " + apiUrl);
         Consts.warn("Token: " + key.githubkey);
@@ -62,12 +57,15 @@ public class GitHubIssueCreator {
         httpPost.setHeader("Accept", "application/vnd.github+json");
         httpPost.setHeader("X-GitHub-Api-Version", "2022-11-28");
 
-        
-        
-        // JSON payload for creating an issue
-        String jsonPayload = String.format("{\"title\":\"%s\",\"body\":\"%s\",\"labels\":[\"%s\"]}", title, body, label);
+        // Validate and prepare labels
+        String jsonPayload;
+        if (label == null || label.trim().isEmpty()) {
+            jsonPayload = String.format("{\"title\":\"%s\",\"body\":\"%s\"}", title, body);
+        } else {
+            jsonPayload = String.format("{\"title\":\"%s\",\"body\":\"%s\",\"labels\":[\"%s\"]}", title, body, label);
+        }
 
-        Consts.warn("Json Payload to Github -> "+jsonPayload);
+        Consts.warn("Json Payload to Github -> " + jsonPayload);
 
         // Set request body
         StringEntity entity = new StringEntity(jsonPayload);
@@ -79,23 +77,18 @@ public class GitHubIssueCreator {
 
         // Check response status
         int statusCode = response.getStatusLine().getStatusCode();
-        System.out.println("Response Code : " + statusCode);
+        String responseBody = EntityUtils.toString(response.getEntity());
+        System.out.println("Response Code: " + statusCode);
+        System.out.println("Response Body: " + responseBody);
 
         // Close the HttpClient
         httpClient.close();
-    
-    }
-    /**
-     * Converts a list of labels to a JSON array string.
-     *
-     * @param labels List of labels
-     * @return JSON array string representing the labels
-     */
-    private String labelsToJsonArray(List<String> labels) {
-        // Convert the list of labels to a JSON array string
-        String labelsJsonArray = labels.stream()
-                                       .map(label -> "\"" + label + "\"")
-                                       .collect(Collectors.joining(",", "[", "]"));
-        return labelsJsonArray;
+
+        // Log response for debugging
+        if (statusCode != 201) {
+            System.err.println("Failed to create issue. Response: " + responseBody);
+        } else {
+            System.out.println("Issue created successfully.");
+        }
     }
 }
