@@ -1,16 +1,12 @@
 package starblazerstudio.screens.guicomponetns;
 
-package starblazerstudio.screens.guicomponetns;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Widget;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 
-public class GuiToastNotification extends AbstractWidget {
+public class GuiToastNotification extends AbstractButton {
     private final Minecraft minecraft;
     private long displayTime;
     private long fadeOutStartTime;
@@ -42,5 +38,10 @@ public class GuiToastNotification extends AbstractWidget {
             fill(poseStack, this.x, this.y, this.x + this.width, this.y + this.height, 0x80000000); // Background
             drawCenteredString(poseStack, minecraft.font, this.message, this.x + this.width / 2, this.y + (this.height - 8) / 2, color);
         }
+    }
+
+    @Override
+    public void onPress() {
+        // No action needed on press for a toast notification
     }
 }

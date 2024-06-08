@@ -13,11 +13,12 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import starblazerstudio.screens.guicomponetns.GuiDropdownList;
+import starblazerstudio.screens.guicomponents.GuiDropdownList;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GitHubIssueCreator;
 import starblazerstudio.utils.IssueLabel;
 import starblazerstudio.utils.key;
+import starblazerstudio.screens.guicomponents.GuiToastNotification;
 
 import java.util.LinkedList; // Import LinkedList from java.util
 
@@ -54,6 +55,11 @@ public class BugReportScreen extends Screen {
     public void tick() {
         this.title.tick();
         this.body.tick();
+    }
+
+    private void showToast(String message) {
+        this.toastNotification = new GuiToastNotification(this.minecraft, this.width / 2 - 100, this.height / 2 - 20, 200, 20, Component.nullToEmpty(message));
+        this.addRenderableWidget(toastNotification);
     }
 
     protected void init() {
@@ -131,6 +137,8 @@ public class BugReportScreen extends Screen {
         this.title.setValue(s1);
     }
 
+
+    
     public void removed() {
         this.minecraft.keyboardHandler.setSendRepeatsToGui(false);
     }
@@ -154,9 +162,4 @@ public class BugReportScreen extends Screen {
     }
 
     
-    private void showToast(String message) {
-        this.toastNotification = new GuiToastNotification(this.minecraft, this.width / 2 - 100, this.height / 2 - 20, 200, 20, Component.nullToEmpty(message));
-        this.addRenderableWidget(toastNotification);
-    }
-
 }
