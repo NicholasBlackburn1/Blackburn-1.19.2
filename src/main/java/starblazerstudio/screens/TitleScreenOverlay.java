@@ -109,7 +109,7 @@ public class TitleScreenOverlay {
       if(Consts.ishorny == true){
          gui.dumpLayoutJson("/assets/minecraft/blackburn/lewdbackgrounds.json",3);
       }else{
-         gui.dumpLayoutJson("/assets/minecraft/blackburn/backgrounds.json",27);
+         gui.dumpLayoutJson("/assets/minecraft/blackburn/backgrounds.json",39);
       }
 
          
