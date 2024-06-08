@@ -34,7 +34,6 @@ public class BugReportScreen extends Screen {
     private final Screen laast;
     private static String selected_label = "";
 
-    private ImageButton statusButton;
     private static final ResourceLocation BUTTON_TEXTURE_DEFAULT = new ResourceLocation("modid", "textures/gui/button_default.png");
     private static final ResourceLocation BUTTON_TEXTURE_SUCCESS = new ResourceLocation("modid", "textures/gui/button_success.png");
     private static final ResourceLocation BUTTON_TEXTURE_FAIL = new ResourceLocation("modid", "textures/gui/button_fail.png");
@@ -79,9 +78,7 @@ public class BugReportScreen extends Screen {
         }
         this.addRenderableWidget(dropdownList = new GuiDropdownList(this.width / 2 - 100, this.height / 4 + 80, 50, 20, labelOptions.toArray(new String[0][]), (button) -> {}));
 
-        this.statusButton = new ImageButton(this.width / 2 + 60, this.height / 4 + 80, 50, 20, 0, 0, BUTTON_TEXTURE_DEFAULT, button -> {}, Component.empty());
-        this.addRenderableWidget(this.statusButton);
-
+      
         this.addRenderableWidget(new Button(this.width / 2 - 100, this.height / 4 + 96 + 18, 200, 20, Component.translatable("blackburn.bugmenu.connect"), (p_96030_) -> {
             issueCreator = new GitHubIssueCreator(Consts.repouser, Consts.reponame, key.githubkey);
             Consts.error("Selected label: " + Consts.bugmenulabel);
@@ -90,11 +87,11 @@ public class BugReportScreen extends Screen {
             try {
                 issueCreator.createIssue(titleinput, bodyinput, Consts.bugmenulabel);
                 isSuccess = true;
-                updateStatusButtonTexture();
+                
             } catch (Exception e) {
                 e.printStackTrace();
                 isSuccess = false;
-                updateStatusButtonTexture();
+               
             }
         }));
 
@@ -103,13 +100,7 @@ public class BugReportScreen extends Screen {
         }));
     }
 
-    private void updateStatusButtonTexture() {
-        if (isSuccess) {
-            this.statusButton.setResourceLocation(BUTTON_TEXTURE_SUCCESS);
-        } else {
-            this.statusButton.setResourceLocation(BUTTON_TEXTURE_FAIL);
-        }
-    }
+
 
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight) {
         String s = this.body.getValue();

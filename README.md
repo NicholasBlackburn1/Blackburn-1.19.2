@@ -11,6 +11,9 @@
 5. custom menu sound -X
 6. Custom Bug reporter in game -X
 7. Online Reporting Crash reporter -X
+8. Implement Forge somehow 
+
+
 
 ## make seperate build 
 1. seperate lewd builds -X 
