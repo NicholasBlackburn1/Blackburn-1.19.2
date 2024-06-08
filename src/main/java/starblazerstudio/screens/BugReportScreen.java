@@ -37,6 +37,7 @@ public class BugReportScreen extends Screen {
     private String bodyinput = "";
 
     private GuiDropdownList dropdownList;
+    private GuiToastNotification toastNotification;
     private final Screen laast;
 
     private static String selected_label = "";
@@ -107,6 +108,8 @@ public class BugReportScreen extends Screen {
 
                     try {
                         issueCreator.createIssue(titleinput, bodyinput, Consts.bugmenulabel);
+                        showToast("Issue Request Recived!~");
+                        
                     } catch (Exception e) {
                         e.printStackTrace(); // Log the exception stack trace
                     }
@@ -149,4 +152,11 @@ public class BugReportScreen extends Screen {
         this.body.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
         super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
     }
+
+    
+    private void showToast(String message) {
+        this.toastNotification = new GuiToastNotification(this.minecraft, this.width / 2 - 100, this.height / 2 - 20, 200, 20, Component.nullToEmpty(message));
+        this.addRenderableWidget(toastNotification);
+    }
+
 }

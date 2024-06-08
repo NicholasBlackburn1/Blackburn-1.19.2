@@ -900,7 +900,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
         if (pReport.getSaveFile() != null)
         {   
             try{
-            issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pReport.getExceptionMessage(),"crash");
+            issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pReport.getExceptionMessage(),"CRASH");
             }
             catch(Exception e){
                 Consts.error(e.getLocalizedMessage());
