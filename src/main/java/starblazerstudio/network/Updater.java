@@ -35,14 +35,30 @@ public class Updater {
                 JsonArray releases = jsonObject.getAsJsonArray("releases");
 
                 if (releases.size() > 0) {
-                    // Assuming the first element is the latest release
-                    JsonObject latestRelease = releases.get(0).getAsJsonObject();
-                    String latestVersion = latestRelease.get("version").getAsString();
-                    String commitUrl = latestRelease.get("commit_url").getAsString();
+                    // Find the latest version by comparing all versions
+                    String latestVersion = "";
+                    String commitUrl = "";
+
+                    for (int i = 0; i < releases.size(); i++) {
+                        JsonObject release = releases.get(i).getAsJsonObject();
+                        String version = release.get("version").getAsString().replace("B", "");
+                        String commiturl = release.get("commit_url").getAsString();
+
+                        if (compareVersions(version, latestVersion) > 0) {
+                            latestVersion = version;
+                           
+                        }
+                    }
+
                     Consts.warn("Latest version from API: " + latestVersion);
                     Consts.warn("Latest version commit URL: " + commitUrl);
 
-                    compareVersions(latestVersion, Consts.currentGameVersion);
+                    if (compareVersions(latestVersion, Consts.currentGameVersion.replace("B", "")) > 0) {
+                        Consts.warn("A new version is available: " + latestVersion);
+                        Consts.warn("Please update your game to the latest version.");
+                    } else {
+                        Consts.warn("You are using the latest version.");
+                    }
                 } else {
                     Consts.warn("No releases found.");
                 }
@@ -52,15 +68,22 @@ public class Updater {
         }
     }
 
-    // Method to compare release versions from the repository and the game version
-    private void compareVersions(String latestVersion, String currentVersion) {
-        Consts.warn("Current game version: " + currentVersion);
+    // Method to compare two version strings
+    private int compareVersions(String version1, String version2) {
+        String[] levels1 = version1.split("\\.");
+        String[] levels2 = version2.split("\\.");
 
-        if (latestVersion.equals(currentVersion)) {
-            Consts.warn("You are using the latest version.");
-        } else {
-            Consts.warn("A new version is available: " + latestVersion);
-            Consts.warn("Please update your game to the latest version.");
+        int length = Math.max(levels1.length, levels2.length);
+        for (int i = 0; i < length; i++) {
+            int v1 = i < levels1.length ? Integer.parseInt(levels1[i]) : 0;
+            int v2 = i < levels2.length ? Integer.parseInt(levels2[i]) : 0;
+            if (v1 < v2) {
+                return -1;
+            }
+            if (v1 > v2) {
+                return 1;
+            }
         }
+        return 0;
     }
 }

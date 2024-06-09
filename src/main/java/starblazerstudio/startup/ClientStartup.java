@@ -26,12 +26,12 @@ public class ClientStartup{
       Consts.minecraft = mine;
       CommandRegister register = new CommandRegister();
       FoxburnApi statusVerifier = new FoxburnApi();
-      Updater updater = new Updater();
+      //Updater updater = new Updater();
       
       // registes the commands
       if(!mine.pause){
         register.registerCommands(mine);
-        updater.checkForUpdates();
+       // updater.checkForUpdates();
       }
 
       // runs startup and registers commands
