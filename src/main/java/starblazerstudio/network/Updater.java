@@ -1,13 +1,10 @@
-/***
- * this is the main updater class
- */
 package starblazerstudio.network;
-
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -15,7 +12,7 @@ import starblazerstudio.utils.Consts;
 
 public class Updater {
 
-    // Method to check for updates from the FoxBurn API
+    // Method to check for updates from the custom API
     public void checkForUpdates() {
         try {
             URL url = new URL(Consts.githubReleaseUrl);
@@ -35,10 +32,20 @@ public class Updater {
                 Consts.warn("Response: " + response.toString());
 
                 JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-                String latestVersion = jsonObject.get("version").getAsString();
-                Consts.warn("Latest version from API: " + latestVersion);
+                JsonArray releases = jsonObject.getAsJsonArray("releases");
 
-                compareVersions(latestVersion, Consts.currentGameVersion);
+                if (releases.size() > 0) {
+                    // Assuming the first element is the latest release
+                    JsonObject latestRelease = releases.get(0).getAsJsonObject();
+                    String latestVersion = latestRelease.get("version").getAsString();
+                    String commitUrl = latestRelease.get("commit_url").getAsString();
+                    Consts.warn("Latest version from API: " + latestVersion);
+                    Consts.warn("Latest version commit URL: " + commitUrl);
+
+                    compareVersions(latestVersion, Consts.currentGameVersion);
+                } else {
+                    Consts.warn("No releases found.");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
