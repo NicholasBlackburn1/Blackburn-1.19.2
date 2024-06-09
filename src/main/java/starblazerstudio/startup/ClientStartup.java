@@ -6,7 +6,7 @@ import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import starblazerstudio.commands.CommandRegister;
 import starblazerstudio.network.FoxburnApi;
-import starblazerstuido.network.Updater;
+import starblazerstudio.network.Updater;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.chatconsts;
 public class ClientStartup{

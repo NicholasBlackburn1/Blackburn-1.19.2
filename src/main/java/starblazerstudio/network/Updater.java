@@ -4,8 +4,6 @@
 package starblazerstudio.network;
 
 
-package starblazerstudio.network;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -20,7 +18,7 @@ public class Updater {
     // Method to check for updates from the FoxBurn API
     public void checkForUpdates() {
         try {
-            URL url = new URL(Consts.updateCheckUrl);
+            URL url = new URL(Consts.githubReleaseUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
