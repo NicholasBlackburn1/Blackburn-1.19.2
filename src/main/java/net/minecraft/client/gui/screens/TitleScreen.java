@@ -127,7 +127,7 @@ public class TitleScreen extends Screen
 
       // runs only on 2nd startup of main menu
       if(i == 1){
-         StatusVerifier ver = new StatusVerifier();
+         FoxburnApi ver = new FoxburnApi();
          ver.verifyPreimumUser(minecraft);
          overlay.BlackburnTitleInit();
 

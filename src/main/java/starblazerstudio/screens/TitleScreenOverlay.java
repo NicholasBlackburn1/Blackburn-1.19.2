@@ -16,7 +16,7 @@ import net.optifine.Config;
 import starblazerstudio.discord.RichPresence;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.GuiUtils;
-import starblazerstudio.network.StatusVerifier;
+import starblazerstudio.network.FoxburnApi;
 
 import com.google.common.util.concurrent.Runnables;
 import com.google.gson.JsonPrimitive;

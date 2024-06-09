@@ -17,7 +17,7 @@
  import net.minecraft.client.Minecraft;
  import starblazerstudio.utils.Consts;
  
- public class StatusVerifier {
+ public class FoxburnApi {
  
      // Generates response for user's status
      public void verifyPreimumUser(Minecraft mc) {

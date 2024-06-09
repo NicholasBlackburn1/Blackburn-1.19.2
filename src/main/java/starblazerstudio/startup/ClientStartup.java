@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentUtils;
 import net.minecraft.network.chat.Style;
 import starblazerstudio.commands.CommandRegister;
-import starblazerstudio.network.StatusVerifier;
+import starblazerstudio.network.FoxburnApi;
 import starblazerstudio.utils.Consts;
 import starblazerstudio.utils.chatconsts;
 public class ClientStartup{
@@ -24,7 +24,7 @@ public class ClientStartup{
       
       Consts.minecraft = mine;
       CommandRegister register = new CommandRegister();
-      StatusVerifier statusVerifier = new StatusVerifier();
+      FoxburnApi statusVerifier = new FoxburnApi();
       
       // registes the commands
       if(!mine.pause){

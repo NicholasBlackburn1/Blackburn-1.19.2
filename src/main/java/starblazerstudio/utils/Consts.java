@@ -16,6 +16,8 @@ import starblazerstudio.twitch.TwitchIRC;
 public class Consts {
 
 
+    public static String currentGameVersion = "1.0.2";
+
     public static TwitchIRC twitchconnector = new TwitchIRC();
     public static String rpcdll;
     public static loading loader = new loading();
@@ -99,6 +101,7 @@ public class Consts {
     public static String  homeurl = "127.0.0.1:5000";
     public static String  verifiyerurl = "http://"+homeurl+"/verify_premium_user";
     public static String  setOnlineurl = "http://"+homeurl+"/active_user_login";
+    public static String  githubReleaseUrl = "http://"+homeurl+"/check_github_release";
 
     //bugmenu
     public static String bugmenulabel = "";
