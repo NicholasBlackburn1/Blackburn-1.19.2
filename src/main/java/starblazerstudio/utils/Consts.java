@@ -29,7 +29,7 @@ public class Consts {
     public static Minecraft minecraft;
 
     
-    public static boolean devMode = true;
+    public static boolean devMode = false;
     public static boolean showStart = true;
     public static boolean crit = false;
     public static boolean nofall = false;

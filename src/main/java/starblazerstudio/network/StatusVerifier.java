@@ -117,5 +117,35 @@
              e.printStackTrace();
          }
      }
+
+     // check release 
+     public void checkGithubRelease() {
+        try {
+            URL url = new URL(Consts.githubReleaseUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            int responseCode = conn.getResponseCode();
+            Consts.warn("Response Code: " + responseCode);
+
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                Consts.warn("Response: " + response.toString());
+
+                JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
+                String latestRelease = jsonObject.get("latest_release").getAsString();
+
+                Consts.warn("Latest GitHub release: " + latestRelease);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
  }
  
