@@ -53,7 +53,7 @@ public class ClientSettingsScreen extends Screen
         }));
         
          // the twtich button 
-         this.addRenderableWidget(new Button(this.width / 2 + 5, this.height / 6 + 48 + 6, 150, 20, Component.translatable("blackburn.bugmenu.title"), (p_96274_) ->
+         this.addRenderableWidget(new Button(this.width / 2 + 5, this.height / 6 + 48 + 20, 150, 20, Component.translatable("blackburn.bugmenu.title"), (p_96274_) ->
          {
              this.minecraft.setScreen(new BugReportScreen(this));
          }));
