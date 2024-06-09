@@ -35,7 +35,7 @@ public class Updater {
                 Consts.warn("Response: " + response.toString());
 
                 JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-                String latestVersion = jsonObject.get("latest_version").getAsString();
+                String latestVersion = jsonObject.get("version").getAsString();
                 Consts.warn("Latest version from API: " + latestVersion);
 
                 compareVersions(latestVersion, Consts.currentGameVersion);
