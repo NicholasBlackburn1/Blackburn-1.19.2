@@ -256,19 +256,27 @@ public class ChatScreen extends Screen
             }
             
         }
-        else
-        {
-       
-
-            String s = input.getValue().trim();
-                
-            // allows me to send one sided messaged
-            final GuiUtils utils = new GuiUtils();
-            utils.allowOneSidedMessages(s, this, this.minecraft);
-            
-
-            return true;
-        }
+        
+            else {
+                String s = input.getValue().trim();
+        
+                // Check for custom commands starting with "."
+                if (s.startsWith(".")) {
+                    final GuiUtils utils = new GuiUtils();
+                    utils.allowOneSidedMessages(s, this, this.minecraft);
+                    return true;
+                }
+        
+                // Handle regular commands starting with "/"
+                if (s.startsWith("/")) {
+                    this.handleChatInput(s, true);
+                    return true;
+                }
+        
+                // Handle as a normal chat message
+                this.handleChatInput(s, true);
+                return true;
+            }
     }
 
     public boolean mouseScrolled(double pMouseX, double p_95582_, double pMouseY)

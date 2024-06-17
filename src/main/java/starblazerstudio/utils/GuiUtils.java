@@ -252,7 +252,7 @@ public void allowOneSidedMessages(String s, ChatScreen chatScreen, Minecraft min
       Consts.warn("command entered from user is"+ " "+ s);
       chatconsts.enteredcommands.add(s);
 
-   }
+   } 
 }
 
 

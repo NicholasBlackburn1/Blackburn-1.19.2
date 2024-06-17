@@ -56,6 +56,8 @@
   "blackburn.bugmenu.connect":"Submmit report",
   "blackburn.bugmenu.isconnected":"Issue Sent?",
 
+  "blackburn.clientsettings.buttontitle":"Feature/Bug Report",
+
   "language.name": "English",
   "language.region": "United States",
   "language.code": "en_us",
