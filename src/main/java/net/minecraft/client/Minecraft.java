@@ -243,7 +243,7 @@ import org.slf4j.Logger;
 
 import starblazerstudio.utils.*;
 import starblazerstudio.discord.*;
-import starblazerstudio.network.PastbinAPI;
+import starblazerstudio.network.*;
 
 
 public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements WindowEventHandler
@@ -892,7 +892,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
     {
         
         GitHubIssueCreator issuetracker = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
-        PastbinAPI pastbin = new PastbinAPI(key.pastbinkey);
+        PastebinAPI pastbin = new PastebinAPI(key.pastbinkey);
     
 
         File file1 = new File(getInstance().gameDirectory, "crash-reports");
@@ -908,7 +908,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             // this should push crashes to github
             try{
 
-                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pastbin.createPaste(pReport.getFriendlyMessage(),Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT","java",0),"CRASH");
+                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pastbin.createPaste(pReport.getExceptionMessage(),Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT","java",0),"CRASH");
                 
                 }
                 catch(Exception e){
@@ -922,7 +922,9 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
             
             // this should push crashes to github
             try{
-                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pReport.getTitle(),"CRASH");
+
+                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pastbin.createPaste(pReport.getExceptionMessage(),Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT","java",0),"CRASH");
+                
                 }
                 catch(Exception e){
                     Bootstrap.realStdoutPrintln(e.getLocalizedMessage());
