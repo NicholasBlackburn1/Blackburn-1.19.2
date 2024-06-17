@@ -51,6 +51,20 @@ public class ClientStartup{
 
       }  
      }
+    
+     // this is for shutting doen the client
+    public void shutdownprocess(Minecraft mc){
+      FoxburnApi statusVerifier = new FoxburnApi();
+
+      Consts.warn("Stopping the client and diconnecting from service api...");
+
+      statusVerifier.setOnlineStatus(mc,0);
+      Consts.warn("api diconnected....");
+
+     }
+
+
+    
      }
     
     

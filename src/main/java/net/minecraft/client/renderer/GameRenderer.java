@@ -1691,6 +1691,7 @@ public class GameRenderer implements ResourceManagerReloadListener, AutoCloseabl
 
             this.initialized = true;
         }
+        
     // allows me to tap onto main thread in mc 
     ClientStartup startup = new ClientStartup();
     startup.sendStartupMessages(this.minecraft);

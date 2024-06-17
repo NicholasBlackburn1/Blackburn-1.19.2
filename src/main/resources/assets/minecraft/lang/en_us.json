@@ -61,6 +61,13 @@
 
   "blackburn.clientsettings.buttontitle":"Feature/Bug Report",
 
+
+  "blackburn.crashcommand.pre":"§6.crash",
+  "blackburn.crashcommand.desc":"§a crashes the client",
+
+
+
+  
   "language.name": "English",
   "language.region": "United States",
   "language.code": "en_us",
