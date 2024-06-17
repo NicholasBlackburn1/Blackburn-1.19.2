@@ -27,8 +27,10 @@ public class LewdVersion implements ICommandRegister {
                 
         
             }  else {
-                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.lewd.no_access")));
-                command.clear();
+                if(command.contains(".lewd")){
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.lewd.no_access")));
+                    command.clear();
+                }
             }
 
 
