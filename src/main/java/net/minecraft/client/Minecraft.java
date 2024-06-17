@@ -243,6 +243,7 @@ import org.slf4j.Logger;
 
 import starblazerstudio.utils.*;
 import starblazerstudio.discord.*;
+import starblazerstudio.network.PastbinAPI;
 
 
 public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements WindowEventHandler
@@ -891,19 +892,24 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
     {
         
         GitHubIssueCreator issuetracker = new GitHubIssueCreator(Consts.repouser,Consts.reponame,key.githubkey);
+        PastbinAPI pastbin = new PastbinAPI(key.pastbinkey);
     
 
         File file1 = new File(getInstance().gameDirectory, "crash-reports");
         File file2 = new File(file1, "crash-" + Util.getFilenameFormattedDateTime() + "-client.txt");
+
         Bootstrap.realStdoutPrintln(pReport.getFriendlyReport());
 
         if (pReport.getSaveFile() != null)
         {   
 
             Bootstrap.realStdoutPrintln("#@!@# Game crashed! Crash report saved to: #@!@# " + pReport.getSaveFile());
+            
             // this should push crashes to github
             try{
-                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pReport.getTitle(),"CRASH");
+
+                issuetracker.createIssue(Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT",pastbin.createPaste(pReport.getFriendlyMessage(),Consts.VERSION+Util.getFilenameFormattedDateTime()+" Crash REPORT","java",0),"CRASH");
+                
                 }
                 catch(Exception e){
                     Bootstrap.realStdoutPrintln(e.getLocalizedMessage());
