@@ -11,6 +11,9 @@
   "blackburn.commands.twitch.connectacctrue": "Account Connected §e YES",
 
   "blackburn.twitch.title":"Twitch IRC Settings",
+  "blackburn.twitch.email":"Username",
+  "blackburn.twitch.password":"OAuth Token",
+  "blskcburn.twitch.connect":"Connect Twitch bot",
   "blackburn.commands.twitchstat.pre":"§6.twitchstat§r",
   "blackburn.commands.twitchstat.desc": "§eLets u see the current  twitch connection status§r",
   
