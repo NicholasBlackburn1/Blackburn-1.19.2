@@ -1147,7 +1147,11 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
     {
         try
         {
-            LOGGER.info("Stopping!");
+            FoxburnApi api = new FoxburnApi();
+
+            api.setOnlineStatus(this,0);
+            
+            LOGGER.info("Stopping Main Minecraft Thread...");
 
             try
             {
@@ -2613,6 +2617,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
     public BanDetails multiplayerBan()
     {
         return null;
+    }
 
     public boolean isBlocked(UUID pPlayerUUID)
     {

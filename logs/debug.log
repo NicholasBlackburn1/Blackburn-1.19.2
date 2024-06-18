@@ -1,0 +1,16 @@
+[18Jun2024 11:57:06.653] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[18Jun2024 11:57:06.658] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[18Jun2024 11:57:06.658] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[18Jun2024 11:57:07.143] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[18Jun2024 11:57:07.147] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[18Jun2024 11:57:07.429] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [cpuid, -1r]: Cannot run program "cpuid": error=2, No such file or directory
+[18Jun2024 11:57:07.493] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[18Jun2024 11:57:07.494] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[18Jun2024 11:57:07.624] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.Event$Result
+[18Jun2024 11:57:07.625] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEntity
+[18Jun2024 11:57:07.632] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.logging.CrashReportExtender
+[18Jun2024 11:57:08.127] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Method not present: net.minecraft.tags.ItemTags.create
+[18Jun2024 11:57:09.749] [main/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
+[18Jun2024 11:57:10.755] [main/ERROR] [net.minecraft.server.dedicated.Settings/]: Failed to load properties from file: server.properties
+[18Jun2024 11:57:10.770] [main/WARN] [net.minecraft.server.Eula/]: Failed to load eula.txt
+[18Jun2024 11:57:10.771] [main/INFO] [net.minecraft.server.Main/]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.

@@ -25,8 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import org.apache.commons.lang3.ArrayUtils;
 
-public class Advancement
-{
+public class Advancement {
     @Nullable
     private final Advancement parent;
     @Nullable
@@ -38,8 +37,8 @@ public class Advancement
     private final Set<Advancement> children = Sets.newLinkedHashSet();
     private final Component chatComponent;
 
-    public Advancement(ResourceLocation pId, @Nullable Advancement pParent, @Nullable DisplayInfo pDisplay, AdvancementRewards pRewards, Map<String, Criterion> pCriteria, String[][] pRequirements)
-    {
+    public Advancement(ResourceLocation pId, @Nullable Advancement pParent, @Nullable DisplayInfo pDisplay,
+            AdvancementRewards pRewards, Map<String, Criterion> pCriteria, String[][] pRequirements) {
         this.id = pId;
         this.display = pDisplay;
         this.criteria = ImmutableMap.copyOf(pCriteria);
@@ -47,114 +46,94 @@ public class Advancement
         this.rewards = pRewards;
         this.requirements = pRequirements;
 
-        if (pParent != null)
-        {
+        if (pParent != null) {
             pParent.addChild(this);
         }
 
-        if (pDisplay == null)
-        {
+        if (pDisplay == null) {
             this.chatComponent = Component.literal(pId.toString());
-        }
-        else
-        {
+        } else {
             Component component = pDisplay.getTitle();
             ChatFormatting chatformatting = pDisplay.getFrame().getChatColor();
-            Component component1 = ComponentUtils.mergeStyles(component.copy(), Style.EMPTY.withColor(chatformatting)).append("\n").append(pDisplay.getDescription());
-            Component component2 = component.copy().withStyle((p_138316_) ->
-            {
+            Component component1 = ComponentUtils.mergeStyles(component.copy(), Style.EMPTY.withColor(chatformatting))
+                    .append("\n").append(pDisplay.getDescription());
+            Component component2 = component.copy().withStyle((p_138316_) -> {
                 return p_138316_.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, component1));
             });
             this.chatComponent = ComponentUtils.wrapInSquareBrackets(component2).withStyle(chatformatting);
         }
     }
 
-    public Advancement.Builder deconstruct()
-    {
-        return new Advancement.Builder(this.parent == null ? null : this.parent.getId(), this.display, this.rewards, this.criteria, this.requirements);
+    public Advancement.Builder deconstruct() {
+        return new Advancement.Builder(this.parent == null ? null : this.parent.getId(), this.display, this.rewards,
+                this.criteria, this.requirements);
     }
 
     @Nullable
-    public Advancement getParent()
-    {
+    public Advancement getParent() {
         return this.parent;
     }
 
     @Nullable
-    public DisplayInfo getDisplay()
-    {
+    public DisplayInfo getDisplay() {
         return this.display;
     }
 
-    public AdvancementRewards getRewards()
-    {
+    public AdvancementRewards getRewards() {
         return this.rewards;
     }
 
-    public String toString()
-    {
-        return "SimpleAdvancement{id=" + this.getId() + ", parent=" + (this.parent == null ? "null" : this.parent.getId()) + ", display=" + this.display + ", rewards=" + this.rewards + ", criteria=" + this.criteria + ", requirements=" + Arrays.deepToString(this.requirements) + "}";
+    public String toString() {
+        return "SimpleAdvancement{id=" + this.getId() + ", parent="
+                + (this.parent == null ? "null" : this.parent.getId()) + ", display=" + this.display + ", rewards="
+                + this.rewards + ", criteria=" + this.criteria + ", requirements="
+                + Arrays.deepToString(this.requirements) + "}";
     }
 
-    public Iterable<Advancement> getChildren()
-    {
+    public Iterable<Advancement> getChildren() {
         return this.children;
     }
 
-    public Map<String, Criterion> getCriteria()
-    {
+    public Map<String, Criterion> getCriteria() {
         return this.criteria;
     }
 
-    public int getMaxCriteraRequired()
-    {
+    public int getMaxCriteraRequired() {
         return this.requirements.length;
     }
 
-    public void addChild(Advancement pChild)
-    {
+    public void addChild(Advancement pChild) {
         this.children.add(pChild);
     }
 
-    public ResourceLocation getId()
-    {
+    public ResourceLocation getId() {
         return this.id;
     }
 
-    public boolean equals(Object pOther)
-    {
-        if (this == pOther)
-        {
+    public boolean equals(Object pOther) {
+        if (this == pOther) {
             return true;
-        }
-        else if (!(pOther instanceof Advancement))
-        {
+        } else if (!(pOther instanceof Advancement)) {
             return false;
-        }
-        else
-        {
-            Advancement advancement = (Advancement)pOther;
+        } else {
+            Advancement advancement = (Advancement) pOther;
             return this.id.equals(advancement.id);
         }
     }
 
-    public int hashCode()
-    {
+    public int hashCode() {
         return this.id.hashCode();
     }
 
-    public String[][] getRequirements()
-    {
+    public String[][] getRequirements() {
         return this.requirements;
     }
 
-    public Component getChatComponent()
-    {
+    public Component getChatComponent() {
         return this.chatComponent;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         @Nullable
         private ResourceLocation parentId;
         @Nullable
@@ -167,8 +146,8 @@ public class Advancement
         private String[][] requirements;
         private RequirementsStrategy requirementsStrategy = RequirementsStrategy.AND;
 
-        Builder(@Nullable ResourceLocation pParentId, @Nullable DisplayInfo pDisplay, AdvancementRewards pRewards, Map<String, Criterion> pCriteria, String[][] pRequirements)
-        {
+        Builder(@Nullable ResourceLocation pParentId, @Nullable DisplayInfo pDisplay, AdvancementRewards pRewards,
+                Map<String, Criterion> pCriteria, String[][] pRequirements) {
             this.parentId = pParentId;
             this.display = pDisplay;
             this.rewards = pRewards;
@@ -176,94 +155,79 @@ public class Advancement
             this.requirements = pRequirements;
         }
 
-        private Builder()
-        {
+        private Builder() {
         }
 
-        public static Advancement.Builder advancement()
-        {
+        public static Advancement.Builder advancement() {
             return new Advancement.Builder();
         }
 
-        public Advancement.Builder parent(Advancement pParent)
-        {
+        public Advancement.Builder parent(Advancement pParent) {
             this.parent = pParent;
             return this;
         }
 
-        public Advancement.Builder parent(ResourceLocation pParent)
-        {
+        public Advancement.Builder parent(ResourceLocation pParent) {
             this.parentId = pParent;
             return this;
         }
 
-        public Advancement.Builder display(ItemStack pStack, Component pTitle, Component pDescription, @Nullable ResourceLocation pBackground, FrameType pFrame, boolean pShowToast, boolean pAnnounceToChat, boolean pHidden)
-        {
-            return this.display(new DisplayInfo(pStack, pTitle, pDescription, pBackground, pFrame, pShowToast, pAnnounceToChat, pHidden));
+        public Advancement.Builder display(ItemStack pStack, Component pTitle, Component pDescription,
+                @Nullable ResourceLocation pBackground, FrameType pFrame, boolean pShowToast, boolean pAnnounceToChat,
+                boolean pHidden) {
+            return this.display(new DisplayInfo(pStack, pTitle, pDescription, pBackground, pFrame, pShowToast,
+                    pAnnounceToChat, pHidden));
         }
 
-        public Advancement.Builder display(ItemLike pStack, Component pTitle, Component pDescription, @Nullable ResourceLocation pBackground, FrameType pFrame, boolean pShowToast, boolean pAnnounceToChat, boolean pHidden)
-        {
-            return this.display(new DisplayInfo(new ItemStack(pStack.asItem()), pTitle, pDescription, pBackground, pFrame, pShowToast, pAnnounceToChat, pHidden));
+        public Advancement.Builder display(ItemLike pStack, Component pTitle, Component pDescription,
+                @Nullable ResourceLocation pBackground, FrameType pFrame, boolean pShowToast, boolean pAnnounceToChat,
+                boolean pHidden) {
+            return this.display(new DisplayInfo(new ItemStack(pStack.asItem()), pTitle, pDescription, pBackground,
+                    pFrame, pShowToast, pAnnounceToChat, pHidden));
         }
 
-        public Advancement.Builder display(DisplayInfo pDisplay)
-        {
+        public Advancement.Builder display(DisplayInfo pDisplay) {
             this.display = pDisplay;
             return this;
         }
 
-        public Advancement.Builder rewards(AdvancementRewards.Builder pRewardsBuilder)
-        {
+        public Advancement.Builder rewards(AdvancementRewards.Builder pRewardsBuilder) {
             return this.rewards(pRewardsBuilder.build());
         }
 
-        public Advancement.Builder rewards(AdvancementRewards pRewardsBuilder)
-        {
+        public Advancement.Builder rewards(AdvancementRewards pRewardsBuilder) {
             this.rewards = pRewardsBuilder;
             return this;
         }
 
-        public Advancement.Builder addCriterion(String pKey, CriterionTriggerInstance pCriterion)
-        {
+        public Advancement.Builder addCriterion(String pKey, CriterionTriggerInstance pCriterion) {
             return this.addCriterion(pKey, new Criterion(pCriterion));
         }
 
-        public Advancement.Builder addCriterion(String pKey, Criterion pCriterion)
-        {
-            if (this.criteria.containsKey(pKey))
-            {
+        public Advancement.Builder addCriterion(String pKey, Criterion pCriterion) {
+            if (this.criteria.containsKey(pKey)) {
                 throw new IllegalArgumentException("Duplicate criterion " + pKey);
-            }
-            else
-            {
+            } else {
                 this.criteria.put(pKey, pCriterion);
                 return this;
             }
         }
 
-        public Advancement.Builder requirements(RequirementsStrategy pStrategy)
-        {
+        public Advancement.Builder requirements(RequirementsStrategy pStrategy) {
             this.requirementsStrategy = pStrategy;
             return this;
         }
 
-        public Advancement.Builder a(String[][] p_143952_)
-        {
+        public Advancement.Builder a(String[][] p_143952_) {
             this.requirements = p_143952_;
             return this;
         }
 
-        public boolean canBuild(Function<ResourceLocation, Advancement> pParentLookup)
-        {
-            if (this.parentId == null)
-            {
+        public boolean canBuild(Function<ResourceLocation, Advancement> pParentLookup) {
+            if (this.parentId == null) {
                 return true;
-            }
-            else
-            {
-                if (this.parent == null)
-                {
+            } else {
+                if (this.parent == null) {
                     this.parent = pParentLookup.apply(this.parentId);
                 }
 
@@ -271,19 +235,13 @@ public class Advancement
             }
         }
 
-        public Advancement build(ResourceLocation pId)
-        {
-            if (!this.canBuild((p_138407_) ->
-        {
-            return null;
-        }))
-            {
+        public Advancement build(ResourceLocation pId) {
+            if (!this.canBuild((p_138407_) -> {
+                return null;
+            })) {
                 throw new IllegalStateException("Tried to build incomplete advancement!");
-            }
-            else
-            {
-                if (this.requirements == null)
-                {
+            } else {
+                if (this.requirements == null) {
                     this.requirements = this.requirementsStrategy.createRequirements(this.criteria.keySet());
                 }
 
@@ -291,53 +249,43 @@ public class Advancement
             }
         }
 
-        public Advancement save(Consumer<Advancement> pConsumer, String pId)
-        {
+        public Advancement save(Consumer<Advancement> pConsumer, String pId) {
             Advancement advancement = this.build(new ResourceLocation(pId));
             pConsumer.accept(advancement);
             return advancement;
         }
 
-        public JsonObject serializeToJson()
-        {
-            if (this.requirements == null)
-            {
+        public JsonObject serializeToJson() {
+            if (this.requirements == null) {
                 this.requirements = this.requirementsStrategy.createRequirements(this.criteria.keySet());
             }
 
             JsonObject jsonobject = new JsonObject();
 
-            if (this.parent != null)
-            {
+            if (this.parent != null) {
                 jsonobject.addProperty("parent", this.parent.getId().toString());
-            }
-            else if (this.parentId != null)
-            {
+            } else if (this.parentId != null) {
                 jsonobject.addProperty("parent", this.parentId.toString());
             }
 
-            if (this.display != null)
-            {
+            if (this.display != null) {
                 jsonobject.add("display", this.display.serializeToJson());
             }
 
             jsonobject.add("rewards", this.rewards.serializeToJson());
             JsonObject jsonobject1 = new JsonObject();
 
-            for (Map.Entry<String, Criterion> entry : this.criteria.entrySet())
-            {
+            for (Map.Entry<String, Criterion> entry : this.criteria.entrySet()) {
                 jsonobject1.add(entry.getKey(), entry.getValue().serializeToJson());
             }
 
             jsonobject.add("criteria", jsonobject1);
             JsonArray jsonarray1 = new JsonArray();
 
-            for (String[] astring : this.requirements)
-            {
+            for (String[] astring : this.requirements) {
                 JsonArray jsonarray = new JsonArray();
 
-                for (String s : astring)
-                {
+                for (String s : astring) {
                     jsonarray.add(s);
                 }
 
@@ -348,107 +296,96 @@ public class Advancement
             return jsonobject;
         }
 
-        public void serializeToNetwork(FriendlyByteBuf pBuffer)
-        {
-            if (this.requirements == null)
-            {
+        public void serializeToNetwork(FriendlyByteBuf pBuffer) {
+            if (this.requirements == null) {
                 this.requirements = this.requirementsStrategy.createRequirements(this.criteria.keySet());
             }
 
             pBuffer.writeNullable(this.parentId, FriendlyByteBuf::writeResourceLocation);
-            pBuffer.writeNullable(this.display, (p_214831_, p_214832_) ->
-            {
+            pBuffer.writeNullable(this.display, (p_214831_, p_214832_) -> {
                 p_214832_.serializeToNetwork(p_214831_);
             });
             Criterion.serializeToNetwork(this.criteria, pBuffer);
             pBuffer.writeVarInt(this.requirements.length);
 
-            for (String[] astring : this.requirements)
-            {
+            for (String[] astring : this.requirements) {
                 pBuffer.writeVarInt(astring.length);
 
-                for (String s : astring)
-                {
+                for (String s : astring) {
                     pBuffer.writeUtf(s);
                 }
             }
         }
 
-        public String toString()
-        {
-            return "Task Advancement{parentId=" + this.parentId + ", display=" + this.display + ", rewards=" + this.rewards + ", criteria=" + this.criteria + ", requirements=" + Arrays.deepToString(this.requirements) + "}";
+        public String toString() {
+            return "Task Advancement{parentId=" + this.parentId + ", display=" + this.display + ", rewards="
+                    + this.rewards + ", criteria=" + this.criteria + ", requirements="
+                    + Arrays.deepToString(this.requirements) + "}";
         }
 
-        public static Advancement.Builder fromJson(JsonObject pJson, DeserializationContext pContext)
-        {
-            ResourceLocation resourcelocation = pJson.has("parent") ? new ResourceLocation(GsonHelper.getAsString(pJson, "parent")) : null;
-            DisplayInfo displayinfo = pJson.has("display") ? DisplayInfo.fromJson(GsonHelper.getAsJsonObject(pJson, "display")) : null;
-            AdvancementRewards advancementrewards = pJson.has("rewards") ? AdvancementRewards.deserialize(GsonHelper.getAsJsonObject(pJson, "rewards")) : AdvancementRewards.EMPTY;
-            Map<String, Criterion> map = Criterion.criteriaFromJson(GsonHelper.getAsJsonObject(pJson, "criteria"), pContext);
+        public static Advancement.Builder fromJson(JsonObject pJson, DeserializationContext pContext) {
+            ResourceLocation resourcelocation = pJson.has("parent")
+                    ? new ResourceLocation(GsonHelper.getAsString(pJson, "parent"))
+                    : null;
+            DisplayInfo displayinfo = pJson.has("display")
+                    ? DisplayInfo.fromJson(GsonHelper.getAsJsonObject(pJson, "display"))
+                    : null;
+            AdvancementRewards advancementrewards = pJson.has("rewards")
+                    ? AdvancementRewards.deserialize(GsonHelper.getAsJsonObject(pJson, "rewards"))
+                    : AdvancementRewards.EMPTY;
+            Map<String, Criterion> map = Criterion.criteriaFromJson(GsonHelper.getAsJsonObject(pJson, "criteria"),
+                    pContext);
 
-            if (map.isEmpty())
-            {
+            if (map.isEmpty()) {
                 throw new JsonSyntaxException("Advancement criteria cannot be empty");
-            }
-            else
-            {
+            } else {
                 JsonArray jsonarray = GsonHelper.getAsJsonArray(pJson, "requirements", new JsonArray());
                 String[][] astring = new String[jsonarray.size()][];
 
-                for (int i = 0; i < jsonarray.size(); ++i)
-                {
+                for (int i = 0; i < jsonarray.size(); ++i) {
                     JsonArray jsonarray1 = GsonHelper.convertToJsonArray(jsonarray.get(i), "requirements[" + i + "]");
                     astring[i] = new String[jsonarray1.size()];
 
-                    for (int j = 0; j < jsonarray1.size(); ++j)
-                    {
-                        astring[i][j] = GsonHelper.convertToString(jsonarray1.get(j), "requirements[" + i + "][" + j + "]");
+                    for (int j = 0; j < jsonarray1.size(); ++j) {
+                        astring[i][j] = GsonHelper.convertToString(jsonarray1.get(j),
+                                "requirements[" + i + "][" + j + "]");
                     }
                 }
 
-                if (astring.length == 0)
-                {
+                if (astring.length == 0) {
                     astring = new String[map.size()][];
                     int k = 0;
 
-                    for (String s2 : map.keySet())
-                    {
-                        astring[k++] = new String[] {s2};
+                    for (String s2 : map.keySet()) {
+                        astring[k++] = new String[] { s2 };
                     }
                 }
 
-                for (String[] astring1 : astring)
-                {
-                    if (astring1.length == 0 && map.isEmpty())
-                    {
+                for (String[] astring1 : astring) {
+                    if (astring1.length == 0 && map.isEmpty()) {
                         throw new JsonSyntaxException("Requirement entry cannot be empty");
                     }
 
-                    for (String s : astring1)
-                    {
-                        if (!map.containsKey(s))
-                        {
+                    for (String s : astring1) {
+                        if (!map.containsKey(s)) {
                             throw new JsonSyntaxException("Unknown required criterion '" + s + "'");
                         }
                     }
                 }
 
-                for (String s1 : map.keySet())
-                {
+                for (String s1 : map.keySet()) {
                     boolean flag = false;
 
-                    for (String[] astring2 : astring)
-                    {
-                        if (ArrayUtils.contains(astring2, s1))
-                        {
+                    for (String[] astring2 : astring) {
+                        if (ArrayUtils.contains(astring2, s1)) {
                             flag = true;
                             break;
                         }
                     }
 
-                    if (!flag)
-                    {
-                        throw new JsonSyntaxException("Criterion '" + s1 + "' isn't a requirement for completion. This isn't supported behaviour, all criteria must be required.");
+                    if (!flag) {
+                        throw new JsonSyntaxException("Criterion '" + s1
+                                + "' isn't a requirement for completion. This isn't supported behaviour, all criteria must be required.");
                     }
                 }
 
@@ -456,19 +393,16 @@ public class Advancement
             }
         }
 
-        public static Advancement.Builder fromNetwork(FriendlyByteBuf pBuffer)
-        {
+        public static Advancement.Builder fromNetwork(FriendlyByteBuf pBuffer) {
             ResourceLocation resourcelocation = pBuffer.readNullable(FriendlyByteBuf::readResourceLocation);
             DisplayInfo displayinfo = pBuffer.readNullable(DisplayInfo::fromNetwork);
             Map<String, Criterion> map = Criterion.criteriaFromNetwork(pBuffer);
             String[][] astring = new String[pBuffer.readVarInt()][];
 
-            for (int i = 0; i < astring.length; ++i)
-            {
+            for (int i = 0; i < astring.length; ++i) {
                 astring[i] = new String[pBuffer.readVarInt()];
 
-                for (int j = 0; j < astring[i].length; ++j)
-                {
+                for (int j = 0; j < astring[i].length; ++j) {
                     astring[i][j] = pBuffer.readUtf();
                 }
             }
@@ -476,8 +410,7 @@ public class Advancement
             return new Advancement.Builder(resourcelocation, displayinfo, AdvancementRewards.EMPTY, map, astring);
         }
 
-        public Map<String, Criterion> getCriteria()
-        {
+        public Map<String, Criterion> getCriteria() {
             return this.criteria;
         }
     }

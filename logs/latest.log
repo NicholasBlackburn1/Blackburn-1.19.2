@@ -1,0 +1,8 @@
+[18Jun2024 11:57:07.624] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.eventbus.api.Event$Result
+[18Jun2024 11:57:07.625] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.common.extensions.IForgeEntity
+[18Jun2024 11:57:07.632] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Class not present: net.minecraftforge.logging.CrashReportExtender
+[18Jun2024 11:57:08.127] [main/INFO] [net.optifine.Log/]: [OptiFine] (Reflector) Method not present: net.minecraft.tags.ItemTags.create
+[18Jun2024 11:57:09.749] [main/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
+[18Jun2024 11:57:10.755] [main/ERROR] [net.minecraft.server.dedicated.Settings/]: Failed to load properties from file: server.properties
+[18Jun2024 11:57:10.770] [main/WARN] [net.minecraft.server.Eula/]: Failed to load eula.txt
+[18Jun2024 11:57:10.771] [main/INFO] [net.minecraft.server.Main/]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
