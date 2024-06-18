@@ -259,7 +259,7 @@ public class ChatScreen extends Screen
 
         /**
          * Added in the checking of commands the ni should probaslly mAKE THIS IN ITS  own class 
-         * TODO: add this to the gui utills class
+         * TODO: add this to the gui utills classz
          */
         
             else {

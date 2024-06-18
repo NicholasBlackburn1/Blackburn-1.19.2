@@ -2612,8 +2612,7 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
     @Nullable
     public BanDetails multiplayerBan()
     {
-        return (BanDetails)this.userApiService.properties().bannedScopes().get("MULTIPLAYER");
-    }
+        return null;
 
     public boolean isBlocked(UUID pPlayerUUID)
     {
