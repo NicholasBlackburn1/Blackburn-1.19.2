@@ -89,13 +89,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
   * @return
   */
  public static int getBackgroundnum(Random random,int background, int backgroundCount){
-   int output = 0;
-  if(Consts.devMode){
-     output = 17;
-  }
-  else{
-     output = random.nextInt(backgroundCount);
-  }
+      int output = 0;
+   if(Consts.devMode){
+      output = 0;
+   }
+   else{
+      output = random.nextInt(backgroundCount);
+   }
+
   return output;
 }
 

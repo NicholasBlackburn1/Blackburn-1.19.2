@@ -189,9 +189,10 @@
         "splash_posX": "100",
         "splash_posY": "-120",
         "splash_rot": "-60",
-        "edition_posX": "230",
+        
+        "edition_posX": "80",
         "edition_posY": "-40",
-        "edition_posXNonFull": "230",
+        "edition_posXNonFull": "80",
         "edition_posy_nonfull": "-40",
         "edition_width": "128",
         "edition_hight": "19",
