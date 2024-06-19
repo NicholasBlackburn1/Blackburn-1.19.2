@@ -101,6 +101,7 @@ public class Consts {
     public static String  homeurl = "127.0.0.1:5000";
     public static String  verifiyerurl = "http://"+homeurl+"/verify_premium_user";
     public static String  setOnlineurl = "http://"+homeurl+"/active_user_login";
+    public static String  setOffline = "http://"+homeurl+"/active_user_logout";
     public static String  githubReleaseUrl = "http://"+homeurl+"/check_github_release";
     public static String updateCheckUrl = "http://"+homeurl+"/check_github_release";
 

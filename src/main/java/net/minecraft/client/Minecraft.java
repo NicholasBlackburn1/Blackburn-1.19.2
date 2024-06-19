@@ -1149,8 +1149,8 @@ public class Minecraft extends ReentrantBlockableEventLoop<Runnable> implements 
         {
             FoxburnApi api = new FoxburnApi();
 
-            api.setOnlineStatus(this,0);
-            
+            api.setOfflineStatus(this,0);
+
             LOGGER.info("Stopping Main Minecraft Thread...");
 
             try

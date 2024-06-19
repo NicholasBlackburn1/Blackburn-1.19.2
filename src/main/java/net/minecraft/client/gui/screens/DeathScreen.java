@@ -121,7 +121,15 @@ public class DeathScreen extends Screen
             return p_95918_ >= j && p_95918_ <= k ? this.minecraft.font.getSplitter().componentStyleAtWidth(this.causeOfDeath, p_95918_ - j) : null;
         }
     }
-
+    /**
+     * Handles mouse click events.
+     *
+     * @param  pMouseX the x-coordinate of the mouse click
+     * @param  p_95915_ the y-coordinate of the mouse click
+     * @param  pMouseY the z-coordinate of the mouse click
+     * @return          true if the click event was handled, false otherwise
+     * TODO: Fix play  sound becauuse its just on mouse click
+     */
     public boolean mouseClicked(double pMouseX, double p_95915_, int pMouseY)
     {
         this.minecraft.player.playSound(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 100.0f, 1.0f);

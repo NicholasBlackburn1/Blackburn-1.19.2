@@ -34,9 +34,7 @@ public class BugReportScreen extends Screen {
     private final Screen laast;
     private static String selected_label = "";
 
-    private static final ResourceLocation BUTTON_TEXTURE_DEFAULT = new ResourceLocation("modid", "textures/gui/button_default.png");
-    private static final ResourceLocation BUTTON_TEXTURE_SUCCESS = new ResourceLocation("modid", "textures/gui/button_success.png");
-    private static final ResourceLocation BUTTON_TEXTURE_FAIL = new ResourceLocation("modid", "textures/gui/button_fail.png");
+    
     private boolean isSuccess;
 
     public BugReportScreen(Screen last) {
@@ -52,6 +50,10 @@ public class BugReportScreen extends Screen {
         this.body.tick();
     }
 
+        /**
+     * Initializes the Bug Report Screen with text input fields for title and body,
+     * dropdown list for selecting tags, and buttons for connecting and canceling.
+     */
     protected void init() {
         this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
         this.title = new EditBox(this.font, this.width / 2 - 100, 66, 200, 20, Component.translatable("addServer.enterName"));
@@ -101,7 +103,13 @@ public class BugReportScreen extends Screen {
     }
 
 
-
+    /**
+     * Resizes the BugReportScreen based on the provided Minecraft instance, width, and height.
+     *
+     * @param pMinecraft the Minecraft instance
+     * @param pWidth     the new width
+     * @param pHeight    the new height
+     */
     public void resize(Minecraft pMinecraft, int pWidth, int pHeight) {
         String s = this.body.getValue();
         String s1 = this.title.getValue();
@@ -117,7 +125,14 @@ public class BugReportScreen extends Screen {
     public void onClose() {
         this.minecraft.setScreen(this.lastScreen);
     }
-
+    /**
+     * A method that renders the BugReportScreen with the provided parameters.
+     *
+     * @param  pPoseStack   the PoseStack instance
+     * @param  pMouseX      the x-coordinate of the mouse
+     * @param  pMouseY      the y-coordinate of the mouse
+     * @param  pPartialTick the partial tick value
+     */
     public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
         this.renderBackground(pPoseStack);
         drawString(pPoseStack, this.font, TITLE_COMPONENT, this.width / 2 - 100, 53, 10526880);
