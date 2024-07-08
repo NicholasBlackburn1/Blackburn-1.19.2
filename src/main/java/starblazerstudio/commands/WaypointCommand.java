@@ -56,7 +56,7 @@ public class WaypointCommand implements ICommandRegister {
                             listWaypoints(mc);
                             break;
                         default:
-                            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage")));
+                          
                             break;
                     }
                 }

@@ -3,6 +3,7 @@ package net.minecraft.client.gui.screens;
 import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.GameNarrator;
 import net.minecraft.client.gui.narration.NarratedElementType;
@@ -86,7 +87,9 @@ public class LevelLoadingScreen extends Screen
         int k = this.height / 2;
         int l = 30;
         renderChunks(pPoseStack, this.progressListener, j, k + 30, 2, 0);
-        drawCenteredString(pPoseStack, this.font, this.getFormattedProgress(), j, k - 9 / 2 - 30, 16777215);
+        
+        drawCenteredString(pPoseStack, this.font, Component.translatable(this.minecraft.getSplashManager().getSplash()).a(ChatFormatting.LIGHT_PURPLE), j, k - 9 / 2 - 30, 16766720);
+        
     }
 
     public static void renderChunks(PoseStack p_96150_, StoringChunkProgressListener p_96151_, int p_96152_, int p_96153_, int p_96154_, int p_96155_)

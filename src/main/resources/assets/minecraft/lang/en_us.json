@@ -20,8 +20,12 @@
   "blackburn.commands.twitchchat.pre":"§6.twchat§r",
   "blackburn.commands.twitchchat.desc": "§e Toggles the Twitch irc chat",
 
-  "blackkburn.commands.waypoint.pre":"§6.waypoint§r",
+  "blackburn.commands.waypoint.pre":"§6.waypoint§r",
   "blackburn.commands.waypoint.desc": "§e Lets the user set waypoints",
+
+  "blackburn.waypoint.usage":"§e Usage: .waypoint <args>",
+  "blackburn.waypoint.usage.set":"§e Usage: .waypoint set <name>",
+  "blackburn.waypoint.usage.del":"§e Usage: .waypoint del <name>",
 
   "blackburn.commands.getblock.pre":"§6.getblock§r",
   "blackburn.commands.getblocks.pre":"§6.getblockarroundme§r",
