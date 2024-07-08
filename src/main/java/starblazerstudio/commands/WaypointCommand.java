@@ -1,22 +1,22 @@
+
 package starblazerstudio.commands;
 
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MessageSignature;
+
+import net.minecraft.client.player.LocalPlayer;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import starblazerstudio.utils.Consts;
 
 public class WaypointCommand implements ICommandRegister {
 
@@ -29,42 +29,40 @@ public class WaypointCommand implements ICommandRegister {
     }
 
     @Override
-    public void register(List<String> commandArguments, Minecraft client) {
-        if (commandArguments.isEmpty() || !commandArguments.get(0).equalsIgnoreCase(".waypoint")) {
-            return;
-        }
-        String subCommand = commandArguments.size() > 1 ? commandArguments.get(1).toLowerCase() : "";
-        switch (subCommand) {
-            case "set":
-                if (commandArguments.size() == 3) {
-                    setWaypoint(commandArguments.get(2), client);
+    public void register(List<String> command, Minecraft mc) {
+        if (!command.isEmpty()) {
+            if (command.get(0).equalsIgnoreCase(".waypoint")) {
+                if (command.size() == 1) {
+                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage")));
                 } else {
-                    displayUsageMessage(client, "set");
+                    String subCommand = command.get(1).toLowerCase();
+                    switch (subCommand) {
+                        case "set":
+                            if (command.size() == 3) {
+                                setWaypoint(command.get(2), mc);
+                            } else {
+                                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage.set")));
+                            }
+                            break;
+                        case "del":
+                            if (command.size() == 3) {
+                                deleteWaypoint(command.get(2), mc);
+                            } else {
+                                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage.del")));
+
+                            break;
+                            }
+                        case "list":
+                            listWaypoints(mc);
+                            break;
+                        default:
+                            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage")));
+                            break;
+                    }
                 }
-                break;
-            case "del":
-                if (commandArguments.size() == 3) {
-                    deleteWaypoint(commandArguments.get(2), client);
-                } else {
-                    displayUsageMessage(client, "del");
-                }
-                break;
-            case "list":
-                listWaypoints(client);
-                break;
-            default:
-                displayUsageMessage(client);
-                break;
+                command.clear();
+            }
         }
-        commandArguments.clear();
-    }
-
-    private void displayUsageMessage(Minecraft client, String subCommand) {
-        client.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.usage." + subCommand)));
-    }
-
-    private void displayUsageMessage(Minecraft client) {
-        client.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.usage")));
     }
 
     private void setWaypoint(String name, Minecraft mc) {
@@ -73,27 +71,26 @@ public class WaypointCommand implements ICommandRegister {
             double[] pos = {player.getX(), player.getY(), player.getZ()};
             waypoints.put(name, pos);
             saveWaypoints();
-            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.set"), name));
+            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.set")));
         }
     }
 
     private void deleteWaypoint(String name, Minecraft mc) {
         if (waypoints.remove(name) != null) {
             saveWaypoints();
-            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.del"), name));
+            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.del")));
         } else {
-            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.notfound"), name));
+            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.notfound")));
         }
     }
 
     private void listWaypoints(Minecraft mc) {
         if (waypoints.isEmpty()) {
-            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.empty")));
+            mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.empty")));
         } else {
-            Set<String> keys = waypoints.keySet();
-            for (String key : keys) {
-                double[] pos = waypoints.get(key);
-                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.commands.waypoint.entry"), key, pos[0], pos[1], pos[2]));
+            for (Map.Entry<String, double[]> entry : waypoints.entrySet()) {
+                double[] pos = entry.getValue();
+                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.entry")));
             }
         }
     }
