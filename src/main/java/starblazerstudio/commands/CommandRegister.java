@@ -16,6 +16,7 @@ public class CommandRegister {
     TwitchChatCommand twitchChat = new TwitchChatCommand();
     LewdVersion lewdVersion = new LewdVersion();
     CrashCommand crashCommand = new CrashCommand();
+    WaypointCommand waypointCommand = new WaypointCommand();
 
     public void registerCommands(Minecraft mc){
 
@@ -29,6 +30,7 @@ public class CommandRegister {
         twitchChat.register(command,mc);
         lewdVersion.register(command,mc);
         crashCommand.register(command,mc);
+        waypointCommand.register(command,mc);
       
 
         // enables twitch messages to diusplay in chat
@@ -60,6 +62,7 @@ public class CommandRegister {
         chatconsts.commands.add(3,twitchChat.getName());
         chatconsts.commands.add(4,lewdVersion.getName());
         chatconsts.commands.add(5,crashCommand.getName());
+        chatconsts.commands.add(6,waypointCommand.getName());
       
         
     }
@@ -72,6 +75,7 @@ public class CommandRegister {
         chatconsts.commanddesc.add(3,twitchChat.getDesc());
         chatconsts.commanddesc.add(4,lewdVersion.getDesc());
         chatconsts.commanddesc.add(5,crashCommand.getDesc());
+        chatconsts.commanddesc.add(6,waypointCommand.getDesc());
     }
 
     
