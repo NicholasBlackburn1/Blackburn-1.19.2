@@ -88,7 +88,7 @@ public class LevelLoadingScreen extends Screen
         int l = 30;
         renderChunks(pPoseStack, this.progressListener, j, k + 30, 2, 0);
         
-        drawCenteredString(pPoseStack, this.font, Component.translatable(this.minecraft.getSplashManager().getSplash()).a(ChatFormatting.LIGHT_PURPLE), j, k - 9 / 2 - 30, 16766720);
+        //drawCenteredString(pPoseStack, this.font, Component.translatable(this.minecraft.getSplashManager().getSplash()).a(ChatFormatting.LIGHT_PURPLE), j, k - 9 / 2 - 30, 16766720);
         
     }
 
