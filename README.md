@@ -12,6 +12,8 @@
 6. Custom Bug reporter in game -X
 7. Online Reporting Crash reporter -X
 8. Implement Forge somehow 
+9. mabey a click gui - 
+10. 
 
 
 
@@ -25,6 +27,8 @@
 1. fix backgrounds on title screen
 2. change splash text to blackburn 1.18 client's splash
 3. can add small referances to my peronallity into the client
+4. obv add lewd furry backgorounds for people 18+ 
+
 
 ## text readabillity 
 1. reable text on main menu

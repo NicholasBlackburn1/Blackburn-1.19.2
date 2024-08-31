@@ -30,36 +30,35 @@ public class WaypointCommand implements ICommandRegister {
 
     @Override
     public void register(List<String> command, Minecraft mc) {
-        if (!command.isEmpty()) {
-            if (command.get(0).equalsIgnoreCase(".waypoint")) {
-                if (command.size() == 1) {
-                    mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage")));
-                } else {
-                    String subCommand = command.get(1).toLowerCase();
-                    switch (subCommand) {
-                        case "set":
-                            if (command.size() == 3) {
-                                setWaypoint(command.get(2), mc);
-                            } else {
-                                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage.set")));
-                            }
-                            break;
-                        case "del":
-                            if (command.size() == 3) {
-                                deleteWaypoint(command.get(2), mc);
-                            } else {
-                                mc.gui.getChat().addMessage(Component.translatable(I18n.a("blackburn.waypoint.usage.del")));
-
-                            break;
-                            }
-                        case "list":
-                            listWaypoints(mc);
-                            break;
-                        default:
-                          
-                            break;
+            if (!command.isEmpty()) {
+                if (command.get(0).equalsIgnoreCase(".waypoint")) {
+                    if (command.size() == 1) {
+                        mc.gui.getChat().addMessage(Component.translatable("blackburn.waypoint.usage"));
+                    } else {
+                        String subCommand = command.get(1).toLowerCase();
+                        switch (subCommand) {
+                            case "set":
+                                if (command.size() == 2) {
+                                    setWaypoint(command.get(2), mc);
+                                } else {
+                                    mc.gui.getChat().addMessage(Component.translatable("blackburn.waypoint.usage.set"));
+                                }
+                                break;
+                            case "del":
+                                if (command.size() == 3) {
+                                    deleteWaypoint(command.get(2), mc);
+                                } else {
+                                    mc.gui.getChat().addMessage(Component.translatable("blackburn.waypoint.usage.del"));
+                                }
+                                break;
+                            case "list":
+                                listWaypoints(mc);
+                                break;
+                            default:
+                                mc.gui.getChat().addMessage(Component.translatable("blackburn.waypoint.unknown_command"));
+                                break;
+                        }
                     }
-                }
                 command.clear();
             }
         }
